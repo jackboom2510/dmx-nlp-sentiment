@@ -28,10 +28,13 @@ Dự án được triển khai theo 5 bước chuẩn cùng yêu cầu mở rộ
 
 ---
 
-## Tài liệu Kế hoạch & Hướng dẫn thực hiện
+## Tài liệu Kế hoạch, Hướng dẫn & Agent Markdown
 
 - **[`PLAN.md`](PLAN.md)**: Kế hoạch tổng thể thực hiện dự án, đánh giá hiện trạng kho mã nguồn, quy hoạch kiến trúc thư mục, thiết kế thực nghiệm cho từng bước và bảng phân công công việc nhóm.
 - **[`INSTRUCTIONS.md`](INSTRUCTIONS.md)**: Hướng dẫn thực thi chi tiết từng bước kèm mã nguồn mẫu (tiền xử lý tiếng Việt, trích chọn đặc trưng BoW/TF-IDF/Word2Vec, huấn luyện Naïve Bayes/SVM/PhoBERT, hàm vẽ Confusion Matrix & biểu đồ so sánh) và dàn ý viết báo cáo bám sát mẫu PTIT.
+- **[`AGENTS.md`](AGENTS.md)**: Tài liệu định nghĩa bối cảnh, 5 quy tắc bất biến (guardrails) và tiêu chuẩn kỹ thuật dành cho các AI Coding Agent làm việc trên repo.
+- **[`SKILLS.md`](SKILLS.md)**: Danh mục 7 kỹ năng chuẩn hóa (`skill:01-crawl-dmx` $\rightarrow$ `skill:07-eval-plot-report`) hướng dẫn Agent thực thi từng giai đoạn của dự án.
+- **[`CLAUDE.md`](CLAUDE.md)**: Tài liệu tham chiếu nhanh (Quick Reference) dành cho Claude Code và các AI Agent tương thích.
 
 ---
 
@@ -59,6 +62,9 @@ dmx-nlp-sentiment/
 ├── json_to_csv.py                        # Script chuyển đổi dữ liệu từ JSONL sang CSV
 ├── PLAN.md                               # Kế hoạch thực hiện dự án
 ├── INSTRUCTIONS.md                       # Hướng dẫn chi tiết cách code, chạy thực nghiệm & viết báo cáo
+├── AGENTS.md                             # Quy tắc bất biến & hướng dẫn cho AI Coding Agents
+├── SKILLS.md                             # Danh mục 7 kỹ năng (workflows) chuẩn cho Agent
+├── CLAUDE.md                             # Điểm vào nhanh cho Claude Code / AI Agents
 └── README.md                             # Tài liệu giới thiệu dự án (file này)
 ```
 
