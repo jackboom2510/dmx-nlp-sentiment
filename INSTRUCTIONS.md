@@ -63,13 +63,10 @@ python json_to_csv.py
 #### 1.3. Quy tắc gán nhãn & Hiệu chỉnh thủ công (Theo đúng yêu cầu mẫu báo cáo Lazada)
 1. **Nhãn tự động theo số sao (Silver Label)** dùng cho tập **Train** và **Validation**:
    $$\text{label\_star} = \begin{cases} 1 \text{ (Positive)} & \text{nếu } \text{rating} \in \{4, 5\} \\ 0 \text{ (Neutral)} & \text{nếu } \text{rating} = 3 \\ -1 \text{ (Negative)} & \text{nếu } \text{rating} \in \{1, 2\} \end{cases}$$
-2. **Nhãn hiệu chỉnh thủ công (Gold Label)** dùng cho tập **Test (`test_gold`, $n = 500$)**:
-   - Lấy mẫu phân tầng **500 bình luận** đại diện cho các ngành hàng và mức sao.
+2. **Nhãn hiệu chỉnh thủ công (Gold Label)** dùng cho tập **Test (`test_gold`, đề xuất $n = 500$)**:
+   - Lấy mẫu phân tầng **500 bình luận** từ dữ liệu Điện Máy Xanh đại diện cho các ngành hàng và mức sao.
    - Đọc và hiệu chỉnh thủ công các trường hợp **lệch giữa số sao và nội dung câu chữ** (ví dụ: khách hàng bấm 5 sao nhưng viết *"Máy kêu rất to, bảo hành hẹn mãi không thấy đến"* $\rightarrow$ gán lại thành `Negative (-1)`).
-   - Phân phối thực tế của tập `test_gold` ($n = 500$):
-     - **Negative (`-1`)**: **289 mẫu** (57.8%)
-     - **Neutral (`0`)**: **47 mẫu** (9.4%)
-     - **Positive (`1`)**: **164 mẫu** (32.8%)
+   - *(Lưu ý: Trong bộ biểu đồ tham khảo tại `/figures` của một repo khác cùng chủ đề, tập `test_gold` $n = 500$ có phân phối gồm `289 Negative`, `47 Neutral`, `164 Positive`. Nhóm có thể áp dụng quy trình lấy mẫu tương tự trên tập Điện Máy Xanh).*
 
 ---
 
@@ -168,8 +165,8 @@ def preprocess_vietnamese_text(text: str, stopwords: set = None, remove_stopword
     return " ".join(words)
 ```
 
-> **Lưu ý quan trọng khi báo cáo**:
-> Trong thực nghiệm của dự án này, nhóm đã thực hiện thêm một thí nghiệm đối chứng (**Ablation Study**): so sánh `TF-IDF + NB` **có bỏ stopword** (Macro-F1 = `0.633`, Accuracy = `0.742`) và **không bỏ stopword** (`figures/cm_tf_idf_nb_khong_bo_stopword_tham_khao.png`, Macro-F1 = `0.639`, Accuracy = `0.714`). Việc bỏ stopword có chọn lọc giúp tăng độ chính xác tổng thể (`+2.8%` Accuracy) và giảm kích thước từ điển, trong khi nếu xóa nhầm các từ như *"không"*, *"chưa"*, *"hơi"* sẽ làm giảm mạnh Recall của lớp `Neutral` và `Negative`.
+> **Lưu ý thiết kế thí nghiệm đối chứng (Ablation Study)**:
+> Tham khảo cách làm từ bộ biểu đồ mẫu trong `figures/` (`cm_tf_idf_nb_khong_bo_stopword_tham_khao.png`), nhóm nên chạy thêm 1 thí nghiệm đối chứng giữa `TF-IDF + NB` **có bỏ stopword** và **không bỏ stopword**. Việc bỏ stopword có chọn lọc (giữ lại từ phủ định) thường giúp tăng độ chính xác tổng thể (Accuracy) và giảm kích thước từ điển, trong khi nếu xóa nhầm các từ như *"không"*, *"chưa"*, *"hơi"* sẽ làm giảm mạnh Recall của lớp `Neutral` và `Negative`.
 
 ---
 
@@ -388,13 +385,98 @@ training_args = TrainingArguments(
 
 ---
 
-### BƯỚC 5: Đánh giá Mô hình & Bảng kết quả Thực nghiệm (Evaluation & Results)
+### BƯỚC 5: Đánh giá Mô hình, Vẽ Biểu đồ & Bảng kết quả Tham khảo (Evaluation & Visualization)
 
-Toàn bộ các biểu đồ ma trận nhầm lẫn (Confusion Matrix) và biểu đồ so sánh đã được xuất sẵn trong thư mục `figures/`. Dưới đây là **Bảng tổng hợp kết quả chính xác** được tính từ thực nghiệm trên tập `test_gold` ($n = 500$: `289 Negative`, `47 Neutral`, `164 Positive`) để nhóm đưa trực tiếp vào báo cáo:
+> ⚠️ **LƯU Ý QUAN TRỌNG VỀ THƯ MỤC `figures/`**:
+> Các biểu đồ hiện có trong thư mục `figures/` (`cm_*.png` và `macro_f1_val_test.png`) **chỉ là các biểu đồ mẫu tham khảo từ một repository khác có cùng chủ đề**. Khi thực hiện dự án trên bộ dữ liệu Điện Máy Xanh (`data/raw/reviews.csv`), nhóm sử dụng đoạn code dưới đây để **sinh lại toàn bộ các biểu đồ mới từ kết quả thực tế của Điện Máy Xanh** theo đúng chuẩn trình bày của bộ hình tham khảo.
 
-#### 5.1. Bảng tổng hợp hiệu năng các mô hình trên tập Kiểm tra (`test_gold`, $n = 500$)
+#### 5.1. Mã nguồn xuất biểu đồ Confusion Matrix (2 panel) và Biểu đồ so sánh Macro-F1
 
-| Mô hình thực nghiệm | Accuracy | Macro-F1 | Weighted-F1 | Macro-Precision | Macro-Recall | File Confusion Matrix trong `figures/` |
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.metrics import confusion_matrix, classification_report, f1_score
+
+CLASS_NAMES = ["Negative", "Neutral", "Positive"]
+LABELS_ORDER = [-1, 0, 1]
+
+def plot_dual_confusion_matrix(y_true, y_pred, title: str, save_path: str):
+    """
+    Vẽ Confusion Matrix gồm 2 bảng cạnh nhau giống mẫu tham khảo trong /figures:
+    - Trái: Số đếm mẫu tuyệt đối (Counts)
+    - Phải: Chuẩn hóa theo hàng (Recall %)
+    """
+    cm = confusion_matrix(y_true, y_pred, labels=LABELS_ORDER)
+    cm_norm = cm.astype("float") / cm.sum(axis=1, keepdims=True)
+    cm_norm = np.nan_to_num(cm_norm)
+
+    fig, axes = plt.subplots(1, 2, figsize=(12, 4.8))
+    fig.suptitle(title, fontsize=14, y=1.02)
+
+    # Bảng 1: Số đếm
+    sns.heatmap(
+        cm, annot=True, fmt="d", cmap="Blues", cbar=False,
+        xticklabels=CLASS_NAMES, yticklabels=CLASS_NAMES, ax=axes[0],
+        annot_kws={"size": 12}
+    )
+    axes[0].set_title("Số đếm", fontsize=11)
+    axes[0].set_xlabel("Dự đoán")
+    axes[0].set_ylabel("Nhãn gold")
+
+    # Bảng 2: Chuẩn hóa theo hàng (Recall %)
+    annot_pct = np.array([[f"{val*100:.0f}%" for val in row] for row in cm_norm])
+    sns.heatmap(
+        cm_norm, annot=annot_pct, fmt="", cmap="Blues", cbar=False,
+        xticklabels=CLASS_NAMES, yticklabels=CLASS_NAMES, ax=axes[1],
+        vmin=0.0, vmax=1.0, annot_kws={"size": 12}
+    )
+    axes[1].set_title("Chuẩn hóa theo hàng (recall)", fontsize=11)
+    axes[1].set_xlabel("Dự đoán")
+    axes[1].set_ylabel("Nhãn gold")
+
+    plt.tight_layout()
+    plt.savefig(save_path, dpi=150, bbox_inches="tight")
+    plt.close(fig)
+
+def plot_macro_f1_comparison(model_names, val_scores, test_scores, save_path="figures/macro_f1_val_test.png"):
+    """
+    Vẽ biểu đồ thanh ngang so sánh Macro-F1 trên tập Val (nhãn sao) và Test (nhãn gold).
+    """
+    y = np.arange(len(model_names))
+    height = 0.36
+
+    fig, ax = plt.subplots(figsize=(10, 5.8))
+    rects1 = ax.barh(y - height/2, val_scores, height, label="Val (nhãn sao)", color="#2b7bba")
+    rects2 = ax.barh(y + height/2, test_scores, height, label="Test (nhãn gold)", color="#eb6b34")
+
+    ax.set_xlabel("Macro-F1")
+    ax.set_title("Macro-F1 theo mô hình: val (nhãn sao) và test (nhãn gold)", loc="left", fontsize=13)
+    ax.set_yticks(y)
+    ax.set_yticklabels(model_names)
+    ax.set_xlim(0.0, 1.0)
+    ax.invert_yaxis()
+    ax.legend(loc="upper left", bbox_to_anchor=(0, 1.02), ncol=2, frameon=False)
+
+    for rect in rects2:
+        w = rect.get_width()
+        ax.annotate(f"{w:.3f}", xy=(w + 0.01, rect.get_y() + rect.get_height()/2),
+                    va="center", ha="left", fontsize=10)
+
+    plt.tight_layout()
+    plt.savefig(save_path, dpi=150, bbox_inches="tight")
+    plt.close(fig)
+```
+
+---
+
+#### 5.2. Bảng số liệu mẫu (Trích xuất từ bộ biểu đồ tham khảo trong `figures/` của repo cùng chủ đề)
+
+> *Ghi chú: Hai bảng dưới đây được tính toán từ các ma trận nhầm lẫn tham khảo hiện có trong `figures/` (`n = 500$: `289 Negative`, `47 Neutral`, `164 Positive`) để minh họa chuẩn trình bày bảng số liệu trong Báo cáo. Sau khi chạy thực nghiệm trên dữ liệu Điện Máy Xanh, nhóm chỉ cần điền kết quả mới vào đúng cấu trúc bảng này.*
+
+##### Bảng A: Tổng hợp hiệu năng các mô hình (Mẫu tham khảo từ `figures/`)
+
+| Mô hình thực nghiệm | Accuracy | Macro-F1 | Weighted-F1 | Macro-Precision | Macro-Recall | File biểu đồ mẫu trong `figures/` |
 | :--- | :-: | :-: | :-: | :-: | :-: | :--- |
 | **0. Baseline (Lớp đông nhất)** | 0.3280 | 0.1647 | 0.1620 | 0.1093 | 0.3333 | `figures/cm_baseline_lop_dong_nhat.png` |
 | **1. BoW + Naïve Bayes** | 0.6540 | 0.5677 | 0.6924 | 0.6077 | 0.6016 | `figures/cm_bow_nb.png` |
@@ -406,7 +488,7 @@ Toàn bộ các biểu đồ ma trận nhầm lẫn (Confusion Matrix) và biể
 | **7. PhoBERT (Mô hình hiện đại - Ý 4)** | 0.7140 | **0.6320** | 0.7515 | **0.6623** | **0.6831** | `figures/cm_phobert.png` |
 | *(Tham khảo) TF-IDF + NB (Không bỏ stopword)* | *0.7140* | *0.6389* | *0.7497* | *0.6625* | *0.6965* | `figures/cm_tf_idf_nb_khong_bo_stopword_tham_khao.png` |
 
-#### 5.2. Bảng chi tiết Precision / Recall / F1 theo từng lớp cảm xúc (`test_gold`, $n = 500$)
+##### Bảng B: Chi tiết Precision / Recall / F1 theo từng lớp cảm xúc (Mẫu tham khảo từ `figures/`)
 
 | Mô hình | Negative (`-1`, $n=289$) P / R / F1 | Neutral (`0`, $n=47$) P / R / F1 | Positive (`1`, $n=164$) P / R / F1 |
 | :--- | :-: | :-: | :-: |
@@ -452,14 +534,14 @@ Trình bày ngắn gọn, súc tích theo đúng phong cách báo cáo mẫu (kh
    - Đưa link GitHub repository chứa code thu thập dữ liệu, tiền xử lý và huấn luyện mô hình.
    - Giải thích rõ quy trình chia tập dữ liệu: Tập **Validation** đánh giá trên nhãn sao (Silver label) và Tập **Test (`n=500`)** được gán nhãn thủ công (**Gold label**) để phản ánh trung thực chất lượng mô hình.
 2. **Kết quả thực nghiệm**:
-   - Chèn lần lượt các hình ảnh Confusion Matrix từ thư mục `figures/`:
+   - Chèn lần lượt các hình ảnh Confusion Matrix **đã được sinh mới từ tập dữ liệu Điện Máy Xanh** (sau khi chạy hàm `plot_dual_confusion_matrix` và `plot_macro_f1_comparison` ở Mục 5.1 để ghi đè lên các hình mẫu tham khảo trong `figures/`):
      - `figures/cm_baseline_lop_dong_nhat.png`
      - `figures/cm_bow_nb.png` & `figures/cm_bow_svm.png`
      - `figures/cm_tf_idf_nb.png` & `figures/cm_tf_idf_svm.png`
      - `figures/cm_w2v_nb.png` & `figures/cm_w2v_svm.png`
      - `figures/cm_phobert.png`
      - Biểu đồ tổng hợp `figures/macro_f1_val_test.png`
-3. **So sánh và nhận xét** *(Sử dụng Bảng 5.1 & 5.2 ở trên và nêu 5 nhận xét cốt lõi)*:
+3. **So sánh và nhận xét** *(Điền số liệu thực tế của Điện Máy Xanh vào cấu trúc Bảng A & B ở Mục 5.2 và phân tích theo 4 luận điểm mẫu dưới đây)*:
    - **Về phương pháp trích chọn đặc trưng**: **TF-IDF** vượt trội rõ rệt so với cả **BoW** và **Word2Vec Mean Pooling** ở cả 2 thuật toán NB và SVM (`Macro-F1` đạt `0.633` với NB và `0.625` với SVM, so với `0.568`–`0.581` của BoW và `0.571`–`0.583` của Word2Vec). Lý do là TF-IDF giữ được các cụm từ khóa phân biệt trực tiếp (nhờ bigram + trọng số IDF), trong khi phép lấy trung bình cộng (Mean Pooling) của Word2Vec làm mờ đi các từ khóa cảm xúc khi câu dài.
    - **Về thuật toán truyền thống (NB vs SVM)**: Với đặc trưng BoW, SVM tốt hơn NB (`0.581` vs `0.568`). Với đặc trưng TF-IDF đã chuẩn hóa và xử lý mất cân bằng, cả NB (`0.633`) và SVM (`0.625`) đều đạt hiệu năng rất cạnh tranh và vượt xa Baseline (`0.165`).
    - **Về mô hình hiện đại PhoBERT (Ý 4 bổ sung)**:

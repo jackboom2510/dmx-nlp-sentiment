@@ -30,9 +30,9 @@ Qua khảo sát hiện trạng repository, dự án đã có sẵn các tài ngu
 | :--- | :--- | :--- |
 | **1. Thu thập dữ liệu (Crawler)** | **Đã có sẵn**: `crawl_dmx_reviews.py`, `multi_thread_crawler.py`, `protected_multi_thread_crawler.py`, `json_to_csv.py` | Đã thu thập thành công **12,189 bình luận** thuộc 6 ngành hàng lớn (`data/raw/reviews.jsonl`, `data/raw/reviews.csv`, `data/raw/reviews_drop_na.csv`). |
 | **2. Dữ liệu thô (`data/raw/`)** | **Đã có sẵn**: 12,189 mẫu (5★: 6,741; 4★: 2,407; 3★: 988; 2★: 706; 1★: 1,347) | Cần chuẩn hóa script làm sạch trùng lặp, tách tập `train`/`val` (nhãn sao) và lưu bộ `test_gold` (`n = 500` mẫu đã hiệu chỉnh thủ công) vào `data/processed/`. |
-| **3. Tiền xử lý & Trích chọn đặc trưng** | **Chưa lưu code trong repo** | Cần đóng gói thành module/notebook chuẩn (`src/preprocess.py`, `src/features.py` hoặc notebook tổng hợp) để tái lập kết quả và đưa link vào báo cáo. |
-| **4. Huấn luyện NB, SVM & PhoBERT** | **Đã có kết quả biểu đồ**, chưa lưu script/notebook vào repo | Cần tổ chức lại code huấn luyện (`src/train_ml.py`, `src/train_phobert.py` hoặc Jupyter Notebook) để nộp kèm báo cáo. |
-| **5. Biểu đồ kết quả (`figures/`)** | **Đã có sẵn 10 biểu đồ**: Confusion Matrix của Baseline, BoW+NB, BoW+SVM, TF-IDF+NB, TF-IDF+SVM, W2V+NB, W2V+SVM, PhoBERT và biểu đồ `macro_f1_val_test.png` | Đã đầy đủ hình ảnh chất lượng cao để chèn trực tiếp vào Mục III.2 và III.3 của báo cáo. |
+| **3. Tiền xử lý & Trích chọn đặc trưng** | **Chưa có code trong repo** | Cần xây dựng module/notebook (`src/preprocess.py`, `src/features.py` hoặc notebook tổng hợp) để xử lý 12,189 bình luận Điện Máy Xanh. |
+| **4. Huấn luyện NB, SVM & PhoBERT** | **Chưa có code trong repo** | Cần xây dựng code huấn luyện (`src/train_ml.py`, `src/train_phobert.py` hoặc Jupyter Notebook) cho cả 2 thuật toán truyền thống (NB, SVM) và mô hình hiện đại (PhoBERT). |
+| **5. Biểu đồ trong `figures/`** | **Hiện là 10 biểu đồ THAM KHẢO từ một repo khác cùng chủ đề** (`cm_*.png`, `macro_f1_val_test.png`) | Dùng làm **mẫu chuẩn định dạng trực quan hóa** (Confusion Matrix 2 panel Số đếm + Recall % theo hàng, và biểu đồ so sánh Macro-F1). Cần chạy thực nghiệm trên tập Điện Máy Xanh để **xuất và ghi đè bộ biểu đồ thực tế mới** vào `figures/`. |
 | **6. Báo cáo Bài tập lớn** | Đã có file mẫu tham khảo `docs/Bài Tập Lớn I - Lazada.pdf` | Cần viết báo cáo chính thức cho bài toán Điện Máy Xanh bám sát cấu trúc mẫu PTIT và bổ sung phần mô hình hiện đại PhoBERT. |
 
 ---
@@ -56,7 +56,8 @@ dmx-nlp-sentiment/
 ├── docs/
 │   ├── Bài Tập Lớn I - Lazada.pdf    # Báo cáo mẫu tham khảo
 │   └── Bao_Cao_BTL1_DMX.docx / .pdf  # Báo cáo hoàn chỉnh của nhóm
-├── figures/                          # Biểu đồ Confusion Matrix & So sánh Macro-F1
+├── figures/                          # ⚠️ Hiện đang chứa 10 biểu đồ THAM KHẢO từ một repo khác cùng chủ đề;
+│   │                                 # sẽ được ghi đè bằng biểu đồ thực tế của tập dữ liệu Điện Máy Xanh
 │   ├── cm_baseline_lop_dong_nhat.png
 │   ├── cm_bow_nb.png
 │   ├── cm_bow_svm.png
@@ -91,9 +92,9 @@ dmx-nlp-sentiment/
    - `4 sao, 5 sao` $\rightarrow$ **Positive (`1`)** (~75.05% tập dữ liệu thô – chiếm đa số áp đảo).
    - `3 sao` $\rightarrow$ **Neutral (`0`)** (~8.11% tập dữ liệu thô).
    - `1 sao, 2 sao` $\rightarrow$ **Negative (`-1`)** (~16.84% tập dữ liệu thô).
-4. **Hiệu chỉnh thủ công tập Kiểm tra (`test_gold`, $n = 500$)**:
+4. **Hiệu chỉnh thủ công tập Kiểm tra (`test_gold`, đề xuất $n = 500$)**:
    - Trên thực tế, nhiều khách hàng đánh giá 5 sao nhưng bình luận phàn nàn (*"mới mua đã kêu to"*), hoặc đánh giá 1–3 sao nhưng nội dung khen (*"dùng tốt, nhân viên nhiệt tình"*).
-   - Do đó, nhóm trích riêng **500 mẫu** làm tập **Gold Test** (gồm **289 Negative**, **47 Neutral**, **164 Positive**) được rà soát và gán nhãn thủ công theo đúng ngữ nghĩa thực tế của câu bình luận để đánh giá mô hình một cách trung thực nhất.
+   - Do đó, tham khảo cách thiết kế thực nghiệm từ repo mẫu cùng chủ đề, nhóm trích riêng **500 mẫu** từ dữ liệu Điện Máy Xanh làm tập **Gold Test** được rà soát và gán nhãn thủ công theo đúng ngữ nghĩa thực tế của câu bình luận để đánh giá mô hình một cách khách quan nhất.
 
 ---
 
@@ -134,8 +135,8 @@ Thực nghiệm đầy đủ cả **3 phương pháp** để có bảng so sánh
 ### Bước 4: Xây dựng và Huấn luyện Mô hình (Model Building & Training)
 
 #### 4.1. Chia tập dữ liệu (Data Splitting)
-- **Tập Test (`test_gold`)**: Cố định `n = 500` mẫu đã hiệu chỉnh nhãn thủ công (289 Negative, 47 Neutral, 164 Positive). Tuyệt đối không dùng tập này khi `fit` bộ trích chọn đặc trưng hay huấn luyện mô hình.
-- **Tập Train & Validation**: Phần dữ liệu còn lại sau khi loại bỏ các mẫu thuộc `test_gold` được chia theo tỷ lệ **85% Train / 15% Validation** có phân tầng (`stratify=y`).
+- **Tập Test (`test_gold`)**: Trích xuất cố định `n = 500` mẫu từ dữ liệu Điện Máy Xanh và hiệu chỉnh nhãn thủ công (Gold labels). Tuyệt đối không dùng tập này khi `fit` bộ trích chọn đặc trưng hay huấn luyện mô hình.
+- **Tập Train & Validation**: Phần dữ liệu Điện Máy Xanh còn lại sau khi loại bỏ các mẫu thuộc `test_gold` được chia theo tỷ lệ **85% Train / 15% Validation** có phân tầng (`stratify=y`).
 
 #### 4.2. Xử lý mất cân bằng dữ liệu (Handling Class Imbalance)
 Vì nhãn `Positive` chiếm ~75% trong khi `Neutral` chỉ chiếm ~8% và `Negative` chiếm ~17%:
