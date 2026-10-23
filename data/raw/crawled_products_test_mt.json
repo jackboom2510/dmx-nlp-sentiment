@@ -1,0 +1,86 @@
+{
+ "done": [
+  "https://www.dienmayxanh.com/may-giat/may-giat-aqua-inverter-11-kg-aw11-bd4377u1l-gn",
+  "https://www.dienmayxanh.com/may-giat/may-giat-lg-inverter-22-kg-t2522ax7g",
+  "https://www.dienmayxanh.com/may-lanh/aqua-inverter-1-hp-aqa-ruv10rb3",
+  "https://www.dienmayxanh.com/may-loc-nuoc/ion-kiem-panasonic-tk-as45-3-tam-dien-cuc",
+  "https://www.dienmayxanh.com/may-loc-nuoc/may-loc-nuoc-ro-nong-lanh-karofi-kad-n91-10-loi",
+  "https://www.dienmayxanh.com/noi-com-dien/bluestone-rcb-5988-15-lit",
+  "https://www.dienmayxanh.com/noi-com-dien/noi-com-nap-gai-lock-lock-1-8-lit-ejr462ivy",
+  "https://www.dienmayxanh.com/tivi/google-tivi-qled-tcl-ai-fhd-32-inch-32s5k",
+  "https://www.dienmayxanh.com/tu-lanh/tu-lanh-hisense-inverter-615-lit-multi-door-rq600p7ab",
+  "https://www.dienmayxanh.com/tu-lanh/tu-lanh-toshiba-inverter-515-lit-multi-door-gr-rf675wi-pmv-06-mg"
+ ],
+ "status": {
+  "https://www.dienmayxanh.com/may-loc-nuoc/ion-kiem-panasonic-tk-as45-3-tam-dien-cuc": {
+   "result": "ok",
+   "new": 8,
+   "sec": 20,
+   "worker": 2,
+   "at": "2026-09-29T23:21:21"
+  },
+  "https://www.dienmayxanh.com/noi-com-dien/noi-com-nap-gai-lock-lock-1-8-lit-ejr462ivy": {
+   "result": "no_reviews",
+   "new": 0,
+   "sec": 31,
+   "worker": 0,
+   "at": "2026-09-29T23:21:24"
+  },
+  "https://www.dienmayxanh.com/tu-lanh/tu-lanh-hisense-inverter-615-lit-multi-door-rq600p7ab": {
+   "result": "no_reviews",
+   "new": 0,
+   "sec": 31,
+   "worker": 1,
+   "at": "2026-09-29T23:21:28"
+  },
+  "https://www.dienmayxanh.com/may-giat/may-giat-lg-inverter-22-kg-t2522ax7g": {
+   "result": "no_reviews",
+   "new": 0,
+   "sec": 29,
+   "worker": 3,
+   "at": "2026-09-29T23:21:32"
+  },
+  "https://www.dienmayxanh.com/may-lanh/aqua-inverter-1-hp-aqa-ruv10rb3": {
+   "result": "ok",
+   "new": 2,
+   "sec": 21,
+   "worker": 2,
+   "at": "2026-09-29T23:21:44"
+  },
+  "https://www.dienmayxanh.com/tivi/google-tivi-qled-tcl-ai-fhd-32-inch-32s5k": {
+   "result": "ok",
+   "new": 4,
+   "sec": 19,
+   "worker": 0,
+   "at": "2026-09-29T23:21:47"
+  },
+  "https://www.dienmayxanh.com/tu-lanh/tu-lanh-toshiba-inverter-515-lit-multi-door-gr-rf675wi-pmv-06-mg": {
+   "result": "ok",
+   "new": 16,
+   "sec": 17,
+   "worker": 3,
+   "at": "2026-09-29T23:21:53"
+  },
+  "https://www.dienmayxanh.com/noi-com-dien/bluestone-rcb-5988-15-lit": {
+   "result": "ok",
+   "new": 45,
+   "sec": 25,
+   "worker": 1,
+   "at": "2026-09-29T23:21:56"
+  },
+  "https://www.dienmayxanh.com/may-loc-nuoc/may-loc-nuoc-ro-nong-lanh-karofi-kad-n91-10-loi": {
+   "result": "ok",
+   "new": 10,
+   "sec": 16,
+   "worker": 2,
+   "at": "2026-09-29T23:22:03"
+  },
+  "https://www.dienmayxanh.com/may-giat/may-giat-aqua-inverter-11-kg-aw11-bd4377u1l-gn": {
+   "result": "ok",
+   "new": 2,
+   "sec": 20,
+   "worker": 0,
+   "at": "2026-09-29T23:22:09"
+  }
+ }
+}
