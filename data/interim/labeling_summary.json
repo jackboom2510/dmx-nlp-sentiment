@@ -1,0 +1,51 @@
+{
+  "raw_total_rows": 12189,
+  "valid_unique_rows": 9516,
+  "skipped_invalid": 49,
+  "skipped_duplicate": 2624,
+  "mode": "hybrid-lexicon",
+  "label_star_distribution": {
+    "-1": 2051,
+    "0": 953,
+    "1": 6512
+  },
+  "label_target_distribution": {
+    "-1": 2415,
+    "0": 633,
+    "1": 6468
+  },
+  "total_conflicts_adjusted": 490,
+  "conflict_breakdown": {
+    "star_4_mixed_contrast_to_neutral": 41,
+    "star_pos_text_strong_negative": 79,
+    "star_3_clear_negative": 294,
+    "star_3_clear_positive": 67,
+    "star_neg_text_strong_positive": 9
+  },
+  "splits": {
+    "train": {
+      "total": 7664,
+      "label_target_dist": {
+        "-1": 1951,
+        "0": 487,
+        "1": 5226
+      }
+    },
+    "val": {
+      "total": 1352,
+      "label_target_dist": {
+        "-1": 344,
+        "0": 86,
+        "1": 922
+      }
+    },
+    "test_gold": {
+      "total": 500,
+      "label_target_dist": {
+        "-1": 120,
+        "0": 60,
+        "1": 320
+      }
+    }
+  }
+}

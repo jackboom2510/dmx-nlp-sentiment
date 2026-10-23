@@ -1,0 +1,84 @@
+# Cấu hình trung tâm cho dự án Phân loại Cảm xúc Bình luận Điện Máy Xanh (dmx-nlp-sentiment)
+
+project:
+  name: "dmx-nlp-sentiment"
+  seed: 42
+  num_classes: 3
+  label_mapping:
+    -1: "Negative"
+    0: "Neutral"
+    1: "Positive"
+
+paths:
+  raw_csv: "data/raw/reviews.csv"
+  raw_jsonl: "data/raw/reviews.jsonl"
+  stopwords: "data/external/stopwords_vi.txt"
+  interim_labeled: "data/interim/reviews_labeled.csv"
+  interim_conflicts: "data/interim/rating_text_conflicts.csv"
+  interim_summary: "data/interim/labeling_summary.json"
+  train_csv: "data/processed/train.csv"
+  val_csv: "data/processed/val.csv"
+  test_gold_csv: "data/processed/test_gold.csv"
+  figures_dir: "figures"
+  reference_figures_dir: "figures/reference"
+  metrics_dir: "outputs/metrics"
+  predictions_dir: "outputs/predictions"
+
+auto_labeling:
+  default_mode: "hybrid-lexicon"   # Tùy chọn: hybrid-lexicon | embedding-prototype | zero-shot | pretrained
+  test_gold_size: 500
+  val_ratio: 0.15
+  pos_threshold: 0.65
+  neg_threshold: -0.65
+  strong_conflict_threshold: 1.40  # Ngưỡng đảo nhãn khi số sao mâu thuẫn gay gắt với nội dung
+
+preprocessing:
+  normalize_unicode: "NFC"
+  lowercase: true
+  remove_stopwords: true
+  min_token_length: 2
+
+features:
+  bow:
+    ngram_range: [1, 2]
+    min_df: 2
+    max_df: 0.95
+    max_features: 15000
+  tfidf:
+    ngram_range: [1, 2]
+    sublinear_tf: true
+    min_df: 2
+    max_df: 0.95
+    max_features: 15000
+    norm: "l2"
+  word2vec:
+    vector_size: 100
+    window: 5
+    min_count: 2
+    sg: 1
+    epochs: 15
+
+models:
+  naive_bayes:
+    bow_alpha: 1.0
+    tfidf_alpha: 0.5
+    hybrid_sampling:
+      undersample_pos: 2500
+      oversample_neg: 1500
+      oversample_neu: 1200
+  svm:
+    bow_c: 0.5
+    tfidf_c: 1.0
+    w2v_c: 1.0
+    class_weight: "balanced"
+    max_iter: 5000
+  phobert:
+    model_name: "vinai/phobert-base-v2"
+    max_length: 128
+    learning_rate: 2.0e-5
+    train_batch_size: 16
+    eval_batch_size: 32
+    epochs: 4
+    weight_decay: 0.01
+    warmup_ratio: 0.1
+    use_class_weights: true
