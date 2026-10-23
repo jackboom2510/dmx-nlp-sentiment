@@ -24,77 +24,103 @@
 
 ## 2. Đánh giá hiện trạng Kho mã nguồn (`dmx-nlp-sentiment`)
 
-Qua khảo sát hiện trạng repository, dự án đã có sẵn các tài nguyên quan trọng sau:
+Kho mã nguồn đã được tái cấu trúc chuẩn theo mô hình của các dự án Phân loại Văn bản (Production NLP Classification Repository):
 
 | Hạng mục | Trạng thái hiện tại trong Repo | Ghi chú / Công việc cần làm tiếp |
 | :--- | :--- | :--- |
-| **1. Thu thập dữ liệu (Crawler)** | **Đã có sẵn**: `crawl_dmx_reviews.py`, `multi_thread_crawler.py`, `protected_multi_thread_crawler.py`, `json_to_csv.py` | Đã thu thập thành công **12,189 bình luận** thuộc 6 ngành hàng lớn (`data/raw/reviews.jsonl`, `data/raw/reviews.csv`, `data/raw/reviews_drop_na.csv`). |
-| **2. Dữ liệu thô (`data/raw/`)** | **Đã có sẵn**: 12,189 mẫu (5★: 6,741; 4★: 2,407; 3★: 988; 2★: 706; 1★: 1,347) | Cần chuẩn hóa script làm sạch trùng lặp, tách tập `train`/`val` (nhãn sao) và lưu bộ `test_gold` (`n = 500` mẫu đã hiệu chỉnh thủ công) vào `data/processed/`. |
-| **3. Tiền xử lý & Trích chọn đặc trưng** | **Chưa có code trong repo** | Cần xây dựng module/notebook (`src/preprocess.py`, `src/features.py` hoặc notebook tổng hợp) để xử lý 12,189 bình luận Điện Máy Xanh. |
-| **4. Huấn luyện NB, SVM & PhoBERT** | **Chưa có code trong repo** | Cần xây dựng code huấn luyện (`src/train_ml.py`, `src/train_phobert.py` hoặc Jupyter Notebook) cho cả 2 thuật toán truyền thống (NB, SVM) và mô hình hiện đại (PhoBERT). |
-| **5. Biểu đồ trong `figures/`** | **Hiện là 10 biểu đồ THAM KHẢO từ một repo khác cùng chủ đề** (`cm_*.png`, `macro_f1_val_test.png`) | Dùng làm **mẫu chuẩn định dạng trực quan hóa** (Confusion Matrix 2 panel Số đếm + Recall % theo hàng, và biểu đồ so sánh Macro-F1). Cần chạy thực nghiệm trên tập Điện Máy Xanh để **xuất và ghi đè bộ biểu đồ thực tế mới** vào `figures/`. |
-| **6. Báo cáo Bài tập lớn** | Đã có file mẫu tham khảo `docs/Bài Tập Lớn I - Lazada.pdf` | Cần viết báo cáo chính thức cho bài toán Điện Máy Xanh bám sát cấu trúc mẫu PTIT và bổ sung phần mô hình hiện đại PhoBERT. |
+| **1. Thu thập dữ liệu (`scripts/crawl/`)** | **Đã hoàn thành**: `crawl_dmx_reviews.py`, `multi_thread_crawler.py`, `protected_multi_thread_crawler.py`, `json_to_csv.py` | Đã thu thập thành công **12,189 bình luận** thuộc 6 ngành hàng lớn (`data/raw/reviews.jsonl`, `data/raw/reviews.csv`, `data/raw/reviews_drop_na.csv`). |
+| **2. Gán nhãn tự động & Chia tập (`auto_label_review.py`)** | **Đã hoàn thành**: `src/data/auto_labeler.py` & `scripts/auto_label_review.py` | Kết hợp **Số sao (`rating`) + Mô hình Unsupervised (`hybrid-lexicon` / `embedding-prototype` / `zero-shot` / `pretrained`)** phát hiện & hiệu chỉnh **490 bình luận lệch sao**, xuất ra `data/interim/reviews_labeled.csv` (`9,516` mẫu duy nhất) và chia tập `data/processed/{train,val,test_gold}.csv` (`7,664` / `1,352` / `500` mẫu). |
+| **3. Tiền xử lý & Trích chọn đặc trưng (`src/data/`, `src/features/`)** | **Đã hoàn thành**: `src/data/preprocess.py`, `src/features/build_features.py` | Hỗ trợ chuẩn hóa Unicode NFC, xử lý teencode, tách từ tiếng Việt, lọc stopword có bảo toàn từ phủ định và trích chọn cả 3 bộ đặc trưng (`BoW`, `TF-IDF`, `Word2Vec`). |
+| **4. Huấn luyện NB, SVM & PhoBERT (`src/models/`, `scripts/`)** | **Đã có sẵn module & CLI script**: `scripts/train_classical.py`, `scripts/train_phobert.py` | Sẵn sàng chạy huấn luyện `Baseline`, `Naïve Bayes`, `SVM` và Fine-tune `vinai/phobert-base-v2` (Bổ sung Ý 4). |
+| **5. Biểu đồ kết quả (`figures/` & `figures/reference/`)** | **10 biểu đồ tham khảo từ repo khác** đã được tách riêng vào `figures/reference/` | Dùng `figures/reference/*.png` làm mẫu chuẩn trực quan hóa; khi chạy `scripts/train_classical.py` và `scripts/train_phobert.py`, bộ biểu đồ thực tế của Điện Máy Xanh sẽ được sinh vào `figures/`. |
+| **6. Báo cáo Bài tập lớn** | Đã có file mẫu tham khảo `docs/Bài Tập Lớn I - Lazada.pdf` | Viết báo cáo chính thức cho bài toán Điện Máy Xanh bám sát cấu trúc mẫu PTIT và bổ sung phần mô hình hiện đại PhoBERT. |
 
 ---
 
 ## 3. Kiến trúc thư mục chuẩn hóa của dự án
 
-Để dự án sạch sẽ, dễ chấm điểm và dễ tái lập thực nghiệm, cấu trúc thư mục được quy hoạch như sau:
-
 ```text
 dmx-nlp-sentiment/
+├── configs/
+│   └── config.yaml                       # Cấu hình trung tâm (đường dẫn, ngưỡng gán nhãn, siêu tham số)
 ├── data/
-│   ├── raw/                          # Dữ liệu thô crawl từ Điện Máy Xanh (12,189 reviews)
+│   ├── raw/                              # Dữ liệu thô crawl từ Điện Máy Xanh (12,189 reviews - bất biến)
 │   │   ├── reviews.jsonl
 │   │   ├── reviews.csv
 │   │   └── reviews_drop_na.csv
-│   ├── processed/                    # Dữ liệu sau tiền xử lý & chia tập (cần tạo/lưu)
-│   │   ├── train.csv                 # Tập huấn luyện (nhãn sao đã làm sạch)
-│   │   ├── val.csv                   # Tập validation (nhãn sao)
-│   │   └── test_gold.csv             # Tập kiểm tra (n = 500, gán nhãn thủ công Gold)
-│   └── stopwords_vi_custom.txt       # Danh sách stopword tiếng Việt (đã giữ lại từ phủ định)
+│   ├── external/
+│   │   └── stopwords_vi.txt              # Danh sách stopword tiếng Việt (giữ lại từ phủ định & cảm xúc)
+│   ├── interim/                          # Dữ liệu trung gian sinh bởi auto_label_review.py
+│   │   ├── reviews_labeled.csv           # 9,516 mẫu duy nhất kèm điểm cực tính & nhãn target
+│   │   ├── rating_text_conflicts.csv     # 490 mẫu lệch giữa số sao và nội dung câu chữ
+│   │   └── labeling_summary.json         # Thống kê chi tiết trước/sau khi gán nhãn tự động
+│   └── processed/                        # Dữ liệu sạch đã chia tập sẵn sàng cho huấn luyện & đánh giá
+│       ├── train.csv                     # Tập huấn luyện (7,664 mẫu)
+│       ├── val.csv                       # Tập kiểm định (1,352 mẫu)
+│       └── test_gold.csv                 # Tập kiểm tra chuẩn (500 mẫu)
 ├── docs/
-│   ├── Bài Tập Lớn I - Lazada.pdf    # Báo cáo mẫu tham khảo
-│   └── Bao_Cao_BTL1_DMX.docx / .pdf  # Báo cáo hoàn chỉnh của nhóm
-├── figures/                          # ⚠️ Hiện đang chứa 10 biểu đồ THAM KHẢO từ một repo khác cùng chủ đề;
-│   │                                 # sẽ được ghi đè bằng biểu đồ thực tế của tập dữ liệu Điện Máy Xanh
-│   ├── cm_baseline_lop_dong_nhat.png
-│   ├── cm_bow_nb.png
-│   ├── cm_bow_svm.png
-│   ├── cm_tf_idf_nb.png
-│   ├── cm_tf_idf_nb_khong_bo_stopword_tham_khao.png
-│   ├── cm_tf_idf_svm.png
-│   ├── cm_w2v_nb.png
-│   ├── cm_w2v_svm.png
-│   ├── cm_phobert.png
-│   └── macro_f1_val_test.png
-├── notebooks/                        # Notebook thực nghiệm (chạy trên Local / Colab / Kaggle)
-│   ├── 01_eda_and_preprocessing.ipynb
-│   ├── 02_ml_bow_tfidf_w2v_nb_svm.ipynb
-│   └── 03_modern_model_phobert.ipynb
-├── crawl_dmx_reviews.py              # Script crawl đơn luồng
-├── protected_multi_thread_crawler.py # Script crawl đa luồng an toàn
-├── json_to_csv.py                    # Script chuyển đổi JSONL -> CSV
-├── PLAN.md                           # Kế hoạch thực hiện dự án (file này)
-└── INSTRUCTIONS.md                   # Hướng dẫn thực thi chi tiết & khung viết báo cáo
+│   └── Bài Tập Lớn I - Lazada.pdf        # Báo cáo mẫu tham khảo của PTIT
+├── figures/                              # Thư mục lưu biểu đồ kết quả thực tế của Điện Máy Xanh
+│   └── reference/                        # ⚠️ Lưu 10 biểu đồ THAM KHẢO từ một repo khác cùng chủ đề
+├── outputs/
+│   ├── metrics/                          # Lưu bảng chỉ số JSON/CSV
+│   └── predictions/                      # Lưu dự đoán của các mô hình
+├── scripts/
+│   ├── crawl/                            # Nhóm script thu thập bình luận Điện Máy Xanh (Bước 1A)
+│   │   ├── crawl_dmx_reviews.py
+│   │   ├── multi_thread_crawler.py
+│   │   ├── protected_multi_thread_crawler.py
+│   │   └── json_to_csv.py
+│   ├── auto_label_review.py              # Script gán nhãn tự động/bán tự động & chia tập (Bước 1B & 2)
+│   ├── train_classical.py                # Script trích chọn BoW/TF-IDF/W2V & huấn luyện NB, SVM (Bước 3, 4A, 5)
+│   └── train_phobert.py                  # Script huấn luyện mô hình hiện đại PhoBERT (Bước 4B - Ý 4)
+├── src/                                  # Package mã nguồn lõi
+│   ├── data/
+│   │   ├── preprocess.py                 # Tiền xử lý văn bản tiếng Việt
+│   │   └── auto_labeler.py               # Logic Hybrid Unsupervised Lexicon / Zero-shot + Star Rating
+│   ├── features/
+│   │   └── build_features.py             # BoW, TF-IDF, Word2Vec Skip-gram
+│   ├── models/
+│   │   ├── classical.py                  # Baseline, Naïve Bayes (Hybrid Sampling), LinearSVC (balanced)
+│   │   └── phobert.py                    # Dataset & WeightedPhoBERTTrainer
+│   └── evaluation/
+│       └── metrics_and_plots.py          # Tính Accuracy, Precision, Recall, F1 & vẽ biểu đồ
+├── auto_label_review.py                  # Wrapper chạy nhanh tại thư mục gốc
+├── requirements.txt                      # Danh sách thư viện phụ thuộc
+├── README.md                             # Tài liệu giới thiệu dự án
+├── PLAN.md                               # Kế hoạch thực hiện dự án (file này)
+├── INSTRUCTIONS.md                       # Hướng dẫn thực thi chi tiết & khung viết báo cáo
+├── AGENTS.md                             # Quy tắc bất biến cho AI Coding Agents
+├── SKILLS.md                             # Danh mục 7 kỹ năng cho AI Coding Agents
+└── CLAUDE.md                             # Tài liệu tham chiếu nhanh cho Claude Code
 ```
 
 ---
 
 ## 4. Lộ trình thực hiện chi tiết theo 5 Bước + Mở rộng Ý 4
 
-### Bước 1: Thu thập dữ liệu & Gán nhãn (Data Collection & Labeling)
+### Bước 1: Thu thập dữ liệu & Gán nhãn Tự động/Bán tự động (`auto_label_review.py`)
 1. **Nguồn dữ liệu**: Sàn TMĐT Điện Máy Xanh (`https://www.dienmayxanh.com`), tuân thủ `robots.txt`, giới hạn tốc độ tải (`DELAY = 2.0–4.0s`).
 2. **Phạm vi**: 6 ngành hàng chính:
    - *Tủ lạnh* (3,366 mẫu), *Nồi cơm điện* (2,796 mẫu), *Máy lạnh* (2,030 mẫu), *Máy giặt* (1,725 mẫu), *Máy lọc nước* (1,724 mẫu), *Tivi* (548 mẫu).
-   - Tổng cộng: **12,189 bình luận** (sau khi loại bỏ dòng trống và trùng lặp nội dung còn khoảng **9,716 bình luận duy nhất**).
-3. **Quy tắc ánh xạ nhãn ban đầu theo số sao (Silver Label)**:
-   - `4 sao, 5 sao` $\rightarrow$ **Positive (`1`)** (~75.05% tập dữ liệu thô – chiếm đa số áp đảo).
-   - `3 sao` $\rightarrow$ **Neutral (`0`)** (~8.11% tập dữ liệu thô).
-   - `1 sao, 2 sao` $\rightarrow$ **Negative (`-1`)** (~16.84% tập dữ liệu thô).
-4. **Hiệu chỉnh thủ công tập Kiểm tra (`test_gold`, đề xuất $n = 500$)**:
-   - Trên thực tế, nhiều khách hàng đánh giá 5 sao nhưng bình luận phàn nàn (*"mới mua đã kêu to"*), hoặc đánh giá 1–3 sao nhưng nội dung khen (*"dùng tốt, nhân viên nhiệt tình"*).
-   - Do đó, tham khảo cách thiết kế thực nghiệm từ repo mẫu cùng chủ đề, nhóm trích riêng **500 mẫu** từ dữ liệu Điện Máy Xanh làm tập **Gold Test** được rà soát và gán nhãn thủ công theo đúng ngữ nghĩa thực tế của câu bình luận để đánh giá mô hình một cách khách quan nhất.
+   - Tổng cộng: **12,189 bình luận** (sau khi loại bỏ 49 dòng rỗng/rác và 2,624 dòng trùng lặp còn **9,516 bình luận duy nhất hợp lệ**).
+3. **Quy tắc ánh xạ nhãn ban đầu theo số sao (`label_star`)**:
+   - `4 sao, 5 sao` $\rightarrow$ **Positive (`1`)** (`6,512` mẫu duy nhất ~68.43%).
+   - `3 sao` $\rightarrow$ **Neutral (`0`)** (`953` mẫu duy nhất ~10.01%).
+   - `1 sao, 2 sao` $\rightarrow$ **Negative (`-1`)** (`2,051` mẫu duy nhất ~21.55%).
+4. **Tạo nhãn đích (`label_target`) bằng Hybrid Unsupervised Auto-Labeling (`auto_label_review.py`)**:
+   - Để khắc phục hiện tượng khách hàng chấm sao lệch với nội dung bình luận mà không phải gán nhãn thủ công toàn bộ 9,516 dòng, dự án xây dựng module `src/data/auto_labeler.py` hỗ trợ 4 chế độ (`--mode hybrid-lexicon`, `embedding-prototype`, `zero-shot`, `pretrained`).
+   - Chế độ mặc định `hybrid-lexicon` kết hợp từ điển cảm xúc chuyên biệt ngành hàng Điện máy, quy tắc đảo dấu từ phủ định (`không`, `chưa`, `chẳng`), trọng số mệnh đề sau liên từ chuyển ý (`nhưng`, `tuy_nhiên`, `mỗi_tội`) và số sao gốc để tự động phát hiện & hiệu chỉnh **490 bình luận mâu thuẫn** (lưu tại `data/interim/rating_text_conflicts.csv`):
+     - `294` mẫu 3 sao nhưng nội dung báo lỗi/chê rõ rệt $\rightarrow$ chuyển sang `Negative (-1)`.
+     - `79` mẫu 4–5 sao nhưng nội dung phàn nàn gay gắt $\rightarrow$ chuyển sang `Negative (-1)`.
+     - `67` mẫu 3 sao nhưng nội dung khen hoàn toàn $\rightarrow$ chuyển sang `Positive (1)`.
+     - `41` mẫu 4 sao vừa khen vừa chê nhẹ (`"dùng ok nhưng tìm kiếm giọng nói hơi lag"`) $\rightarrow$ chuyển sang `Neutral (0)`.
+     - `9` mẫu 1–2 sao (bấm nhầm sao) nhưng nội dung khen ngợi $\rightarrow$ chuyển sang `Positive (1)`.
+   - Phân phối nhãn đích `label_target` sau hiệu chỉnh: **Negative (`-1`): 2,415 mẫu (25.38%)**, **Neutral (`0`): 633 mẫu (6.65%)**, **Positive (`1`): 6,468 mẫu (67.97%)**.
+   - Dữ liệu được chia phân tầng thành:
+     - `data/processed/train.csv`: **7,664 mẫu** (`-1: 1,951`, `0: 487`, `1: 5,226`)
+     - `data/processed/val.csv`: **1,352 mẫu** (`-1: 344`, `0: 86`, `1: 922`)
+     - `data/processed/test_gold.csv`: **500 mẫu** (`-1: 120`, `0: 60`, `1: 320`)
 
 ---
 

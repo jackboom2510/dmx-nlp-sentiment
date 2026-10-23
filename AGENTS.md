@@ -32,13 +32,13 @@ Mọi Agent khi đọc, sửa hoặc sinh mã nguồn/báo cáo trong repository
 - **KHÔNG BAO GIỜ** ghi đè, xóa hoặc làm hỏng các file trong `data/raw/`.
 - Mọi dữ liệu đã làm sạch, tách từ hoặc chia tập (`train.csv`, `val.csv`, `test_gold.csv`) phải được lưu vào thư mục `data/processed/`.
 
-### Quy tắc 2: Hiểu đúng bản chất thư mục `figures/`
-- ⚠️ **CẢNH BÁO QUAN TRỌNG**: Các file ảnh hiện có sẵn trong thư mục `figures/` (`cm_baseline_lop_dong_nhat.png`, `cm_bow_nb.png`, `cm_bow_svm.png`, `cm_tf_idf_nb.png`, `cm_tf_idf_svm.png`, `cm_w2v_nb.png`, `cm_w2v_svm.png`, `cm_phobert.png`, `macro_f1_val_test.png`, ...) **CHỈ LÀ CÁC BIỂU ĐỒ MẪU THAM KHẢO TỪ MỘT REPOSITORY KHÁC CÙNG CHỦ ĐỀ**.
-- Agent **không được** coi các con số trong những ảnh hiện tại ở `figures/` là kết quả thực nghiệm cuối cùng của bộ dữ liệu Điện Máy Xanh.
+### Quy tắc 2: Hiểu đúng bản chất thư mục `figures/` và `figures/reference/`
+- ⚠️ **CẢNH BÁO QUAN TRỌNG**: Các file ảnh trong thư mục `figures/reference/` (`cm_baseline_lop_dong_nhat.png`, `cm_bow_nb.png`, `cm_bow_svm.png`, `cm_tf_idf_nb.png`, `cm_tf_idf_svm.png`, `cm_w2v_nb.png`, `cm_w2v_svm.png`, `cm_phobert.png`, `macro_f1_val_test.png`, ...) **CHỈ LÀ CÁC BIỂU ĐỒ MẪU THAM KHẢO TỪ MỘT REPOSITORY KHÁC CÙNG CHỦ ĐỀ**.
+- Agent **không được** coi các con số trong những ảnh tham khảo ở `figures/reference/` là kết quả thực nghiệm cuối cùng của bộ dữ liệu Điện Máy Xanh.
 - Thay vào đó, Agent sử dụng các ảnh này làm **quy chuẩn thiết kế hình ảnh (Visual Specification)**:
   1. Mỗi Confusion Matrix gồm **2 biểu đồ nhiệt (heatmap) đặt cạnh nhau**: bên trái là *Số đếm (Counts)*, bên phải là *Chuẩn hóa theo hàng (Recall %)*.
   2. Biểu đồ tổng hợp `macro_f1_val_test.png` là biểu đồ thanh ngang kép so sánh *Macro-F1* giữa tập `Val (nhãn sao)` và tập `Test (nhãn gold)`.
-- Khi chạy thực nghiệm trên tập dữ liệu Điện Máy Xanh, Agent cần xuất biểu đồ mới theo đúng định dạng này để cập nhật vào `figures/`.
+- Khi chạy thực nghiệm trên tập dữ liệu Điện Máy Xanh (`python3 scripts/train_classical.py` và `python3 scripts/train_phobert.py`), biểu đồ mới của Điện Máy Xanh sẽ được sinh trực tiếp vào `figures/`.
 
 ### Quy tắc 3: Chống rò rỉ dữ liệu (Zero Data Leakage)
 - Tập kiểm tra `test_gold` (đề xuất $n = 500$ mẫu được rà soát và hiệu chỉnh nhãn thủ công) và tập `val` phải được tách riêng **TRƯỚC KHI**:
@@ -73,20 +73,18 @@ Mọi Agent khi đọc, sửa hoặc sinh mã nguồn/báo cáo trong repository
 ## 4. Lệnh thực thi chuẩn (Standard Commands)
 
 ```bash
-# 1. Kiểm tra thống kê dữ liệu thô Điện Máy Xanh
-python3 -c "
-import csv
-from collections import Counter
-with open('data/raw/reviews.csv', encoding='utf-8-sig') as f:
-    rows = list(csv.DictReader(f))
-print('Total:', len(rows), 'Ratings:', Counter(r['rating'] for r in rows))
-"
+# 1. Tự động gán nhãn (Unsupervised Lexicon + Star Reconciliation), tiền xử lý & chia tập Train/Val/Test
+python3 auto_label_review.py
 
-# 2. Chuyển đổi JSONL sang CSV (nếu có dữ liệu crawl mới)
-python3 json_to_csv.py
+# 2. Huấn luyện các mô hình học máy truyền thống (BoW, TF-IDF, Word2Vec x NB, SVM) & xuất biểu đồ vào figures/
+python3 scripts/train_classical.py
 
-# 3. Chạy crawler thử nghiệm (3 sản phẩm)
-python3 crawl_dmx_reviews.py --test 3
+# 3. Huấn luyện mô hình hiện đại PhoBERT (Bổ sung Ý 4)
+python3 scripts/train_phobert.py --epochs 4 --batch-size 16
+
+# 4. Chuyển đổi JSONL sang CSV hoặc chạy crawler (nếu cần thu thập thêm)
+python3 scripts/crawl/json_to_csv.py
+python3 scripts/crawl/crawl_dmx_reviews.py --test 3
 ```
 
 ---

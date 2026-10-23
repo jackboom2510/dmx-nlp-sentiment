@@ -15,13 +15,9 @@ Chạy các lệnh sau tại thư mục gốc của dự án:
 python3 -m venv .venv
 source .venv/bin/activate   # Trên Windows: .venv\Scripts\activate
 
-# Cài đặt các thư viện cần thiết
+# Cài đặt toàn bộ thư viện từ file requirements.txt chuẩn của dự án
 pip install --upgrade pip
-pip install numpy pandas scikit-learn imbalanced-learn gensim
-pip install underthesea pyvi langdetect
-pip install matplotlib seaborn tqdm
-pip install torch transformers accelerate datasets
-pip install requests lxml playwright
+pip install -r requirements.txt
 ```
 
 ---
@@ -30,24 +26,24 @@ pip install requests lxml playwright
 
 ---
 
-### BƯỚC 1: Thu thập dữ liệu & Quy trình gán nhãn (Data Collection & Labeling)
+### BƯỚC 1: Thu thập dữ liệu & Tự động gán nhãn cảm xúc (`auto_label_review.py`)
 
-#### 1.1. Chạy công cụ thu thập dữ liệu (Đã hoàn thành trong `data/raw/`)
+#### 1.1. Chạy công cụ thu thập dữ liệu (`scripts/crawl/`)
 Dự án sử dụng Playwright kết hợp trình duyệt Chromium để thu thập bình luận từ 6 ngành hàng trên Điện Máy Xanh (`Tủ lạnh`, `Nồi cơm điện`, `Máy lạnh`, `Máy giặt`, `Máy lọc nước`, `Tivi`):
 
 ```bash
 # Kiểm tra thử với 3 sản phẩm
-python crawl_dmx_reviews.py --test 3
+python3 scripts/crawl/crawl_dmx_reviews.py --test 3
 
 # Chạy thu thập đa luồng có cơ chế tự dừng khi gặp chặn (403/429/captcha) và tự resume
-python protected_multi_thread_crawler.py --workers 2
+python3 scripts/crawl/protected_multi_thread_crawler.py --workers 2
 
 # Chuyển đổi dữ liệu từ JSONL sang CSV
-python json_to_csv.py
+python3 scripts/crawl/json_to_csv.py
 ```
 
 #### 1.2. Thống kê tập dữ liệu thu thập được (`data/raw/reviews.csv`)
-- Tổng số dòng thu thập: **12,189 bình luận** (`9,716` cặp nội dung – số sao duy nhất sau khi khử trùng lặp).
+- Tổng số dòng thu thập: **12,189 bình luận** (`9,516` bình luận duy nhất hợp lệ sau khi khử 49 dòng rỗng/rác và 2,624 dòng trùng lặp).
 - Phân bố theo ngành hàng:
   - **Tủ lạnh**: 3,366 bình luận (27.6%)
   - **Nồi cơm điện**: 2,796 bình luận (22.9%)
@@ -55,18 +51,31 @@ python json_to_csv.py
   - **Máy giặt**: 1,725 bình luận (14.2%)
   - **Máy lọc nước**: 1,724 bình luận (14.1%)
   - **Tivi**: 548 bình luận (4.5%)
-- Phân bố theo số sao (Rating):
+- Phân bố theo số sao gốc (Rating):
   - **5 sao**: 6,741 | **4 sao**: 2,407 $\rightarrow$ Nhãn **Positive (`1`)**: **9,148 mẫu (75.05%)**
   - **3 sao**: 988 $\rightarrow$ Nhãn **Neutral (`0`)**: **988 mẫu (8.11%)**
   - **2 sao**: 706 | **1 sao**: 1,347 $\rightarrow$ Nhãn **Negative (`-1`)**: **2,053 mẫu (16.84%)**
 
-#### 1.3. Quy tắc gán nhãn & Hiệu chỉnh thủ công (Theo đúng yêu cầu mẫu báo cáo Lazada)
-1. **Nhãn tự động theo số sao (Silver Label)** dùng cho tập **Train** và **Validation**:
-   $$\text{label\_star} = \begin{cases} 1 \text{ (Positive)} & \text{nếu } \text{rating} \in \{4, 5\} \\ 0 \text{ (Neutral)} & \text{nếu } \text{rating} = 3 \\ -1 \text{ (Negative)} & \text{nếu } \text{rating} \in \{1, 2\} \end{cases}$$
-2. **Nhãn hiệu chỉnh thủ công (Gold Label)** dùng cho tập **Test (`test_gold`, đề xuất $n = 500$)**:
-   - Lấy mẫu phân tầng **500 bình luận** từ dữ liệu Điện Máy Xanh đại diện cho các ngành hàng và mức sao.
-   - Đọc và hiệu chỉnh thủ công các trường hợp **lệch giữa số sao và nội dung câu chữ** (ví dụ: khách hàng bấm 5 sao nhưng viết *"Máy kêu rất to, bảo hành hẹn mãi không thấy đến"* $\rightarrow$ gán lại thành `Negative (-1)`).
-   - *(Lưu ý: Trong bộ biểu đồ tham khảo tại `/figures` của một repo khác cùng chủ đề, tập `test_gold` $n = 500$ có phân phối gồm `289 Negative`, `47 Neutral`, `164 Positive`. Nhóm có thể áp dụng quy trình lấy mẫu tương tự trên tập Điện Máy Xanh).*
+#### 1.3. Quy trình tạo nhãn `label_target` bằng `auto_label_review.py` (Unsupervised + Star Reconciliation)
+Thay vì chỉ gán nhãn máy móc theo số sao hoặc phải đọc thủ công toàn bộ 12,189 dòng, dự án cung cấp script **`auto_label_review.py`** (mã nguồn lõi tại `src/data/auto_labeler.py` & `scripts/auto_label_review.py`) hỗ trợ 4 chế độ đánh giá cảm xúc không giám sát / bán giám sát:
+1. **`--mode hybrid-lexicon` *(Mặc định – khuyên dùng)***: Kết hợp từ điển cảm xúc miền Điện máy + Quy tắc đảo cực từ phủ định (`không`, `chưa`, `chẳng`) + Trọng số mệnh đề sau liên từ chuyển ý (`nhưng`, `tuy_nhiên`, `mỗi_tội`) để đối chiếu với số sao (`rating`).
+2. **`--mode embedding-prototype`**: Dùng Sentence Embeddings (`keepitreal/vietnamese-sbert`) tính Cosine Similarity với 3 câu hạt giống (Prototypes) đại diện cho 3 nhãn.
+3. **`--mode zero-shot`**: Dùng mô hình Multilingual NLI (`MoritzLaurer/mDeBERTa-v3-base-mnli-xnli`).
+4. **`--mode pretrained`**: Dùng Teacher Model tiếng Việt có sẵn (`wonrax/phobert-base-vietnamese-sentiment`).
+
+**Cách chạy**:
+```bash
+# Chạy chế độ mặc định (Hybrid Unsupervised Lexicon + Star Reconciliation)
+python3 auto_label_review.py
+
+# Hoặc chạy với chế độ mở rộng:
+python3 auto_label_review.py --mode embedding-prototype
+```
+
+**Kết quả sinh ra tự động**:
+- `data/interim/reviews_labeled.csv`: Toàn bộ **9,516** bình luận duy nhất đã tách từ và gán nhãn `label_target` (`-1: 2,415`, `0: 633`, `1: 6,468`).
+- `data/interim/rating_text_conflicts.csv`: Danh sách **490 bình luận bị lệch giữa số sao và nội dung câu chữ** đã được phát hiện và hiệu chỉnh (rất hữu ích để trích dẫn ví dụ thực tế vào Báo cáo!).
+- `data/processed/train.csv` (**7,664 mẫu**), `data/processed/val.csv` (**1,352 mẫu**), `data/processed/test_gold.csv` (**500 mẫu**).
 
 ---
 

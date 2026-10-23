@@ -28,16 +28,16 @@ Khi người dùng yêu cầu thực hiện một phần việc cụ thể, Agen
 
 - **Mục tiêu**: Thu thập bình luận thực tế kèm số sao từ `dienmayxanh.com` một cách an toàn, tuân thủ `robots.txt` và chuyển đổi sang định dạng bảng CSV.
 - **Đầu vào (Inputs)**:
-  - Script có sẵn: `crawl_dmx_reviews.py` (đơn luồng), `protected_multi_thread_crawler.py` (đa luồng an toàn), `json_to_csv.py`.
+  - Script có sẵn trong `scripts/crawl/`: `crawl_dmx_reviews.py` (đơn luồng), `protected_multi_thread_crawler.py` (đa luồng an toàn), `json_to_csv.py`.
   - Danh mục mục tiêu (`TARGET_CATEGORIES`): `may-giat`, `tu-lanh`, `may-lanh`, `tivi`, `noi-com-dien`, `may-loc-nuoc`.
 - **Quy trình thực hiện (Procedure)**:
   1. Kiểm tra dữ liệu hiện có trong `data/raw/reviews.csv` (hiện đã có **12,189 bình luận**). Chỉ chạy crawl mới khi người dùng yêu cầu thu thập thêm.
   2. Nếu cần kiểm tra CSS selector của trang đánh giá mới:
      ```bash
-     python3 crawl_dmx_reviews.py --inspect <url-san-pham>/danh-gia
+     python3 scripts/crawl/crawl_dmx_reviews.py --inspect <url-san-pham>/danh-gia
      ```
-  3. Nếu chạy thu thập bổ sung, ưu tiên dùng `protected_multi_thread_crawler.py --workers 2` (nghỉ `2–4s` giữa mỗi thao tác, tự động lưu trạng thái vào `data/raw/crawled_products.json` và dừng ngay nếu gặp `403/429/captcha`).
-  4. Chạy `python3 json_to_csv.py` để đồng bộ từ `data/raw/reviews.jsonl` sang `data/raw/reviews.csv`.
+  3. Nếu chạy thu thập bổ sung, ưu tiên dùng `python3 scripts/crawl/protected_multi_thread_crawler.py --workers 2` (nghỉ `2–4s` giữa mỗi thao tác, tự động lưu trạng thái vào `data/raw/crawled_products.json` và dừng ngay nếu gặp `403/429/captcha`).
+  4. Chạy `python3 scripts/crawl/json_to_csv.py` để đồng bộ từ `data/raw/reviews.jsonl` sang `data/raw/reviews.csv`.
 - **Đầu ra (Outputs)**:
   - `data/raw/reviews.jsonl` và `data/raw/reviews.csv`.
 - **Tiêu chí nghiệm thu (Verification)**:
@@ -45,29 +45,25 @@ Khi người dùng yêu cầu thực hiện một phần việc cụ thể, Agen
 
 ---
 
-### 2. `skill:02-label-and-split` — Làm sạch sơ bộ, Gán nhãn & Chia tập dữ liệu
+### 2. `skill:02-label-and-split` — Tự động gán nhãn (`auto_label_review.py`) & Chia tập dữ liệu
 
-- **Mục tiêu**: Khử trùng lặp, ánh xạ số sao sang 3 nhãn cảm xúc (`-1`, `0`, `1`), trích xuất tập kiểm tra `test_gold` để hiệu chỉnh thủ công và chia tập `Train` / `Val` / `Test` không rò rỉ dữ liệu.
+- **Mục tiêu**: Khử trùng lặp, ánh xạ số sao sang 3 nhãn cảm xúc (`-1`, `0`, `1`), kết hợp mô hình Unsupervised (`hybrid-lexicon` / `embedding-prototype` / `zero-shot` / `pretrained`) để phát hiện & hiệu chỉnh các bình luận lệch sao, và chia tập `Train` / `Val` / `Test` không rò rỉ dữ liệu.
 - **Đầu vào (Inputs)**:
-  - `data/raw/reviews.csv` (12,189 dòng).
+  - `data/raw/reviews.csv` (12,189 dòng) và script `auto_label_review.py` (`scripts/auto_label_review.py` + `src/data/auto_labeler.py`).
 - **Quy trình thực hiện (Procedure)**:
-  1. **Loại bỏ dòng lỗi & trùng lặp**:
-     - Xóa các dòng có `content` rỗng hoặc chỉ chứa khoảng trắng/ký tự đặc biệt.
-     - Khử trùng lặp theo cặp `(content.strip().lower(), rating)` để tránh việc cùng một nội dung xuất hiện ở cả tập Train và tập Test.
-     - Lọc ngôn ngữ bằng `langdetect` (chỉ giữ lại các bình luận tiếng Việt `vi` như báo cáo mẫu Lazada).
-  2. **Gán nhãn theo số sao (Silver Label – `label_star`)**:
-     - `rating in {4, 5}` $\rightarrow$ `1` (**Positive**)
-     - `rating == 3` $\rightarrow$ `0` (**Neutral**)
-     - `rating in {1, 2}` $\rightarrow$ `-1` (**Negative**)
-  3. **Tạo tập Kiểm tra hiệu chỉnh thủ công (`test_gold.csv`, $n = 500$)**:
-     - Lấy mẫu phân tầng (hoặc ưu tiên lấy đủ đại diện cho cả 3 lớp cảm xúc và 6 ngành hàng) gồm **500 bình luận**.
-     - Tạo cột `label_gold` (khởi tạo bằng `label_star`), sau đó kiểm tra và hiệu chỉnh các câu bị **lệch giữa số sao và nội dung** (ví dụ: chấm 5 sao nhưng chê máy kêu to, tốn điện $\rightarrow$ sửa `label_gold = -1`; chấm 1 sao nhưng khen dùng rất tốt $\rightarrow$ sửa `label_gold = 1`).
-  4. **Chia tập `train.csv` và `val.csv`**:
-     - Phần dữ liệu còn lại (sau khi tách riêng 500 mẫu `test_gold`) được chia theo tỷ lệ **85% Train / 15% Validation** có phân tầng (`stratify=df["label_star"]`, `random_state=42`).
+  1. Chạy trực tiếp:
+     ```bash
+     python3 auto_label_review.py --mode hybrid-lexicon --test-size 500 --val-ratio 0.15 --seed 42
+     ```
+  2. **Các bước xử lý bên trong `auto_label_review.py`**:
+     - Lọc bỏ dòng rỗng/rác (`49` dòng) và dòng trùng lặp (`2,624` dòng) $\rightarrow$ giữ lại **9,516 bình luận duy nhất hợp lệ**.
+     - Gán nhãn ban đầu theo số sao (`label_star`): `4–5★ -> 1`, `3★ -> 0`, `1–2★ -> -1`.
+     - Tính điểm cực tính cảm xúc không giám sát (`unsup_score`, `label_unsup`) có xử lý đảo dấu từ phủ định (`không`, `chưa`, `chẳng`) và mệnh đề sau liên từ chuyển ý (`nhưng`, `tuy_nhiên`, `mỗi_tội`).
+     - Tự động phát hiện & hiệu chỉnh **490 bình luận lệch sao** để tạo nhãn đích `label_target` và xuất danh sách xung đột ra `data/interim/rating_text_conflicts.csv`.
+     - Chia dữ liệu có phân tầng thành `train.csv` (`7,664` mẫu), `val.csv` (`1,352` mẫu), `test_gold.csv` (`500` mẫu).
 - **Đầu ra (Outputs)**:
-  - `data/processed/train.csv`
-  - `data/processed/val.csv`
-  - `data/processed/test_gold.csv`
+  - `data/interim/reviews_labeled.csv`, `data/interim/rating_text_conflicts.csv`, `data/interim/labeling_summary.json`
+  - `data/processed/train.csv`, `data/processed/val.csv`, `data/processed/test_gold.csv`
 - **Tiêu chí nghiệm thu (Verification)**:
   - Kiểm tra giao (intersection) của `review_id` và `content` giữa `train`, `val`, `test_gold` phải bằng `0`.
 

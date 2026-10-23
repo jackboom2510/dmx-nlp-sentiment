@@ -14,9 +14,9 @@ This file provides a fast entry point for Claude Code and other AI coding agents
 1. **Dataset (`data/raw/reviews.csv` & `reviews.jsonl`)**:
    - Real crawled dataset of **12,189 Điện Máy Xanh product reviews** across 6 categories (`Tủ lạnh`, `Nồi cơm điện`, `Máy lạnh`, `Máy giặt`, `Máy lọc nước`, `Tivi`).
    - **Never overwrite or delete files in `data/raw/`**. Write all processed/split datasets (`train.csv`, `val.csv`, `test_gold.csv`) to `data/processed/`.
-2. **Reference Figures (`figures/*.png`)**:
-   - ⚠️ **Important**: The existing `.png` files in `figures/` are **reference charts from another repository on the same topic** (biểu đồ tham khảo từ một repo khác cùng chủ đề).
-   - Use them only as the **visual format specification** (2-panel Confusion Matrix: raw counts + row-normalized recall %, and horizontal Macro-F1 comparison bar chart). Overwrite them with newly generated charts after running the experimental pipeline on the Điện Máy Xanh dataset.
+2. **Reference Figures (`figures/reference/*.png`)**:
+   - ⚠️ **Important**: The `.png` files in `figures/reference/` are **reference charts from another repository on the same topic** (biểu đồ tham khảo từ một repo khác cùng chủ đề).
+   - Use them only as the **visual format specification** (2-panel Confusion Matrix: raw counts + row-normalized recall %, and horizontal Macro-F1 comparison bar chart). Running `python3 scripts/train_classical.py` and `python3 scripts/train_phobert.py` will generate the real Điện Máy Xanh figures directly into `figures/`.
 3. **Reference Report (`docs/Bài Tập Lớn I - Lazada.pdf`)**:
    - Official PTIT report template (for the Lazada sentiment analysis topic). Follow its exact 4-section structure (`I. Đề bài`, `II. Cơ sở lý thuyết`, `III. Thực nghiệm và kết quả`, `IV. Kết luận`) while adding the **Requirement 4 Extension: Modern Transformer Model (`PhoBERT`)**.
 4. **Vietnamese NLP Rules**:
