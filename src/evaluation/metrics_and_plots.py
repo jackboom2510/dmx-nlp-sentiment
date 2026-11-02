@@ -1,13 +1,9 @@
 #!/usr/bin/env python3
-"""
-Module đánh giá mô hình và trực quan hóa kết quả (Bước 5):
-- Tính toán: Accuracy, Macro-Precision, Macro-Recall, Macro-F1, Weighted-F1 và chỉ số theo từng lớp
-- Vẽ Confusion Matrix 2 bảng (Số đếm + Chuẩn hóa theo hàng Recall %)
-- Vẽ biểu đồ thanh ngang so sánh Macro-F1 giữa Val (nhãn sao) và Test (nhãn gold)
-"""
+"""Evaluation metrics and plotting helpers for three-class sentiment experiments."""
 
 import os
-from typing import Dict, List
+from typing import Dict, List, Sequence, Tuple
+
 import numpy as np
 from sklearn.metrics import accuracy_score, confusion_matrix, precision_recall_fscore_support
 
@@ -15,15 +11,17 @@ CLASS_NAMES = ["Negative", "Neutral", "Positive"]
 LABELS_ORDER = [-1, 0, 1]
 
 
-def evaluate_predictions(y_true: List[int], y_pred: List[int], model_name: str = "") -> Dict:
+def evaluate_predictions(y_true: Sequence[int], y_pred: Sequence[int], model_name: str = "") -> Dict:
     y_true_arr = np.asarray(y_true, dtype=int)
     y_pred_arr = np.asarray(y_pred, dtype=int)
+    if y_true_arr.shape != y_pred_arr.shape or y_true_arr.size == 0:
+        raise ValueError("y_true and y_pred must be non-empty arrays with equal lengths")
 
     acc = accuracy_score(y_true_arr, y_pred_arr)
     p_macro, r_macro, f1_macro, _ = precision_recall_fscore_support(
         y_true_arr, y_pred_arr, labels=LABELS_ORDER, average="macro", zero_division=0
     )
-    p_weight, r_weight, f1_weight, _ = precision_recall_fscore_support(
+    _, _, f1_weight, _ = precision_recall_fscore_support(
         y_true_arr, y_pred_arr, labels=LABELS_ORDER, average="weighted", zero_division=0
     )
     p_cls, r_cls, f1_cls, sup_cls = precision_recall_fscore_support(
@@ -51,93 +49,80 @@ def evaluate_predictions(y_true: List[int], y_pred: List[int], model_name: str =
     }
 
 
+def bootstrap_macro_f1_ci(
+    y_true: Sequence[int],
+    y_pred: Sequence[int],
+    n_bootstrap: int = 2000,
+    confidence: float = 0.95,
+    seed: int = 42,
+) -> Tuple[float, float]:
+    """Percentile bootstrap interval for macro-F1 on a fixed held-out sample."""
+    from sklearn.metrics import f1_score
+
+    yt = np.asarray(y_true, dtype=int)
+    yp = np.asarray(y_pred, dtype=int)
+    if yt.size == 0 or yt.shape != yp.shape:
+        raise ValueError("y_true and y_pred must be non-empty arrays with equal lengths")
+    rng = np.random.default_rng(seed)
+    scores = np.empty(n_bootstrap, dtype=float)
+    for i in range(n_bootstrap):
+        idx = rng.integers(0, yt.size, size=yt.size)
+        scores[i] = f1_score(yt[idx], yp[idx], labels=LABELS_ORDER, average="macro", zero_division=0)
+    alpha = (1.0 - confidence) / 2.0
+    return float(np.quantile(scores, alpha)), float(np.quantile(scores, 1.0 - alpha))
+
+
 def plot_dual_confusion_matrix(y_true: List[int], y_pred: List[int], title: str, save_path: str) -> None:
-    """Vẽ Confusion Matrix gồm 2 panel (Số đếm & Chuẩn hóa theo hàng Recall %) và lưu vào save_path."""
+    """Plot raw confusion counts and row-normalized recall percentages."""
     import matplotlib.pyplot as plt
     import seaborn as sns
 
     cm = confusion_matrix(y_true, y_pred, labels=LABELS_ORDER)
     row_sums = cm.sum(axis=1, keepdims=True)
     cm_norm = np.divide(cm.astype(float), row_sums, out=np.zeros_like(cm, dtype=float), where=row_sums > 0)
-
     os.makedirs(os.path.dirname(save_path) or ".", exist_ok=True)
     fig, axes = plt.subplots(1, 2, figsize=(12, 4.8))
     fig.suptitle(title, fontsize=14, y=1.02)
-
-    sns.heatmap(
-        cm,
-        annot=True,
-        fmt="d",
-        cmap="Blues",
-        cbar=False,
-        xticklabels=CLASS_NAMES,
-        yticklabels=CLASS_NAMES,
-        ax=axes[0],
-        annot_kws={"size": 12},
-    )
-    axes[0].set_title("Số đếm", fontsize=11)
-    axes[0].set_xlabel("Dự đoán")
-    axes[0].set_ylabel("Nhãn gold")
-
-    annot_pct = np.array([[f"{val * 100:.0f}%" for val in row] for row in cm_norm])
-    sns.heatmap(
-        cm_norm,
-        annot=annot_pct,
-        fmt="",
-        cmap="Blues",
-        cbar=False,
-        xticklabels=CLASS_NAMES,
-        yticklabels=CLASS_NAMES,
-        ax=axes[1],
-        vmin=0.0,
-        vmax=1.0,
-        annot_kws={"size": 12},
-    )
-    axes[1].set_title("Chuẩn hóa theo hàng (recall)", fontsize=11)
-    axes[1].set_xlabel("Dự đoán")
-    axes[1].set_ylabel("Nhãn gold")
-
+    sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", cbar=False,
+                xticklabels=CLASS_NAMES, yticklabels=CLASS_NAMES, ax=axes[0], annot_kws={"size": 12})
+    axes[0].set_title("Counts")
+    axes[0].set_xlabel("Predicted")
+    axes[0].set_ylabel("Reference label")
+    annot_pct = np.array([[f"{v * 100:.0f}%" for v in row] for row in cm_norm])
+    sns.heatmap(cm_norm, annot=annot_pct, fmt="", cmap="Blues", cbar=False,
+                xticklabels=CLASS_NAMES, yticklabels=CLASS_NAMES, ax=axes[1], vmin=0.0, vmax=1.0)
+    axes[1].set_title("Row-normalized (recall)")
+    axes[1].set_xlabel("Predicted")
+    axes[1].set_ylabel("Reference label")
     plt.tight_layout()
-    plt.savefig(save_path, dpi=150, bbox_inches="tight")
+    plt.savefig(save_path, dpi=160, bbox_inches="tight")
     plt.close(fig)
 
 
 def plot_macro_f1_comparison(
-    model_names: List[str],
-    val_scores: List[float],
-    test_scores: List[float],
+    model_names: List[str], val_scores: List[float], test_scores: List[float],
     save_path: str = "figures/macro_f1_val_test.png",
 ) -> None:
-    """Vẽ biểu đồ thanh ngang kép so sánh Macro-F1 giữa Val (nhãn sao) và Test (nhãn gold)."""
+    """Compare validation and held-out-test macro-F1 (both use the same label protocol)."""
     import matplotlib.pyplot as plt
 
     os.makedirs(os.path.dirname(save_path) or ".", exist_ok=True)
     y = np.arange(len(model_names))
     height = 0.36
-
-    fig, ax = plt.subplots(figsize=(10, 5.8))
-    ax.barh(y - height / 2, val_scores, height, label="Val (nhãn sao)", color="#2b7bba")
-    rects2 = ax.barh(y + height / 2, test_scores, height, label="Test (nhãn gold)", color="#eb6b34")
-
+    fig, ax = plt.subplots(figsize=(10, max(5.8, 0.55 * len(model_names))))
+    ax.barh(y - height / 2, val_scores, height, label="Validation", color="#2b7bba")
+    rects = ax.barh(y + height / 2, test_scores, height, label="Held-out test", color="#eb6b34")
     ax.set_xlabel("Macro-F1")
-    ax.set_title("Macro-F1 theo mô hình: val (nhãn sao) và test (nhãn gold)", loc="left", fontsize=13)
+    ax.set_title("Validation vs held-out test Macro-F1")
     ax.set_yticks(y)
     ax.set_yticklabels(model_names)
     ax.set_xlim(0.0, 1.0)
     ax.invert_yaxis()
-    ax.legend(loc="upper left", bbox_to_anchor=(0, 1.02), ncol=2, frameon=False)
-    ax.grid(axis="x", linestyle="-", alpha=0.3)
-
-    for rect in rects2:
-        w = rect.get_width()
-        ax.annotate(
-            f"{w:.3f}",
-            xy=(w + 0.01, rect.get_y() + rect.get_height() / 2),
-            va="center",
-            ha="left",
-            fontsize=10,
-        )
-
+    ax.legend(loc="lower right", frameon=False)
+    ax.grid(axis="x", alpha=0.3)
+    for rect in rects:
+        width = rect.get_width()
+        ax.annotate(f"{width:.3f}", (width + 0.01, rect.get_y() + rect.get_height() / 2), va="center")
     plt.tight_layout()
-    plt.savefig(save_path, dpi=150, bbox_inches="tight")
+    plt.savefig(save_path, dpi=160, bbox_inches="tight")
     plt.close(fig)

@@ -1,0 +1,43 @@
+\chapter{Cơ sở lý thuyết}
+
+\section{Phân tích cảm xúc}
+Phân tích cảm xúc (sentiment analysis) là bài toán xác định thái độ hoặc cực tính cảm xúc được thể hiện trong văn bản. Trong nghiên cứu này, nhãn được quy về ba lớp. Lớp Neutral có ranh giới khó vì có thể biểu thị câu hỏi, mô tả thuần thông tin, trải nghiệm pha trộn, hoặc văn bản quá ngắn để xác định thái độ.
+
+\section{Tiền xử lý tiếng Việt}
+\subsection{Chuẩn hóa và tách từ}
+Unicode NFC đưa các biểu diễn ký tự về dạng chuẩn; chuẩn hóa chữ hoa, URL, lặp ký tự và một số dạng teencode giúp giảm biến thể bề mặt. Tiếng Việt dùng khoảng trắng phân tách âm tiết chứ không luôn phân tách từ, do đó bộ tách từ nối các âm tiết của từ ghép thành token như \texttt{máy_giặt} và \texttt{bảo_hành}. PhoBERT được tiền huấn luyện trên dữ liệu tiếng Việt đã tách từ \cite{nguyen2020phobert}.
+
+\subsection{Stopword, phủ định và liên từ chuyển ý}
+Loại bỏ các hư từ phổ biến có thể giảm nhiễu trong BoW/TF--IDF, nhưng không được xóa từ phủ định như ``không'', ``chưa'', ``chẳng'' hoặc từ chỉ cường độ như ``rất'', ``hơi''. Các từ chuyển ý như ``nhưng'' thường báo hiệu mệnh đề sau mang kết luận quan trọng. Pipeline giữ các dấu hiệu này để tránh đảo nghĩa cảm xúc.
+
+\section{Các phương pháp biểu diễn văn bản}
+\subsection{Bag of Words}
+BoW biểu diễn văn bản bằng số lần xuất hiện của từ hoặc n-gram. Phương pháp đơn giản, dễ giải thích và giữ lại cụm từ cục bộ như ``không tốt'', nhưng ma trận đặc trưng thưa và không mô hình hóa ngữ nghĩa xa.
+
+\subsection{TF--IDF}
+TF--IDF giảm trọng số các từ xuất hiện phổ biến trong nhiều văn bản và tăng vai trò tương đối của các từ mang tính phân biệt \cite{manning2008ir}. Dạng tổng quát:
+\[
+  \operatorname{tfidf}(t,d)=\operatorname{tf}(t,d)\times
+  \log\frac{N}{1+\operatorname{df}(t)}.
+\]
+Thí nghiệm dùng unigram/bigram và sublinear term frequency.
+
+\subsection{Word2Vec}
+Word2Vec học vector từ dựa trên ngữ cảnh; dự án dùng Skip-gram và lấy trung bình vector từ trong bình luận (mean pooling) \cite{mik1989w2v}. Biểu diễn dense có thể gom các từ gần nghĩa nhưng phép lấy trung bình làm mất thứ tự từ và phạm vi phủ định.
+
+\section{Các bộ phân loại}
+\subsection{Naïve Bayes}
+Naïve Bayes dự đoán lớp dựa trên định lý Bayes với giả định độc lập có điều kiện giữa các đặc trưng. MultinomialNB thích hợp với đặc trưng đếm hoặc TF--IDF không âm. GaussianNB được dùng cho vector Word2Vec liên tục.
+
+\subsection{Support Vector Machine}
+Linear SVM tìm siêu phẳng phân tách các lớp với biên lớn nhất; tham số $C$ điều khiển đánh đổi giữa độ rộng biên và lỗi huấn luyện. \texttt{class_weight=balanced} tăng mức phạt cho lớp ít mẫu \cite{cortes1995svm}.
+
+\subsection{Transformer: PhoBERT và XLM-RoBERTa}
+PhoBERT là mô hình ngôn ngữ tiền huấn luyện dành cho tiếng Việt, phù hợp làm encoder cho fine-tuning phân loại \cite{nguyen2020phobert}. XLM-RoBERTa được tiền huấn luyện đa ngôn ngữ quy mô lớn và là đối chứng để khảo sát năng lực chuyển giao xuyên ngôn ngữ \cite{conneau2020xlmr}. Trong mã nguồn, cả hai được nối với classification head và huấn luyện bằng weighted cross-entropy.
+
+\textbf{Lưu ý:} checkpoint XLM-R Large và PhoBERT runner đã được tích hợp, nhưng báo cáo kết quả trong lần chạy này chưa bao gồm fine-tuning Transformer. Việc triển khai mã không đồng nghĩa với việc đã đo được hiệu năng của mô hình.
+
+\section{Chỉ số đánh giá}
+Với ba lớp, báo cáo Accuracy, Precision, Recall và F1 từng lớp; Macro-F1 là trung bình không trọng số giữa các lớp, còn Weighted-F1 cân theo support. Do lớp Positive chiếm đa số, Macro-F1 được chọn làm chỉ số chính để hạn chế việc Accuracy che khuất kết quả lớp hiếm.
+
+Confusion matrix $C_{ij}$ cho biết số mẫu nhãn tham chiếu lớp $i$ được dự đoán thành lớp $j$. Chuẩn hóa theo hàng cho biết recall của mỗi lớp. Khoảng tin cậy Macro-F1 được ước lượng bằng bootstrap trên các mẫu test; khoảng này phản ánh bất định lấy mẫu có điều kiện trên bộ nhãn đang dùng, không hiệu chỉnh sai lệch của nhãn.

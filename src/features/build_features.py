@@ -82,7 +82,7 @@ def extract_word2vec_features(
         vector_size=vector_size,
         window=window,
         min_count=min_count,
-        workers=4,
+        workers=1,  # deterministic training for reproducible report metrics
         sg=sg,
         epochs=epochs,
         seed=seed,

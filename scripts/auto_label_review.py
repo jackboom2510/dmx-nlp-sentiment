@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
 Script gán nhãn cảm xúc tự động / bán tự động (Unsupervised + Hybrid Star Reconciliation)
-và chia tập dữ liệu chuẩn (train / val / test_gold) cho dự án dmx-nlp-sentiment.
+và chia tập dữ liệu chuẩn (train / val / test) cho dự án dmx-nlp-sentiment.
 
 Cách chạy:
     # 1. Chạy chế độ mặc định (Hybrid Unsupervised Lexicon + Star Rating - chạy ngay trên CPU):
     python scripts/auto_label_review.py
 
-    # 2. Tuỳ chỉnh kích thước tập test_gold và ngưỡng phát hiện xung đột:
+    # 2. Tuỳ chỉnh kích thước tập test và ngưỡng phát hiện xung đột:
     python scripts/auto_label_review.py --test-size 500 --val-ratio 0.15 --seed 42
 
     # 3. Chạy chế độ Sentence Embeddings Prototype / Zero-shot NLI / Pretrained PhoBERT (nếu đã cài torch/transformers):
@@ -88,7 +88,7 @@ def stratified_split(
 ):
     """
     Chia tập dữ liệu có phân tầng (Stratified) mà không cần phụ thuộc bắt buộc vào scikit-learn:
-    - Tập test_gold (n = test_size): ưu tiên lấy mẫu đa dạng từ cả 3 lớp (-1, 0, 1) và các mẫu đã được đối chiếu kỹ
+    - Tập test (n = test_size): ưu tiên lấy mẫu đa dạng từ cả 3 lớp (-1, 0, 1) và các mẫu đã được đối chiếu kỹ
     - Tập train & val: chia phần còn lại theo tỷ lệ (1 - val_ratio) / val_ratio có phân tầng theo label_target
     """
     rng = random.Random(seed)
@@ -103,7 +103,7 @@ def stratified_split(
     test_rows: List[Dict] = []
     remaining_by_label: Dict[int, List[Dict]] = {}
 
-    # Phân bổ số mẫu vào test_gold theo tỷ lệ phân tầng nhưng đảm bảo lớp thiểu số (Neutral = 0) có ít nhất 60 mẫu
+    # Phân bổ số mẫu vào test theo tỷ lệ phân tầng nhưng đảm bảo lớp thiểu số (Neutral = 0) có ít nhất 60 mẫu
     target_counts = {}
     if total >= test_size:
         min_neutral = min(len(by_label[0]) // 4, max(50, int(test_size * 0.12)))
@@ -159,7 +159,7 @@ def main():
         help="Phương pháp đánh giá cảm xúc để tạo nhãn target (mặc định: hybrid-lexicon)",
     )
     parser.add_argument("--stopwords", default="data/external/stopwords_vi.txt", help="Đường dẫn file stopwords")
-    parser.add_argument("--test-size", type=int, default=500, help="Số lượng mẫu của tập test_gold")
+    parser.add_argument("--test-size", type=int, default=500, help="Số lượng mẫu của tập test")
     parser.add_argument("--val-ratio", type=float, default=0.15, help="Tỷ lệ tập validation trên phần còn lại")
     parser.add_argument("--pos-th", type=float, default=0.65, help="Ngưỡng điểm cực tính Positive")
     parser.add_argument("--neg-th", type=float, default=-0.65, help="Ngưỡng điểm cực tính Negative")
@@ -275,7 +275,7 @@ def main():
     print("      - data/interim/reviews_labeled.csv")
     print("      - data/interim/rating_text_conflicts.csv")
 
-    # Chia tập dữ liệu train / val / test_gold
+    # Chia tập dữ liệu train / val / test
     train_rows, val_rows, test_rows = stratified_split(
         labeled_rows,
         test_size=args.test_size,
@@ -297,7 +297,7 @@ def main():
     ]
     write_csv("data/processed/train.csv", train_rows, split_fields)
     write_csv("data/processed/val.csv", val_rows, split_fields)
-    write_csv("data/processed/test_gold.csv", test_rows, split_fields)
+    write_csv("data/processed/test.csv", test_rows, split_fields)
 
     summary = {
         "raw_total_rows": len(raw_rows),
@@ -318,7 +318,7 @@ def main():
                 "total": len(val_rows),
                 "label_target_dist": {str(k): v for k, v in sorted(Counter(r["label_target"] for r in val_rows).items())},
             },
-            "test_gold": {
+            "test": {
                 "total": len(test_rows),
                 "label_target_dist": {str(k): v for k, v in sorted(Counter(r["label_target"] for r in test_rows).items())},
             },
@@ -331,7 +331,7 @@ def main():
     print("[4/4] Đã chia và lưu tập dữ liệu vào data/processed/:")
     print(f"      - data/processed/train.csv     : {len(train_rows):,} mẫu | {summary['splits']['train']['label_target_dist']}")
     print(f"      - data/processed/val.csv       : {len(val_rows):,} mẫu | {summary['splits']['val']['label_target_dist']}")
-    print(f"      - data/processed/test_gold.csv : {len(test_rows):,} mẫu | {summary['splits']['test_gold']['label_target_dist']}")
+    print(f"      - data/processed/test.csv : {len(test_rows):,} mẫu | {summary['splits']['test']['label_target_dist']}")
 
 
 if __name__ == "__main__":

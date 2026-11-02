@@ -1,0 +1,501 @@
+review_id,category,content,y_true,y_pred,correct
+aqua-inverter-1-hp-aqa-rv10qa2:r-56943340,Máy lạnh,Tạm ổn mới nắp mà,1,0,0
+284df095af30e9ca,Máy giặt,"Máy dùng rất tốt , tôi rất hài lòng",1,1,1
+may-giat-aqua-inverter-9-5-kg-aqd-a952j-bk:r-55194493,Máy giặt,Giặt tận 90p chịu rồi,-1,-1,1
+panasonic-nr-ba229pkvn:r-52022664,Tủ lạnh,"Máy chạy êm, bảo quản lạnh tốt",1,1,1
+panasonic-nr-ba229pkvn:r-50129934,Tủ lạnh,"Giữ nhiệt tốt , làm lạnh nhanh, bảo quản thực phẩm tươi xanh, kháng khuẩn và khử mùi tốt",1,1,1
+may-giat-haier-inverter-11-kg-hw110-bd14387gnu1:r-58611844,Máy giặt,"dùng được, giặt sạch",1,1,1
+tu-bluestone-18-lit-rcb-5938:r-57279098,Nồi cơm điện,Mọi người sử dụng có bị tróc si lòng nồi k chứ sao e mới Sài vài tháng mà tróc lớp si cho dù Sài rất kĩ không dùng vật gì chùi rửa có hình mà xóa mất tiêu,0,-1,0
+may-loc-nuoc-korihome-wpk-915:r-51085353,Máy lọc nước,"Yêu cầu đmx 1 đổi 1 cho tôi máy lọc nước này như chính sách đã cam kết. Mới mua về, mỗi khi lấy nước máy kêu rất to. Đã gọi hãng đến yêu cầu đổi máy khác nhưng hãng cử thợ đến sửa nhưng tôi yêu cầu k tháo máy vì máy mới mua 1,2 ngày. Từ đó đến giờ thì không thấy hãng gọi lại trả lời. Vậy hãng trả lời cho tôi rõ: hãng có đổi máy khác cho tôi hay k? Nếu không thì lý do vì sao, phải chăng hãng đang đi ngược lại chính sách bán hàng của hãng?",-1,-1,1
+samsung-inverter-1-hp-ar10cyfaawknsv:r-54389745,Máy lạnh,máy chạy êm,1,1,1
+may-loc-nuoc-ro-nong-nguoi-lanh-toshiba-twp-w2399svn-m-10-loi:r-57336411,Máy lọc nước,máy lọc sử dụng ok,1,1,1
+lg-inverter-394-lit-gn-d392bla:r-55273296,Tủ lạnh,Vừa dùng nên chưa biết tốt hay k nhưng tạm nói là ok,0,1,0
+may-giat-electrolux-ultimatecare-300-inverter-10-kg-ewf1024d3wc:r-59870482,Máy giặt,"máy chạy êm, xài tốt",1,1,1
+noi-com-nap-gai-toshiba-rc-18jh2pv-b-18l:r-54105528,Nồi cơm điện,"Giao hàng nhanh, đúng sản phẩm, dịch vụ tốt",1,1,1
+tu-lanh-panasonic-325-lit-nr-bc361vgmv:r-57258423,Tủ lạnh,"Tủ làm lạnh nhanh, có thể tùy chỉnh nhiệt độ theo nhu cầu sử dụng. Kiểu dáng hiện đại. Nhìn chung, sau 5 tháng sử dụng, tôi thấy hài lòng với sản phẩm này. Đáng mua",1,1,1
+sharp-ks-18tjv:r-43390734,Nồi cơm điện,"Sử dụng được một năm, nấu cơm được khoảng 30 lần trong một năm thì mới phát hiện lỗi nấu không chín cơm, nút tự nhảy. Buồn, thất vọng, không có lòng tin nữa.",-1,-1,1
+panasonic-nr-ba229pkvn:r-51817774,Tủ lạnh,Máy hoạt động rất tốt,1,1,1
+samsung-rb27n4010bu-sv:r-54232556,Tủ lạnh,Sản phẩm đẹp,1,1,1
+sharp-18-lit-ks-183tjv-ch:r-46816051,Nồi cơm điện,"Nồi cơm hay tự nhảy nút khi nấu, đáy nồi sài chưa được 6 tháng đã ố vàng. Trước đã đổi 1 nồi Electrox cũng lỗi tương tự, không biết ĐMX nhập hàng kiểu gì, 1 lần đổi là 1 lần phiền. Lần trước đc đổi 1 lấy 1 miễn phí, không biết lần này có tính phí không",-1,-1,1
+may-giat-electrolux-ultimatecare-700-inverter-10-kg-ewf1043r7wc:r-59787286,Máy giặt,"máy dùng rất tốt, chạy êm, hài lòng",1,1,1
+may-giat-electrolux-ultimatecare-500-inverter-10-kg-ewf1023p5wc:r-58654879,Máy giặt,sản phẩm xài ổn,1,1,1
+may-loc-nuoc-ro-nong-nguoi-karofi-kah-x29-11-loi:r-56866361,Máy lọc nước,"Mới dùng được 1 tháng, hiện tại thì thấy OK, không biết độ bền thế nào, tiện lợi hàng ngày, không phải lo quên nấu nước uống .",1,1,1
+may-loc-nuoc-ro-nong-nguoi-lanh-toshiba-twp-w2396svn-m-10-loi:r-58369998,Máy lọc nước,Hôm qua e mới mua mà e thấy trên trang có để chương trình tặng máy hút bụi mà lúc ra cửa hàng e ko nghe nói gì về chương trình km này ạ,0,0,1
+may-loc-nuoc-ro-nong-nguoi-lanh-hoa-phat-hpn666-11-loi:r-58643171,Máy lọc nước,Tôi mua 9/2024 c Vy chăm sóc khánh hàng và a Thi kỹ thuật quá nhiệt tình và kỹ năng sử lý vấn đề tốt phản ánh về việc đc ưu đãi thay 3 lõi lọc cứ đmx đổi cho nhân viên khi mua đã vó tên tuổi tredn hệ thống cứ thế mà thay khi đến ngày giờ phản ánh hàng chục ng chục cuộc k có kq may có c Vy và a Thi đã tận tình và giải toả bức súc làm ăn chán quá chán máy thì rất ok đã giới thiệu 1 số b bè,1,-1,0
+samsung-rb27n4010bu-sv:r-53588380,Tủ lạnh,Mua được đợt giảm giá nên rất ưng. Hiện tại dùng tốt,1,1,1
+cuckoo-cr-0671-108-lit:r-54105175,Nồi cơm điện,Đẹp,0,1,0
+toshiba-gr-b22vu-ukg:r-47356434,Tủ lạnh,"Tủ sài êm 10 ngày đầu. Tủ có lúc chạy rất ồn mở cửa ngăn đá nghe như máy dầu chạy, rút điện để khoang 15 phút ghim lại thì chạy êm",-1,1,0
+lg-inverter-1-5-hp-v13win1:r-57013663,Máy lạnh,"Sài đc 1 tuần cảm nhận máy lạnh êm rất đáng đồng tiền , làm lạnh nhanh rất ok , giao hàng đúng hẹn , thợ lắp nhiệt tình, tuy nhiên nhân viên bán hàng tại st không nhiệt tình không tư vấn sp rất thái độ",0,1,0
+tu-lanh-samsung-inverter-305-lit-rt31cb56248asv:r-57589877,Tủ lạnh,"tủ lạnh nhà em , mở ngăn mát ra , bóng đèn chóp liên tục là bị sao thế .mong phản hồi ạh",1,-1,0
+toshiba-gr-b22vu-ukg:r-55852886,Tủ lạnh,"Rất tốt, sd bền mẫu mã đẹp",1,1,1
+noi-com-nap-gai-toshiba-rc-18jh2pv-b-18l:r-57578365,Nồi cơm điện,"mua được tầm tháng chập chờncắm điện cũng không lên đènhỏi nhân viên bán thì báo đổi máy khác 30%, trong khi chính sách thì 10%tôi đang thắc mắc bên chính sách công khai có đúng hay khôngchứ chắc đây là lần cuối mua bên này",-1,-1,1
+daikin-inverter-1-hp-atkb25yvmv:r-57021899,Máy lạnh,"Cho mình hỏi thấy có khuyến mãi tham gia chương trình bốc thăm của Daikin. Nhưng hôm giao máy bên bộ phận giao k nói j hết. Với lại bên lắp ráp k phải nhân viên điện máy xanh. Nên k hướng dẫn sử dụng các tính năng của máy lạnh. Chỉ hướng dẫn tắt mở, tăng giảm nhiệt độ. Kèm câu các nút còn lại đừng xài..... Vậy là sao",1,-1,0
+0ee76adfbe21b05d,Máy lọc nước,Tốt,1,1,1
+tu-lanh-toshiba-inverter-555-lit-side-by-side-gr-rs696wi-pmv-60-ag:r-59924567,Tủ lạnh,Không tin tưởng hãng nào khác ngoài toshiba,1,-1,0
+toshiba-gr-b22vu-ukg:r-50988550,Tủ lạnh,"Dòng này ngăn đá có tiếng kêu rào rào, cảm giác khó chịu khi mua tủ mới mà có lỗi như vậy. Hảng xuống bảo hành họ báo cái nào cung kêu. Nếu kêu thì nên thông tin khách hàng ngay từ đầu có vẻ tốt hơn. Anh chị có mua thì nên cân nhắc nhé",-1,-1,1
+dien-giai-ion-kiem-robot-ionprince-59x-4-loi-5-tam-dien-cuc:r-57623588,Máy lọc nước,Mua được 2 ngày mà nước không ra,-1,-1,1
+may-loc-nuoc-ro-karofi-kaq-u98-pro-10-loi:r-57802448,Máy lọc nước,"ĐMX nên cập nhật lại giá. Giá Karrofi thì trường chỉ có 5,5 triệu. ĐMX bán 8 triệu",0,-1,0
+smart-tivi-qned-lg-ai-4k-75-inch-75qned70bsa:r-59545090,Tivi,"độ sắc nét, loa ok",1,1,1
+aqua-inverter-1-5-hp-aqa-rv13qa3:r-57964468,Máy lạnh,"sản phẩm máy lạnh Aqua hoạt động thấy ổn định, xài bình thường",1,1,1
+sharp-ks-18tjv:r-56459954,Nồi cơm điện,"Nồi nấu cơm ngon, men tráng tốt ko dính gạo",1,1,1
+toshiba-gr-b22vu-ukg:r-50902145,Tủ lạnh,"Mn nên né đmx cũng như tủ lạnh hãng này ra? Máy thì kêu ầm ầm, nv tư vẫn không nói, bây giờ toshiba đổi thừa cho đmx, đmx đổi thừa cho hãng? Không đáng tiền chút nào? Bỏ thêm 1tr mua tủ lạnh của panasonic xài còn ngon hơn.",-1,-1,1
+ro-sunhouse-sha8866k-7-loi:r-52503949,Máy lọc nước,Máy tốt chay êm nước sau lọc rất sach,1,1,1
+tu-lanh-panasonic-inverter-255-lit-nr-bv281bgmv:r-56119400,Tủ lạnh,Sài êm lắm nha,1,1,1
+tu-lanh-lg-inverter-315-lit-ltb31blm:r-58310917,Tủ lạnh,"Quá trình dùng khá là tốt , còn không biết bị lỗi thì bảo hành như thế nào",1,1,1
+panasonic-inverter-1-hp-cu-cs-pu9akh-8:r-56879422,Máy lạnh,Máy êm tiết kiệm điện. Thợ ráp máy ok Đmx dương cong khi hóc môn,1,1,1
+may-loc-nuoc-ro-nong-nguoi-lanh-hydrogen-sunhouse-ultrax-sha76658sh-11-loi:r-57743116,Máy lọc nước,Đmx bán hàng lỗi .kêu đổi trả cho khách hàng thì không cho đổi trả .nước uống thì có mùi hôi.cho nhân viên đến đồng kiểm thì bảo không sao.máy thì tháo bung bét ra.bảo đến lấy nước về uống thử thì mất tích luôn .không bảo vệ quyền lợi cho khách hàng .báng xong vô trách nhiệm,-1,-1,1
+samsung-inverter-307-lit-rb30n4190by-sv:r-53179929,Tủ lạnh,"tủ lạnh hoạt động tốt, Khử mùi tốt, không nghe mùi khó chịu trong tủ lạnh",1,1,1
+nagakawa-inverter-1-hp-nis-c09r2t28:r-56932318,Máy lạnh,Không có miễn phí lắp đặt.,0,-1,0
+noi-com-nap-gai-toshiba-rc-18jh2pv-b-18l:r-53688623,Nồi cơm điện,nồi nấu cháy nữa bên,-1,1,0
+panasonic-nr-ba229pkvn:r-48596820,Tủ lạnh,"Biết Panasonic đã lâu nên qua tìm hiểu thì m quyết định mua model này. Ban đầu cũng băn khoăn khi đọc nhiều review không tốt nhưng cuối cùng vẫn... Cảm nhận sau 2 tuần sử dụng là tủ cứ kêu cọp kẹt, lắm lúc còn có tiếng rít kéo dài nghe rất khó chịu. Mong sớm có phản hồi từ DMX.",-1,0,0
+noi-com-dien-tu-tefal-07-lit-rk515168:r-57915005,Nồi cơm điện,"Ưu điểm nhiều chế độ nấuNhược điểm nấu hỏi lâu, rơ le đóng ngắt liên tục, ko nấu nhanh đc, ko có chỗ thoát nước, quai xách, dây ko tự thu đc",-1,-1,1
+may-loc-nuoc-ro-karofi-kaq-x18-11-loi:r-56927197,Máy lọc nước,Dùng oke,1,1,1
+toshiba-rc-10nmfvn-wt:r-54202003,Nồi cơm điện,"Nồi cơm nhà mình chỉ sử dụng dc thời gian đầu ok Gần đây nấu cơm để qua đêm bị vàng cơm, có lớp nước dưới đáy nồi làm cơm bị nhão, rất hôi Nhà mình ko biết cách khắc phục ntn vì vẫn ghim điện suốt. Cơm thì vẫn nóng, nhưng bị vàng, hôi và đọng nước Hy vọng dmx có thể hướng dẫn khắc phục giúp mình.",-1,0,0
+samsung-rs64r53012c-sv:r-54050764,Tủ lạnh,Sp nay rất tot,1,1,1
+may-giat-toshiba-inverter-12-kg-aw-t26d1300tv-mg:r-59110060,Máy giặt,Nhân viên nhiệt tình . Hài Lòng với sản phẩm.,1,1,1
+samsung-rb27n4010bu-sv:r-54307295,Tủ lạnh,Dùng tốt khoang để thực phẩm rộng,1,1,1
+aosmith-c2:r-51757522,Máy lọc nước,"Khâu giao hàng có chút delay, hẹn tới lui cuối cùng cũng nhận được. Ngoại hình đẹp, dễ sử dụng, không cồng kềnh như mẫu khác. Đèn báo trực quan. Nước lọc ngon. Tính ra chi phí thay lõi sẽ tiết kiệm hơn các hãng khác. Vì ko có mấy lõi lọc phụ linh tinh. Khuyết điểm: bơm ngoài tiếng chạy ra còn có tiếng cọc cọc . KTV ĐMX đến cũng bó tay, gọi hãng xuống xử lý nhanh gọn, giảm được 50%. Nói chung đã ổn, không ảnh hưởng gì nhiều. Nên mua nhé.",1,-1,0
+toshiba-rc-18mh1pv-f-18-lit:r-50102459,Nồi cơm điện,Nấu lần đầu tiên là cơm ok luôn... Không cần chỉnh sửa gì.. Cơm có cơm cháy nhẹ rất vừa chuẩn.,1,-1,0
+may-loc-nuoc-ro-nong-nguoi-lanh-mutosi-mp-s1011-10-loi:r-56279401,Máy lọc nước,"mày còn rò rỉ nước ít, còn lại máy dùng tốt, ok",1,1,1
+panasonic-nr-bx471gpkv:r-54215278,Tủ lạnh,Mới sử dụng chưa thạo hết các tính năng trước mắt thấy ổn hihihi,1,1,1
+panasonic-inverter-550-lit-nr-dz601vgkv:r-57446446,Tủ lạnh,Tủ lạnh nhanh. Sang trọng. Không lẫn mùi sạch sẽ,1,1,1
+panasonic-inverter-550-lit-nr-dz601vgkv:r-57834831,Tủ lạnh,Mới ghim điện thì để bao lâu mới có thể sử dụng ạ,1,1,1
+tu-lanh-samsung-inverter-305-lit-rt31cb56248asv:r-55162102,Tủ lạnh,Máy làm lạnh nhanh ngăn đông mềm dùng tốt,1,1,1
+may-loc-nuoc-ro-nong-nguoi-lanh-mutosi-mp-s1011-10-loi:r-56450148,Máy lọc nước,Sản phẩm dùng tốt không có vấn đề gì,1,1,1
+noi-com-cao-tan-toshiba-rc-18ix1pv-1l:r-52952995,Nồi cơm điện,"Sp tốt, dùng ổn. Hầm gà chỉ 40 phút là mềm rồi, tự động hoàn toàn.",1,1,1
+smart-tivi-nanocell-lg-ai-4k-55-inch-55nano80asa:r-58487140,Tivi,"sử dụng chưa có lỗi gì , nv phục vụ chu đáo , sản phẩm ok",1,1,1
+lg-inverter-1-5-hp-v13win1:r-57109239,Máy lạnh,"Nv lắp đặt nhiệt tình, bày bản , máy chạy êm ít kêu còn hiệu năng thì đánh giá sau",1,1,1
+sunhouse-shd8606-18-lit:r-52037356,Nồi cơm điện,"Nồi cơm có hình dạng đẹp, nấu cơm ngon",1,1,1
+may-loc-nuoc-ro-nong-lanh-sunhouse-sha76222kl-11-loi:r-57362327,Máy lọc nước,"Máy gắn lúc chiều đến giờ hơn 8h vẫn chưa ra nước, gọi nhân viên gắn lúc chiều thì hẹn mai đến xem lại, mong là máy ổn, trải nghiệm chưa tốt với sản phẩm, mong giải quyết sớm ak",0,-1,0
+sharp-75-kg-es-y75hv-s:r-55455957,Máy giặt,sản phẩm dùng tốt tiện lợi sẽ giới thiệu bạn bè người thân,1,1,1
+sharp-ksh-d22v:r-51675833,Nồi cơm điện,Nồi mới phải chất lượng cơm ngon.,1,1,1
+nagakawa-inverter-15-hp-nis-c12r2t62:r-59324207,Máy lạnh,Máy êm . Làm lạnh tốt,1,1,1
+casper-inverter-1-hp-qc-09is36:r-57019652,Máy lạnh,Tôi sẽ giới thiệu sp này cho người thân.,1,1,1
+tu-lanh-toshiba-inverter-711-lit-side-by-side-gr-rs910wi-pmv-06-mg:r-59381693,Tủ lạnh,"Sản phẩm quá tệ ngăn mát đổ mồ hôi, ngăn lanh bi đóng tuyết, gọi bảo hành hẹn lần hẹn lựa, đên giờ gần 10 ngày r vẫn chưa quyêt được là lỗi gi, nv bao hành dmx, bảo hành hảng kiêm tra thì bảo bt, k bit thế nào mới là hỏng, đồ mới mà làm ăn kiểu này, nản với cái dịch vụ. Nên né ra không rướt ấm ức vào người",-1,-1,1
+panasonic-82-kg-na-f82y01drv:r-56921975,Máy giặt,Ổn áp lắm ạ,1,1,1
+may-loc-nuoc-ro-karofi-kaq-x18-11-loi:r-56711704,Máy lọc nước,Nước bị rỉ ở vòi dù đã khoá,0,-1,0
+toshiba-gr-b22vu-ukg:r-50573098,Tủ lạnh,"Rất tệ, chế độ đổi hàng rất tệ",-1,-1,1
+lg-inverter-1-5-hp-v13win1:r-56992380,Máy lạnh,"Máy mát dễ chịu, làm lạnh hơi lâu và kêu bị ồn",1,0,0
+toshiba-rc-10nmfvn-wt:r-56790385,Nồi cơm điện,"Sản phẩm tốt, cơm giữ nóng lâu, chỉ mỗi việc đọng hơi nước trên nắp nồi nhiều",1,1,1
+may-loc-nuoc-ro-karofi-kaq-x26-10-loi:r-56026647,Máy lọc nước,lắp đặt bị chảy nước,-1,-1,1
+may-loc-nuoc-korihome-wpk-915:r-52656930,Máy lọc nước,"Mua máy mới về thì hỏng, bên nước nóng thì ra nước sôi, bênh lạnh thì ra nước nóng, máy chạy ồn như cái bơm nước cao áp, kêu ù ù cách phòng vẫn nghe. Nhân viên bán hàng dễ chịu thôi, còn lại về sản phẩm thì tệ nhất trong 3 dòng máy đã từng sử dụng",-1,-1,1
+noi-com-dien-tu-toshiba-rc-18dr2pv-k-18l:r-55732860,Nồi cơm điện,Nấu cơm ngon,1,1,1
+fb894689570d86eb,Tủ lạnh,"sp tốt, dến hiện tại sd không phát sinh vấn đề gì",1,1,1
+0029bcfad14eecb2,Tủ lạnh,Xài bình thường làm lạnh nhanh,1,1,1
+toshiba-gr-b22vu-ukg:r-56461301,Tủ lạnh,"Tủ lạnh xài ok lắm ạ. Nhanh đông đá, dùng rất hài lòng ạ.",1,1,1
+samsung-inverter-1-hp-ar10cyfaawknsv:r-54498308,Máy lạnh,Dây đồng bị nhân viên cắt bớt còn 2 m,-1,-1,1
+noi-com-nap-gai-18-lit-panasonic-sr-mvn18frax:r-56733904,Nồi cơm điện,"Rất tốt, cơm nhanh chín, thơm ngon hơn các nồi khác, giữ ấm cơm tuyệt vời không bị cháy khi để cả đêm",1,1,1
+tu-lanh-funiki-110-lit-hr-t6120tdg:r-58518008,Tủ lạnh,dùng tốt 5sao,1,1,1
+sharp-75-kg-es-y75hv-s:r-55455820,Máy giặt,sp sử dung ổn,1,1,1
+noi-com-nap-gai-toshiba-rc-10jh2pv-b-1l:r-53919580,Nồi cơm điện,"cả lô hàng bị lỗi hở nắp, nấu ko chín cơm và có rất nhiều người đến đổi sản phẩm cùng thời điểm",-1,-1,1
+aqua-inverter-1-5-hp-aqa-rv13qa3:r-58123439,Máy lạnh,xài ngày 10 tiếng 22 độ ngốn 10kg điện buồn dã man,0,-1,0
+samsung-inverter-406-lit-rt42cg6584b1sv:r-57008671,Tủ lạnh,Xài tốt. Có phần cấp nước cho ngăn chứa để rót ra ly uống và ngăn cắp nước lm đá nếu có van cấp vào thì tiện sử dụng hơn,1,1,1
+sharp-ks-18tjv:r-53786585,Nồi cơm điện,Nấu cơm bị có ngồi ăn k ngon,-1,-1,1
+6e4d5bc23182ea3c,Nồi cơm điện,Nồi hơi mỏng,1,0,0
+noi-com-cao-tan-toshiba-rc-18ix1pv-1l:r-53896734,Nồi cơm điện,"Nghĩ cao tần sẽ ngon hơn điện tử, nhưng quá thất vọng, nồi như kiểu hở vung, bên trên thì gạo chín 1 nửa, dưới đáy thì đọng nước, giữa thì cơm ko chín hoàn toàn, ăn rất chán. Đã thử nhiều chế độ nấu và các mức thgian khác nhau, vẫn vậy.",-1,-1,1
+tu-lanh-toshiba-inverter-555-lit-side-by-side-gr-rs696wi-pmv-60-ag:r-58775814,Tủ lạnh,Cánh cửa bị tôm nước hay kêu lục đục keu thợ sửa thì nói do độ ẩm,-1,-1,1
+toshiba-rc-10nmfvn-wt:r-56880337,Nồi cơm điện,"Giao hang nhanh ,noi com đien rat đep va nang ,nau com ngon",1,1,1
+lg-inverter-1-5-hp-v13win1:r-56946646,Máy lạnh,"Máy dùng ổn định, tốt",1,1,1
+tu-lanh-panasonic-325-lit-nr-bc361vgmv:r-57197105,Tủ lạnh,"sản phẩm thì mới dùng thấy ổn,chạy êm. Nhưng mới mua được 3 ngày từ ngày 8/7/2024 tới ngày hôm này mà đã bị lỗ 2 triệu, kiểu như bị mua hớ d",0,1,0
+lg-inverter-1-5-hp-v13win1:r-56926451,Máy lạnh,"Mới lắp trưa ngày 29/4/2024, thợ lắp xong bật thấy máy chạy có thổi gió ra rồi về chứ không có nhiều thời gian ở lại test xem có lạnh hay không. Mình bật từ 16 độ đến 20 độ test từ trưa tới tối lạnh rất yếu, không có cảm giác đang ngồi máy lạnh. Trước đó dùng máy Toshiba 1hp thôi bật 25 độ là lạnh lắm rồi. Alo lại liền cho thợ ngay trong ngày thì thợ báo mình chỉnh xuống 16 độ đi chứ máy này đời mới nó chạy riêu riêu v thôi chứ ko giống máy đời trước.Cuối cùng mới lắp xong ko lạnh vẫn phải ngồi chờ đợi bên ĐMX xuống kiểm tra và không biết khi nào sẽ xuống. Nhờ ĐMX hỗ trợ gấp giúp.",-1,-1,1
+samsung-rb27n4010bu-sv:r-54688518,Tủ lạnh,"Tủ chay êm , làm lanh nhanh",1,1,1
+sunhouse-shd8606-18-lit:r-55278344,Nồi cơm điện,Rất tệ mua sản phẩm về nhà lúc nấu lại thấy nứt như này. Quá thất vọng,-1,-1,1
+may-loc-nuoc-ro-karofi-kaq-x18-11-loi:r-57116298,Máy lọc nước,"Máy dùng tốt, ổn định, chưa phát sinh lỗi gì. Mua thêm cái giá để chân trên shoppe hơn 40k nữa là cao đẹp, chắc chắn",1,1,1
+lg-gr-b256bl:r-58235882,Tủ lạnh,"Tủ xài ngon, tốt mà giá lại rẻ. Nên mua.",1,1,1
+b972bd02267fd5b4,Nồi cơm điện,"Chất lượng cơm ngon, dễ sử dụng, hình dáng đẹp… xứng đáng với số tiền bỏ ra để mua nó. Tuy nhiên vì thời gian sử dụng còn ngắn nên chưa biết sau này có trục trặc gì xẩy ra không nên chỉ tạm đáng giá là tốt.",1,1,1
+panasonic-inverter-1-hp-cu-cs-pu9akh-8:r-57416563,Máy lạnh,"Quá tệ DMX giờ toàn bán hàng lỗi, mua xong không sử dụng được ngày nào, cục nóng vs lạnh không hoạt động, giờ nhân viên báo thu máy lại phí 10%",-1,-1,1
+noi-com-dien-tu-sunhouse-18-lit-shd8911:r-59923552,Nồi cơm điện,"Nồi dùng được 1 năm thì cảm ứng hỏng, vứt xó luôn",-1,1,0
+may-loc-nuoc-ro-hydrogen-nong-nguoi-lanh-robot-hydroelite-9x-9-loi:r-56567091,Máy lọc nước,Quá là tuyệt vời mọi người ạ,1,1,1
+sunhouse-shd8606-18-lit:r-52159181,Nồi cơm điện,Nồi ko có chỗ thoát nước thừa,0,-1,0
+daikin-inverter-1-hp-atkb25yvmv:r-56925552,Máy lạnh,Thợ lắp ẩu tả dàn nóng rò điện ra ngoài đã bị giật nếu có mưa chắc giật ko biết ra sao gây nguy hiểm tính mạng. Đã dùng bút thử điện thì đèn sáng như hình.,-1,-1,1
+noi-com-cao-tan-toshiba-rc-18ix1pv-1l:r-50910424,Nồi cơm điện,"Nồi đẹp, nấu cơm ngon, rất dễ tháo lắp, vệ sinh",1,1,1
+panasonic-nr-ba229pkvn:r-49658379,Tủ lạnh,Tôi đã mua thêm sản phẩm Panasonic máy hoạt động rất tốt và mau làm lạnh ảnh và giữ độ lạnh cho rau củ quả tôi sẽ giới thiệu cho người thân của mình.,1,1,1
+samsung-inverter-406-lit-rt42cg6584b1sv:r-56080792,Tủ lạnh,"mới mua nên dùng được, dung tích rộng, thoải mái, nói chung ổn, để xem dùng lâu dài thì như nào",1,1,1
+aqua-inverter-1-5-hp-aqa-rv13qa3:r-57983012,Máy lạnh,"máy lạnh hoạt động ổn định, thấy ok",1,1,1
+may-loc-nuoc-nong-lanh-ro-korihome-wpk-903:r-54113215,Máy lọc nước,Hãng báo 2l nước nóng nhưng chỉ lấy ra được 0.8l đến 1l nước nóng. Nước lạnh cũng vậy. Nhân viên hãng xuống cũng không lý giải đươc.,-1,-1,1
+may-giat-toshiba-8kg-aw-m905bvmk:r-54701223,Máy giặt,Dịch vụ và chất lượng sản phẩm rất tốt,1,1,1
+may-loc-nuoc-ro-sunhouse-ultrapure-sha8810k-10-loi:r-58579513,Máy lọc nước,"Làm ăn bát nháo, lúc mua tư vấn thay lõi lọc free mấy tháng đầu. Mua tháng 4 tới 1 lần hỏi có lõi lọc chưa, nói chưa có cái ko thay gì lun, giờ tới tháng 8 chưa tới thay lõi lần nào. Đặt máy 11 lõi giao máy 10 lõi xong kêu thông cảm lấy 10 lõi mình cũng ok. Đợi thay lõi thì dài cổ. Ko bao giờ giới thiệu cho ai tới dmx mua hàng",-1,-1,1
+may-loc-nuoc-ro-nong-nguoi-lanh-toshiba-twp-w2396svn-m-10-loi:r-57124411,Máy lọc nước,"Hệ thống bảo hành, chăm sóc khách hàng của ĐMX rất tệ. Máy lọc nước lắp đặt bị rò nước mà gọi tổng đài bảo hành thì hẹn gần 2 ngày sau mới đến sửa chữa bảo hành thì chịu luôn rồi. Lần sau không dám mua ở ĐMX nữa",-1,-1,1
+sunhouse-shd8606-18-lit:r-53746106,Nồi cơm điện,Sản phẩm tốt ..nhân viên phục vụ nhiệt tình !ok,1,1,1
+panasonic-nr-bx471gpkv:r-58511765,Tủ lạnh,"Mình chọn km là Phiếu mua hàng, khi giao hàng nhân viên không nhắc khách là PMH sẽ gửi qua app. Lúc mình gọi lên tổng đài thì mới biết là đã gửi qua app và đã hết hạn luôn rồi. Gọi tổng đài thì chỉ báo là không làm gì khác đc. Thất vọng với ĐMX thật sự",-1,-1,1
+aqua-inverter-1-hp-aqa-rv10qa2:r-57115026,Máy lạnh,Cục nóng bị chảy nước cần người tới kiểm tra.. liên hệ điện máy mà khôg ai trả lời,-1,-1,1
+panasonic-inverter-1-hp-cu-cs-pu9akh-8:r-56876346,Máy lạnh,Điều hoà mua về không mát. Đã đổi cái khác nhưng vẫn không mát. Quá tệ,-1,-1,1
+sharp-ks-18tjv:r-46796567,Nồi cơm điện,"Mua sài đúng có 1 lần, bấm nút nấu k nhảy, mình thất vọng quá, k hài lòng về sảb phẩm, như vậy ĐMX có đổi lại k ạ",-1,-1,1
+tu-lanh-toshiba-inverter-515-lit-gr-rf677wi-pgv-22-xk:r-59925039,Tủ lạnh,"phải ra cửa hàng xem kỹ mới dám mua, chất lượng hoàn thiện tủ ok",1,1,1
+may-loc-nuoc-ro-kangaroo-kg100hu:r-53777317,Máy lọc nước,Hiện tại đang dùng thấy cũng ổn.không có gì .,1,1,1
+panasonic-inverter-1-5-hp-cu-cs-yz12akh-8:r-57160573,Máy lạnh,"Không có 0 sao để chấm , cái dịch vụ bán hàng bán hàng không thể tệ hơn xong 4 ngày chưa lắp",-1,-1,1
+may-giat-toshiba-8kg-aw-m905bvmk:r-55992240,Máy giặt,Nắp kính cũng bị xướt hả mn,0,-1,0
+samsung-rs64r53012c-sv:r-54252797,Tủ lạnh,"Mới mua hôm qua, sáng nay cắm điện không lên luôn; vừa gọi cho nv xuống kiểm tra, kh biết thế nào",-1,-1,1
+cuckoo-cr-0671-108-lit:r-53594753,Nồi cơm điện,Nồi nấu hay bị bật lại chế độ giữ ấm. Nếu k để ý thì k có cơm ăn,0,-1,0
+noi-com-cao-tan-toshiba-rc-18ix1pv-1l:r-57231484,Nồi cơm điện,Quá tuyệt vời,1,1,1
+tu-lanh-funiki-110-lit-hr-t6120tdg:r-56176396,Tủ lạnh,"Tu chay êm, lam lanh kha nhanh, rât ưng y, so vơi gia tiên thi rât đang mua. Nhân viên giao hang ơ chi nhanh Câu Giây, Ha Nôi rât nhiêt tinh, thân thiên.",1,1,1
+toshiba-gr-b22vu-ukg:r-57338592,Tủ lạnh,"Tủ kêu hơi to, rè rè hoài. Làm sao để khắc phục",-1,-1,1
+ro-sunhouse-sha8866k-7-loi:r-56051521,Máy lọc nước,Mới lắp mà cái vòi nước cứ nhỏ giọt tong tong mặc dù đã khoá. ĐMX liên hệ mình bảo hành ngay nhé,0,-1,0
+may-giat-electrolux-ultimatecare-700-inverter-10-kg-ewf1043r7sc:r-58917326,Máy giặt,"Máy này không có chế độ vệ sinh lồng giặt ah ĐMX Tôi đã mua dùng khoảng 01 tháng, nhưng không biết chức năng vệ sinh lồng giặt ở đâu. Vui lòng hướng dẫn giúp Cám ơn rất nhiều",1,1,1
+c275474ea2124aed,Nồi cơm điện,Nồi nấu cơm ăn ngon,1,1,1
+sharp-ksh-d28v:r-52990824,Nồi cơm điện,Cho mình hỏi nồi mình mua được 1 tháng Mà sao 1-2 ngày nay nấu cơm bị sượng ko chín cơm .,0,-1,0
+panasonic-nr-ba229pkvn:r-46965339,Tủ lạnh,"Tủ hoạt động rất êm, bảo quản thực phẩm tốt, làm đá nhanh, tiết kiệm điện, tôi rất hài lòng",1,1,1
+noi-com-nap-gai-18-lit-panasonic-sr-mvn18frax:r-56444864,Nồi cơm điện,Rất tốt cơm ăn rất ngon,1,1,1
+sunhouse-shd8606-18-lit:r-53775423,Nồi cơm điện,Tốt,1,1,1
+sharp-ks-18tjv:r-55961150,Nồi cơm điện,"Nồi cơm tốt, ko có gì chê",1,1,1
+tu-lanh-toshiba-inverter-711-lit-side-by-side-gr-rs910wi-pmv-06-mg:r-59949560,Tủ lạnh,"Rất ưng thiết kế hộc cửa của em Toshiba này. Nhà em hay ép nước detox bằng chai 2 lít, dựng đứng ở cánh tủ thoải mái không bị cấn nắp. Đóng mở cửa cũng chắc nịch không bị rung lắc chai.",1,1,1
+lg-inverter-1-5-hp-v13win1:r-57059849,Máy lạnh,mới lắp dùng 1 ngày không làm lạnh được. 10 ngày chưa tới khắc phục,-1,-1,1
+samsung-inverter-307-lit-rb30n4190by-sv:r-53158642,Tủ lạnh,sản phẩm xài được,0,1,0
+toshiba-gr-b22vu-ukg:r-55284531,Tủ lạnh,Sản phẩm rất tốt ạ,1,1,1
+sharp-75-kg-es-y75hv-s:r-57722803,Máy giặt,"Dịch vụ bảo hành tệ, chậm trễ. Bán hàng nhanh nhưng bảo hành chậm. Vào hai lần kiểm tra nhưng không có hiệu quả mặc dù kỹ thuật viên lần 1 báo khách do lỗi máy nhưng không biết hư gì. Lần 2 vào chỉ để biết hư chỗ nào. Sửa chữa mất thời gian, rắc rối. Đội ngũ kỹ thuật viên thiếu chuyên môn vào hai lần nhưng không sửa được. Linh kiện không chuẩn bị cho việc bảo hành cho khách. Hẹn nhiều lần ảnh hưởng công việc, mất thời gian",-1,-1,1
+noi-com-nap-gai-toshiba-rc-10jh2pv-b-1l:r-54708485,Nồi cơm điện,Nên mua để dùng nhé mọi người.,1,1,1
+aosmith-c1:r-40246743,Máy lọc nước,"Mình hẹn lắp đặt mấy lần do việc cá nhân đột xuất, nhưng hãng vẫn nhiệt tình đặt lịch. Nhân viên rất lịch sự. Hài lòng",1,-1,0
+noi-com-dien-tu-sharp-18-lit-ks-com194ev-rd:r-59258587,Nồi cơm điện,"Đề nghị giao hàng hôm nay k dc hẹn nữa ngày nào cũng dt xin rồi hẹn mai giao rồi 3 cái mai giờ hẹn 4/4 giao la sao . Hôm qua 3/4 dt hẹn giao trước 9h tối , e bảo sáng mai giao cho e giờ lại dt bảo mai làm ăn ki z đề nghị kiểm tra cuộc gọi tổng đài lại nhan viên hứa giao hết lần này đến lần khác ma k giao",-1,-1,1
+noi-com-nap-gai-toshiba-rc-18jh2pv-b-18l:r-52371499,Nồi cơm điện,"Sản phẩm dùng rất tốt,GĐ mình rất hài lòng vs sản phẩm nay",1,1,1
+tu-lanh-aqua-aqr-t220fa-fb:r-54369648,Tủ lạnh,"Nhỏ gọn, dễ lâu chùi,giá thành tốt",1,1,1
+sunhouse-shd8606-18-lit:r-54645129,Nồi cơm điện,"Mua nồi mới về nấu đc 1 hôm cho lên gác mang nồi cũ ra nấu. Vì nồi mới cơm không ngon, không chín kỹ, sượng.",-1,-1,1
+noi-com-cao-tan-toshiba-rc-18ix1pv-1l:r-53567625,Nồi cơm điện,Cơm chín ngon,1,0,0
+toshiba-inverter-1-hp-ras-h10p2kcvg-v:r-59425234,Máy lạnh,Quá tệ . Xài được 1 tháng đã chảy nước .. ĐMX càng ngày càng tệ từ bếp gas giờ tới máy Lạnh,-1,-1,1
+panasonic-nr-bx471gpkv:r-53706034,Tủ lạnh,"Bảo quản thực phẩm tươi lâu, ít tốn điện, máy chạy êm. Mặt gương nên vệ sinh dễ. Nói chung là hài lòng",1,1,1
+noi-com-dien-tu-1-lit-panasonic-sr-cl108wram:r-55682219,Nồi cơm điện,Nên mua nhé nhiều chức năng dễ sd,1,1,1
+may-loc-nuoc-ro-hydrogen-kangaroo-kg12ha-12-loi:r-57266293,Máy lọc nước,"Tôi đã tìm hiểu mấy dòng lọc nước này rất kỹ từ RO đến ion kiềm. Sau khi nghiên cứu tôi thấy máy ion kiềm thì tốt thật nhưng toàn dòng nước ngoài đắt quá, tôi chưa đủ điều kiện chi 60 triệu cho một cái máy.Vậy nên tôi lựa cái tầm vừa vừa cho gia đình, vẫn sạch vẫn khỏe là được. Quan trọng hãng Việt mới hiểu nước của Việt làm sao, thay lõi sau này dễ mà vừa tiền. Nên mua cái máy này xong thấy rất hài lòng, chưa có gì để chê",1,1,1
+panasonic-nr-ba229pkvn:r-50130943,Tủ lạnh,"Tủ lạnh rất tốt, mau đong đá,ngăn mát giữ thức ăn tốt kg hôi, tủ lạnh Panasonic tiết kiệm điện",1,1,1
+daikin-inverter-1-hp-atkb25yvmv:r-59466197,Máy lạnh,Đặt hàng 11h hôm trước bào hẹn lắp điều hoà 1820h hôm sau mà đến 19h hsau gọi ko lắp dc. Làm ăn vớ vẩn..,-1,-1,1
+may-giat-hisense-wtja1015ut:r-57608375,Máy giặt,"dùng cũng được, không có vấn đề gì",1,1,1
+panasonic-nr-bx471gpkv:r-59745738,Tủ lạnh,Rất tệ k nên mua tủ lạnh mà cứ ngỡ máy gạo,-1,-1,1
+sharp-ks-18tjv:r-55598856,Nồi cơm điện,Nồi cơm dùng ok. Giữ nóng lâu. . rất tốt. M.n. nên mua,1,1,1
+may-loc-nuoc-ro-nong-nguoi-lanh-mutosi-mp-s1011-10-loi:r-56450246,Máy lọc nước,"Máy lọc nước dùng ổn, lọc nước chưa được ngọt lắm, so với cái hãng khác thì chưa tốt bằng",0,1,0
+panasonic-nr-bx471gpkv:r-46652436,Tủ lạnh,rất tiện lợi nhiều ngăn giã đông tốt chạy êm giá tiền hợp lý làm đá nhanh ngăn đá rất tiện mà bảo quản thức ăn tốt,1,1,1
+panasonic-nr-ba229pkvn:r-49883924,Tủ lạnh,Tủ lạnh tốt tiết kiệm điện đông đá nhanh chóng làm mát cực êm để mình vết hiệu với bạn bè và người thân,1,1,1
+may-loc-nuoc-ro-hydrogen-kangaroo-kg12ha-12-loi:r-57279789,Máy lọc nước,"Thấy Kangaroo quảng cáo cái là mua liền, sản phẩm sử dụng tốt lắp đặt chu đáo uống nước rất ngọt",1,1,1
+panasonic-nr-ba229pkvn:r-49713580,Tủ lạnh,"Hoạt động tốt , tủ lạnh chạy êm , tiết kiệm điện , bảo quản tốt thực thẩm , nhân viên tư vấn rất chu đáo , tôi sẽ giới thiệu sản phẩm này cho bạn bè người thân",1,1,1
+noi-com-dien-tu-sunhouse-18-lit-shd8911:r-57061801,Nồi cơm điện,"Dễ sd , nấu cơm ngon , cùng 1 loại gạo nhưng nấu nồi Sunhouse này ngon hơn. Mới sd chức năng nấu đã thấy hài lòng .hơi nước ít,ko có ra chỗ đựng luôn.ok tuyệt",1,1,1
+smart-tivi-samsung-fhd-43-inch-ua43f6000f:r-59195233,Tivi,"Không kết nối được với điện thoại của hãng khác. Mua tivi để kết nối với điện thoại, phát màn hình cho con học nhưng không được, kén điện thoại. Không phải điện thoại của hãng Samsung thì không kết nối được. Chán, mua tivi để kết nối là chủ yếu, bây giờ không sài được. Bên hãng lại không chịu đổi,cứ đổi cho điện thoại khác hãng. Quá tệ, hãng kêu mua điện thoại Samsung mới sài được. Mọi người nên suy nghĩ trước khi mua. Dòng này nó không bằng cái đời cũ, điện thoại hay loa Bluetooth đều kết nối được, còn cái dòng này mua về là phải mua điện thoại Samsung và loa Bluetooth của Samsung mới sài được nha.",-1,-1,1
+panasonic-nr-bx471gpkv:r-50303780,Tủ lạnh,Sản phẩm dùng rất Ok. Chạy êm tiết kiệm điện năng . Bảo quản thực phẩm tốt. Làm đá nhanh,1,1,1
+sharp-ks-18tjv:r-54020975,Nồi cơm điện,Xài ngon,1,1,1
+may-giat-toshiba-tw-t21bu105uwv-mg:r-57422893,Máy giặt,"Tôi mua chưa tới 1 năm. Máy bị lỗi board. NV bảo hành xuống kiểm tra nói có dấu nại, hở boaảd. Hoá ra ĐMX giao hàng lỗi cho tôi à.",-1,-1,1
+ro-sunhouse-sha8866k-7-loi:r-50108690,Máy lọc nước,"Mua được gần 2 ngày, đã xả nước rất nhiều lần rồi nhưng vẫn không thấy sạch, nước vẫn mùi nước máy và có vật thể đen đen giống than hoạt tính, đã liên hệ và đã kiểm tra nhưng giờ bên kiểm tra bảo phải liên hệ bên hãng để thẩm định lại nhưng tôi lại không có thời gian để đợi hãng đến. Tôi thật sự không hài lòng về sản phẩm này, mong được đổi trả lại.",-1,-1,1
+panasonic-inverter-366-lit-nr-tl381vgmv:r-47109247,Tủ lạnh,Mẫu mã đẹp và sang trọng. Ngăn chứa đồ rộng bảo quản tốt . làm đá nhanh tiết kiệm điện,1,1,1
+may-giat-electrolux-ultimatecare-300-inverter-10-kg-ewf1024d3wc:r-59828168,Máy giặt,"máy xài ok, rất tốt",1,1,1
+lg-inverter-1-5-hp-v13win1:r-56859132,Máy lạnh,Ae phồng trọ nên mua nói thật chiệu hết nỗi cái mùa nông nầy rồi máy chay rất ngon cục nóng chay hok ngoe tiến luôn,1,-1,0
+tu-lanh-panasonic-300-lit-nr-bv331wgkv:r-56241377,Tủ lạnh,Tủ chạy êm ko có tiếng ồn,1,1,1
+may-loc-nuoc-ro-nong-nguoi-lanh-toshiba-twp-w2396svn-m-10-loi:r-59950725,Máy lọc nước,"Máy lọc nước nóng lạnh dùng rất tiện, nước lọc sạch, nóng lạnh nhanh, thiết kế đẹp và dễ sử dụng. Hoạt động ổn định, phù hợp cho gia đình. Rất hài lòng, đáng mua",1,1,1
+lg-inverter-1-5-hp-v13win1:r-56937249,Máy lạnh,Nhân viên lắp đặt ko hút chân không. Chỉ xã air,1,-1,0
+noi-com-nap-gai-18-lit-panasonic-sr-mvn18lrax:r-53814890,Nồi cơm điện,Mình nấu thử thấy ok ạ,1,1,1
+sharp-ks-223tjv-ch-22-lit:r-56722560,Nồi cơm điện,"Nấu 3 chén gạo là không nấu được nhé.để kho thịt thì cũng tiết kiệm hơn xài bếp gas,nấu súp cũng được",-1,1,0
+toshiba-rc-18mh1pv-f-18-lit:r-55577497,Nồi cơm điện,Nấu khỏi rửa nồi lun,1,1,1
+samsung-rs64r53012c-sv:r-52884474,Tủ lạnh,"sản phẩm tốt, chức năng dễ sử dụng, mẫu mã đẹp",1,1,1
+sunhouse-shd8606-18-lit:r-56833481,Nồi cơm điện,"Nồi nấu cơm rất ngon, thời tiết nắng nóng vậy nấu cơm không bị oi nha mọi người, mấy nồi khác thì bị á.",1,1,1
+may-giat-aqua-inverter-9-5-kg-aqd-a952j-bk:r-56882156,Máy giặt,"máy giặt tốt , rất ưng ý , hài lòng , chắc chắn sẽ giới thiệu cho bạn bè",1,1,1
+tu-lanh-funiki-110-lit-hr-t6120tdg:r-57284899,Tủ lạnh,"Hoạt động tốt, Mới cắm điện ban đầu hơi nóng vỏ sau, sau khoản 1 đêm thì đỡ nóng, đông đá sau 5h. Giao hàng nhanh, đúng giờ, nhiệt tình.",1,1,1
+smart-tivi-toshiba-fhd-43-inch-43v35rp:r-58930973,Tivi,không có bluetooth và giọng nói. 2 chức năng cơ bản mà cũng không có,-1,1,0
+may-loc-nuoc-ro-karofi-kaq-x18-11-loi:r-59102761,Máy lọc nước,Lõi lọc thay định kỳ 3 tháng 1 lần mà gần 4 tháng rồi chưa thấy bên ĐMX gọi thợ tới thay. Lúc mua thì tư vấn nghe hay lắm,0,-1,0
+tu-lanh-aqua-aqr-t220fa-fb:r-55205853,Tủ lạnh,Dạ OK ạ,1,1,1
+noi-com-dien-tu-tefal-07-lit-rk515168:r-57853019,Nồi cơm điện,Nồi đẹp nhưng nấu nghe tiếng tách tách liên tục,0,-1,0
+sharp-ksh-d28v:r-40400149,Nồi cơm điện,"Tôi chọn mua vì nồi có thể sử dụng nấu cho nhiều người ăn, nồi nấu cơm ngon và nhanh. Tuy nhiên , có 2 điểm tôi không hài lòng là lòng nồi dính cơm, nấu lúc nào cũng bị dính cơm nhiều,mất thời gian vệ sinh lòng nồi và thân nồi rât nóng sau khi cơm chín. Nếu không phải cần nồi lớn, tôi sẽ không chọn nồi này!",0,-1,0
+may-loc-nuoc-ro-nong-nguoi-lanh-mutosi-mp-s1011-10-loi:r-55985642,Máy lọc nước,"Nước nóng chảy ra nếu nóng thêm tí xíu nữa thì tốt, máy chạy êm. Phần nước lạnh không dùng nhiều nên chưa đánh giá dc",0,1,0
+toshiba-gr-b22vu-ukg:r-51399635,Tủ lạnh,tủ bị lỗi ma xuống bảo hành nói binh thường ..mua nay gần nữa tháng mà chưa xài được nua...nào giờ ủng hộ điện máy xanh ma nay mua co sự cố vậy mới thấy rõ..lúc bán thì nhanh gọn ma bảo hành thì chậm trễ...,-1,-1,1
+tu-lanh-panasonic-325-lit-nr-bc361vgmv:r-57338743,Tủ lạnh,"Tủ lạnh thiết kế các ngăn rất rộng rãi, đặc biệt là ngăn để rau củ quả. Các ngăn kéo ra vào rất dễ dàng. Ngăn đông mềm trữ các đồ tươi sống rất tốt, có thể bảo quản tốt để sử dụng trong 1, 2 ngày . Nhân viên bán hàng và nhân viên giao hàng đều tư vấn rất nhiệt tình. Tủ lạnh này phù hợp cho gia đình từ 4 6 người, trữ rau và đồ ăn tươi sống thoải mái. Tủ lạnh tốt, Rất đáng tiền.",1,1,1
+sharp-ks-18tjv:r-53708196,Nồi cơm điện,Dùng tốt,1,1,1
+google-tcl-4k-55-inch-55p635:r-58533179,Tivi,Tivi mua chưa được 2 tháng thì hỏng .,-1,-1,1
+tu-lanh-aqua-inverter-236-lit-aqr-t265fa-wfb:r-59384401,Tủ lạnh,"Mới dùng 10 ngày, tủ làm đông làm lạnh đều ko sử dụng được, gọi bảo hành 2 ngày ko thấy phản hồi, quá tệ,",-1,-1,1
+may-giat-panasonic-inverter-9-kg-na-v90fa1lvt:r-59178956,Máy giặt,"Máy giặt sạch, chạy êm, tiết kiệm điện",1,1,1
+e8237af23a6b9259,Tủ lạnh,"Tủ dùng tốt, các chức năng máy dùng ổn định",1,1,1
+daikin-inverter-1-5-hp-atkb35yvmv:r-56982896,Máy lạnh,"Máy lắp được hơn hai tuần, hiện tại thấy máy chạy êm, làm lạnh ổn. Có 1 điều không hài lòng ở khâu lắp đặt cho lắm, mua máy bên đmx nhiều rồi nhân viên không hút chân không máy nào cả, về lâu dài không biết có ảnh hưởng tới máy không. Bên NK nhân viên lắp máy làm rất kĩ lưởng hút chân không đầy đủ",0,0,1
+may-loc-nuoc-ro-karofi-kaq-x26-10-loi:r-56000903,Máy lọc nước,"Đơn hàng 74642887 Cho tôi hỏi, sao cứ vặn vòi lấy nước thì máy kêu cạch cạch, sau đó phải vài phút mới dừng kêu",-1,-1,1
+may-loc-nuoc-ro-nong-nguoi-lanh-sunhouse-ultrax-sha76601s-11-loi:r-59330940,Máy lọc nước,"Trải nghiệm đầy thất vọng, không hài lòng. Động cơ máy phát tiếng to, không êm khi động cơ tự động ngắt thì máy rung mạnh khi máy bơm nước lên trên để lọc thì nghe bên trong máy có tiếng nước nhỏ giọt giọt ngược lại xuống dưới bể chứa vòi nước chảy chậm, yếu, đợi lâu.",-1,-1,1
+noi-com-dien-philips-1-8-lit-hd3008-30:r-57615875,Nồi cơm điện,"Một trải nghiệm mua hàng thực sự tệ. Nấu vài bữa là bị cháy, nồi ko bật lên rồi cháy lòng nồi luôn. Bảo hành xong nấu được vài hôm là cháy méo cả nồi. May phát hiện sớm chứ ko là hoả hoạn. Tưởng philips oke nên yên tâm mua ai dè tệ thực sự. Không nên mua. Dùng chưa được 1 tháng nữa",-1,-1,1
+samsung-inverter-345l-rt35cg5544b1sv:r-56075149,Tủ lạnh,"rất hài lòng về sản phẩm, sản phẩm tốt, ngăn đông mềm hoạt động tốt",1,1,1
+samsung-rs64r53012c-sv:r-53170536,Tủ lạnh,"sp bảo quản tốt, làm đá tốt nhưng ngăn đựng đá hơi nhỏ xíu, còn lại không vấn đề gì",1,1,1
+toshiba-rc-18mh2pv-f-18-lit:r-55883344,Nồi cơm điện,"Nồi nấu ổn mà đáy nồi hơi mỏng nên bị cháy nhưng ko sao, nói chung là ổn",0,0,1
+may-giat-haier-x9-inverter-14-kg-hw140-bd14387gnu1:r-58835724,Máy giặt,"Máy hoạt động ổn, giặt sạch so với máy cũ. Tuy nhiên hãng xem lại chế độ bảo hành, quảng cáo tặng thêm 2 năm bảo hành, tổng cộng được bảo hành 4 năm, khi tra trên web của hãng Hairer nhập ngày mua, cũng là ngày đăng ký bảo hành là ngày 10/11/2025 thì nhận được kết quả tra cứu Bảo hành có hiệu lực đến 11/10/2027. Tính ra máy bảo hành được 1 năm 11 tháng. Không biết hãng mới này có uy tín không",1,-1,0
+sharp-ks-18tjv:r-43392559,Nồi cơm điện,Đã đổi 2 lần mà nồi vẫn nấu sống vài chất lượng quá kém. giá cao mà chất lượng thì quá tồi tệ,-1,-1,1
+noi-com-dien-tu-panasonic-18-lit-sr-dl184wra:r-59170887,Nồi cơm điện,"Nồi nấu cơm bị cháy, nấu 5 lần cháy đến 4 lần, chất lượng tệ không nên mua",-1,-1,1
+tu-bluestone-18-lit-rcb-5938:r-55199089,Nồi cơm điện,Nấu ổn cơm chín đều và có 1nhược điểm ứ nước nắp nồi,1,0,0
+panasonic-82-kg-na-f82y01drv:r-56982253,Máy giặt,"máy giặt sạch, tiết kiệm điện nha, ổn áp ạ",1,1,1
+may-giat-toshiba-inverter-tw-t25bzu115mwv-mg:r-57863250,Máy giặt,"Máy giặt kêu như máy chà, gọi hãng bảo chân không cân bằng, chỉnh sửa 1 hồi nói do máy chạy dây curoa nên kêu vậy.",-1,-1,1
+lg-inverter-1-5-hp-v13win1:r-57104964,Máy lạnh,Tiết kiệm điện vận hành tốt cục nóng chạy êm ru,1,1,1
+panasonic-nr-bx471gpkv:r-53679656,Tủ lạnh,Đã và đang dùng tủ lạnh rất tốt và phù hợp với công năng sử dụng của gia đình mình(nhất là ngăn đông miềm) bà xã cực kỳ ưng ý luôn và nhân viên tư vấn và lắp đặt rất nhiệt tình chu đáo (mình mua trả góp 0% ),1,1,1
+399ee27cea5ee2c4,Máy giặt,máy giặt sạch,1,1,1
+toshiba-rc-10nmfvn-wt:r-51853452,Nồi cơm điện,"Sp tốt thương hiệu thái lan uy tín , nồi dày ơi là dày",1,1,1
+sharp-75-kg-es-y75hv-s:r-56440677,Máy giặt,"Giá rẻ, xài tốt.",1,1,1
+may-giat-aqua-inverter-9-5-kg-aqd-a952j-bk:r-56926281,Máy giặt,Sản phẩm tốt sẽ giới thiệu cho bạn bè,1,1,1
+panasonic-inverter-1-hp-cu-cs-pu9akh-8:r-57107659,Máy lạnh,May êm mat và không hôi,1,1,1
+may-giat-aqua-inverter-9-5-kg-aqd-a952j-bk:r-56799272,Máy giặt,Mình mới mua thấy máy chạy êm và ok,1,1,1
+google-tcl-4k-55-inch-55p635:r-54450344,Tivi,Hình ảnh rõ nét.âm thanh to,1,1,1
+google-tcl-4k-55-inch-55p635:r-54205864,Tivi,Khá ổn đấy chứ,1,1,1
+panasonic-inverter-1-hp-cu-cs-pu9akh-8:r-56861345,Máy lạnh,Ổn áp đó bà con,1,1,1
+may-loc-nuoc-ro-nong-lanh-sunhouse-sha76222kl-11-loi:r-57147574,Máy lọc nước,Sản phẩm rất tốt. Nước ngon và nóng lạnh tốt. Rất hài lòng,1,1,1
+samsung-inverter-345l-rt35cg5544b1sv:r-54687132,Tủ lạnh,Dịch vụ tốt,1,1,1
+sharp-ks-18tjv:r-56930259,Nồi cơm điện,nồi nấu bị cơn sống.. dỏi hai lân qua loại khác,-1,-1,1
+8ec7396416636bc6,Tủ lạnh,"Tủ hơi bị lệch cửa. Tạm ổn, có cái dây nguồn gây thất vọng dây nhỏ chui thươg, thua dây tủ cùi bắp củ....",-1,0,0
+panasonic-82-kg-na-f82y01drv:r-57546639,Máy giặt,"Sau 3 tháng sử dụng máy êm ái, ổn, giá cũng ổn chưa thấy điểm nào chê. Good 9.8/10",1,1,1
+daikin-inverter-1-hp-atkb25yvmv:r-58252100,Máy lạnh,Làm ăn gian dối lừa gạt khách hàng . Tư vấn bán hàng bảo hành 2 năm nhưng kích hoạt chỉ có 1 năm,-1,-1,1
+may-giat-electrolux-ultimatecare-500-inverter-10-kg-ewf1023p5wc:r-59924184,Máy giặt,"máy xài tốt lắm , oke",1,1,1
+panasonic-nr-ba229pkvn:r-49922971,Tủ lạnh,"Sản phẩm tốt,bảo quản thực phẩm tốt,tủ làm đá nhanh, tiết kiệm điện, không phát ra tiếng ồn",1,1,1
+toshiba-gr-b22vu-ukg:r-52747389,Tủ lạnh,mới mu,-1,1,0
+may-loc-nuoc-ro-kangaroo-kg100hu:r-42510539,Máy lọc nước,Máy lọc nước này không tốt. Tôi mua hôm 13/07 đến nay bị lỗi 2 lần. Lần 1 máy lọc không ngắt dù đầy nước. Lần 2 hôm qua nước rò rỉ do xúc ống nối. Kỹ thuật ĐM đổi máy mới lần 2. Nc chung dịch vụ ok tuy nhiên sản phẩm quá tệ,-1,-1,1
+may-loc-nuoc-ro-nong-nguoi-lanh-mutosi-mp-s1011-10-loi:r-56298759,Máy lọc nước,"Thiết kế nhìn sang trọng, nước RO uống vị nhạt đặc trưng như các máy lọc nước khác, ai uống nước bình công nghiệp quen rồi sang uống nước RO lúc đầu sẽ thấy không quen vị. Nước nóng thì nấu rất nhanh nhưng điểm hạn chế là không có đèn báo nóng lạnh.",0,1,0
+noi-com-dien-philips-1-8-lit-hd3008-30:r-58833620,Nồi cơm điện,"Cần đc hỗ trợ, cơm chưa chín đã nhảy lên số rất bực mình",-1,-1,1
+panasonic-82-kg-na-f82y01drv:r-56763765,Máy giặt,Đã hoàn thành 1 lần giặt và muốn máy vắt thêm lần nữa cho đồ khô thì máy giặt lại đỗ thêm nước vô thành U19 T chỉ chọn chế độ máy xoay cho khô đồ thôi lại quay lại bước thêm nước vô để vắt cũng như không.,0,-1,0
+tu-lanh-aqua-inverter-469-lit-aqr-m536xa-gb:r-57371652,Tủ lạnh,tủ lạnh ok,1,1,1
+may-giat-aqua-inverter-9-5-kg-aqd-a952j-bk:r-56882336,Máy giặt,"mình mua cho vợ dùng, máy xài rất tốt nhé",1,1,1
+may-loc-nuoc-ro-nong-nguoi-lanh-mutosi-mp-s1011-10-loi:r-55986306,Máy lọc nước,"các bạn tư vấn mình máy này, thấy dùng ok, ngoại hình được, hiện tại mới mua nên dùng vẫn tốt, giao hàng lắp đặt cũng nhanh, nói chung hài lòng",1,1,1
+toshiba-gr-b22vu-ukg:r-52181759,Tủ lạnh,ngăn làm mát luôn luôn bị mất chế độ làm mát tủ hôi bị 3-4 lần trên 2 tháng rất là thất vọng,-1,-1,1
+tu-lanh-panasonic-325-lit-nr-bc361vgmv:r-57298018,Tủ lạnh,Sp ngoại hình đẹp cửa là mặt kính nhìn rất sang trọng. Công nghệ tiết kiệm điện tối ưu sử dụng ít hao tốn điện năng. Ok ạ,1,1,1
+may-loc-nuoc-ro-nong-nguoi-lanh-hydrogen-sunhouse-ultrax-sha76658sh-11-loi:r-57457371,Máy lọc nước,"Tôi đã mua máy lọc nước Sunhouse ShA76658 lạnh sâu,nóng nhanh mau rất hiện đại bắt mắt nhiều người hỏi tôi mua đâu để sử dụng tôi thấy sẽ rất OK nên cũng đã giới thiệu cho bạn bè tôi",1,1,1
+tu-bluestone-18-lit-rcb-5938:r-59420086,Nồi cơm điện,anh chị đã sử dụng qua có cách nào khắc phục đọng nước ở nồi cơm ko ạ,-1,0,0
+google-tcl-4k-55-inch-55p635:r-57281596,Tivi,"Tuvi kết nối với loa bluetooth xem youtube thì nghe được mà chuyển sang kênh truyền hình thì lại không có tiếng, phải tắt loa đi rồi mở tăng âm lượng tivi lên mới có tiếng ở loa tivi. Mình muốn nghe trên loa mà chỉ nghe được youtube thôi",0,-1,0
+panasonic-nr-ba229pkvn:r-52122403,Tủ lạnh,"Tủ có thiết kể sang trọng,sau thời gian sử dụng mình thấy bảo quản thực phẩm tốt, ngăn mùi hiệu quả. Hoá đơn điện cũng giảm. Sẽ tiếp tục tin dùng sản phẩm của Panasonic!",1,1,1
+panasonic-inverter-1-hp-cu-cs-pu9akh-8:r-56789157,Máy lạnh,"máy lạnh xài ok nha mn, hơi lạnh êm, ổn. sẽ mua thêm 1 máy nữa. dịch vụ ok",1,1,1
+760a60ee50d16282,Nồi cơm điện,"Nồi nấu tốt , hạt gạo nở đều , cơm ngon",1,0,0
+lg-gr-b256bl:r-56801459,Tủ lạnh,"Dùng OK, êm và đẹp. bám vân tay ở cửa nhiều",1,1,1
+may-loc-nuoc-ro-nong-nguoi-lanh-mutosi-mp-s1011-10-loi:r-56211336,Máy lọc nước,"sp sử dụng tạm ổn, đã bảo hành 2 lần.",0,0,1
+ro-sunhouse-sha8866k-7-loi:r-58101983,Máy lọc nước,"Máy lọc ok. Có điều nv lắp ẩu thế nào mà chỗ van nước bị rò băng tan, lỗi cơ bản thế thì hỏng. DMX lhe mình để khắc phục giúp.",1,-1,0
+aqua-inverter-1-5-hp-aqa-rv13qa3:r-57953607,Máy lạnh,"máy lạnh hoạt động tốt, hiện tại chưa có vấn đề gì hết",1,1,1
+samsung-inverter-406-lit-rt42cg6584b1sv:r-56080518,Tủ lạnh,"Có tính năng Ngăn đông mềm linh hoạt Optimal Fresh+, Công nghệ SpaceMax tăng thêm dung tích sử dụng tiện lợi",1,1,1
+panasonic-82-kg-na-f82y01drv:r-57478052,Máy giặt,"Màu sắc sang trọng, không ồn khi giặt",1,1,1
+panasonic-nr-ba229pkvn:r-54573412,Tủ lạnh,sẽ giới thiệu bạn bè gia đình,1,1,1
+may-loc-nuoc-ro-karofi-kaq-x26-10-loi:r-56119012,Máy lọc nước,Tuyệt vời,1,1,1
+aqua-inverter-1-5-hp-aqa-rv13qa3:r-57954006,Máy lạnh,"chất lượng máy hoạt động tốt, mà nhiều lúc máy kêu hơi to, ồn",1,1,1
+aqua-inverter-1-hp-aqa-rv10qa2:r-58754482,Máy lạnh,chưa thấy nhân viên gọi lại hỗ trợ mình lỗi do thợ lắp ạ,-1,-1,1
+panasonic-82-kg-na-f82y01drv:r-57267839,Máy giặt,máy giặt vắt rất êm nhân viên lắp đặt vui vẻ,1,1,1
+lg-inverter-394-lit-gn-d392bla:r-56403305,Tủ lạnh,chỗ làm đá tự động. không làm đá. tủ lạnh đắt tiền mà chán quá. cần them sự uy tín khi mua trên mạng,-1,-1,1
+tu-lanh-toshiba-inverter-711-lit-side-by-side-gr-rs910wi-pmv-06-mg:r-59949611,Tủ lạnh,khay kệ dễ điều chỉnh nên có đám tiệc gì cũng thoải mái xoay sở,1,1,1
+8c3136c47fdd6a1e,Máy giặt,"Hình dáng đẹp, máy chạy êm. Đạt",1,1,1
+may-giat-toshiba-inverter-12-kg-aw-t26d1300tv-mg:r-59332066,Máy giặt,"Sản phẩm giac ko sach, gọi bảo hành thì đùng đẩy qua hãng, hãng đỗ lôi cho người dùng,giac ko đúng cách,dung ko đúng nước giac, cả tuần chờ câu trả lời từ cua hàng, kết quả là ko một cuộc gọi..tệ",-1,-1,1
+may-giat-lg-ai-dd-inverter-11-kg-fx1411n5s:r-58867789,Máy giặt,"Máy bị ra nước ở đáy máy giặt, ycau gọi cho tôi hỗ trợ sdt sau xxxx231245",0,-1,0
+may-giat-aqua-inverter-9-5-kg-aqd-a952j-bk:r-56924393,Máy giặt,Sẽ giới thiệu cho người thân và bạn bè,1,1,1
+lg-inverter-1-5-hp-v13win1:r-56915429,Máy lạnh,1. Thông số kỹ thuật của sản phẩm được công bố trên web là Điều khiển trái phải tuỳ chỉnh tay. Nhưng thực chất là ko. Hướng gió đi thẳng ko hề sang trái phải như miêu tả.Nhân viên xuống kiểm tra cũng xác nhận cánh quạt ko xoay trái phải bằng tay được.2. Khi ko thể điều chỉnh trái phải thì chức năng swing ngang có dư thừa Chức năng ko rõ ràng nhưng đổi thì mất phíChỉ có ngày cuối tuần được về nhà nghỉ ngơi mà sử dụng ko như mong muốn làm khó chịu ghê. Thất vọng về LG. Nhân viên Dmx tuy ko khắc phục đc nhưng cũng đã nhiệt tình hỗ trợ.,0,-1,0
+lg-inverter-394-lit-gn-d392bla:r-55273345,Tủ lạnh,Vừa dùng nên chưa đánh giá đc tốt hay k nhưng tạm nói là dùng ok,1,1,1
+smart-tivi-lg-ai-4k-55-inch-55ua8450psa:r-58483702,Tivi,"Sản phẩm tốt, có tính năng AI",1,1,1
+sharp-75-kg-es-y75hv-s:r-56748605,Máy giặt,"Máy giặt êm , sạch quần áo . Tiết kiệm điện , Ok",1,1,1
+tu-lanh-panasonic-325-lit-nr-bc361vgmv:r-57284625,Tủ lạnh,Tủ đẹp.chạy êm.bảo quản thực phẩm tốt.đáng để mua,1,1,1
+samsung-inverter-15-hp-ar13cyfaawknsv:r-57116313,Máy lạnh,"Máy dùng rất tốt, lạnh êm ko buốt, máy chạy ko ồn, tắt mở bằng app Smarthing rất tiện lợi và hiện đại.",1,1,1
+aqua-inverter-1-hp-aqa-rv10qa2:r-57002835,Máy lạnh,OK tốt ak,1,1,1
+aqua-inverter-1-5-hp-aqa-rv13qa3:r-57964620,Máy lạnh,"sản phẩm làm lạnh thì ok, mà xài lâu cục nóng bị kêu to, hơi ồn",0,1,0
+sharp-ksh-d28v:r-29290815,Nồi cơm điện,"Tôi rất hài Lòng với sản phẩm mình đã mua ,cùng rất hài Lòng với nhận viện của dienmayXanh.com",1,1,1
+may-giat-toshiba-8kg-aw-m905bvmk:r-54454284,Máy giặt,Mới xài 2 tuần thấy ổn,1,1,1
+tu-bluestone-18-lit-rcb-5938:r-59785052,Nồi cơm điện,"Nồi cơm đọng nước sau khi mở nắp, tràn cả ra ngoài. Chán",-1,-1,1
+daikin-inverter-1-5-hp-atkb35yvmv:r-57230351,Máy lạnh,"Máy lạnh daikin là dòng công nghiệp, khỏe bền đẹp, tôi luôn chọn daikin là vì vậy",1,1,1
+sharp-18-lit-ks-183tjv-ch:r-53028494,Nồi cơm điện,Nấu ko hiểu sao không đủ nhiều nước nấu ít gạo mà vẫn trào ra ngoài,-1,0,0
+may-giat-electrolux-ultimatecare-300-inverter-10-kg-ewf1024d3wc:r-58962501,Máy giặt,sản phẩm dùng oke,1,1,1
+may-giat-hisense-wtja1015ut:r-57618689,Máy giặt,"lúc đầu dùng có lỗi nhỏ nhưng mình đã xử lý được rồi, hiện tại máy dùng tốt",0,1,0
+toshiba-gr-b22vu-ukg:r-56730712,Tủ lạnh,"Mình mua được 14 ngày rồi, hôm nay 5h sáng đột nhiên kêu to, tiếng rét rét tầm 15p. Một bên hông tủ lạnh rất nóng, một bên bình thường. Vậy tủ lạnh có vấn đề gì không Xin hỗ trợ ạ",-1,-1,1
+panasonic-nr-ba229pkvn:r-49899569,Tủ lạnh,"Tu lanh xai ben hon nhung thuong hieu khac. Tiet kiem dien, nhanh dong da, giu do duoc lanh tuoi lau",1,1,1
+sunhouse-shd8606-18-lit:r-47184799,Nồi cơm điện,Nồi nấu cơm ngon. Mua gần 1 năm dùng ok lắm a. Nồi đẹp nữa .sẽ ủng hộ thêm ah,1,1,1
+sharp-ksh-d22v:r-28399139,Nồi cơm điện,nồi cơm nấu cơm rất ngon chính đều chất lượng tốt tôi rất hài lòng về sản phẩm này,1,1,1
+toshiba-gr-b22vu-ukg:r-47602932,Tủ lạnh,Tôi mua tủ lạnh loai này được mấy tháng rồi mọi khi tôi đi làm ko biết giờ dịch ở nhà mới thấy tủ kêu to và trong 1 ngày kêu giống như mình chạy xe qua chỗ ổ gà vậy .vì dịch bệnh giãn cách nên chưa gọi nhân viên bảo hành xuống xem đc tôi thật buồn khi mình mua sp ko được tốt,-1,-1,1
+ro-sunhouse-sha8866k-7-loi:r-57153601,Máy lọc nước,Tốt nước lọc uống ngon,1,1,1
+may-loc-nuoc-ro-hydrogen-kangaroo-kg12ha-12-loi:r-57262355,Máy lọc nước,Dung rat tot va thiet ke rat dep,1,1,1
+lg-inverter-394-lit-gn-d392bla:r-52013178,Tủ lạnh,Máy hoạt động êm ái,1,1,1
+noi-com-dien-tu-toshiba-rc-18dr2pv-k-18l:r-54403428,Nồi cơm điện,Nồi hđ tốt cơm ngon,1,1,1
+may-loc-nuoc-ro-hydrogen-kangaroo-kg12ha-12-loi:r-57301526,Máy lọc nước,Uống nước ngọt bỏ tiền ra mua thấy rất ưng ý,1,1,1
+sunhouse-mama-18-lit-shd8665b:r-57720356,Nồi cơm điện,Nấu cơm không chín kỹ . Để qua đêm bị ngả vàng .Đã so sánh với nồi cũ trên cùng 1 loại gạo . Kết quả mua nồi mới nhưng vẫn xài lại nồi cũ,0,0,1
+sharp-ks-18tjv:r-58397567,Nồi cơm điện,Dùng chưa đc 1 năm lớp chống dín nồi và lớp sơn đã tróc.,-1,-1,1
+panasonic-nr-bx471gpkv:r-51805481,Tủ lạnh,"Tủ đáng đồng tiền bát gạo, chạy êm ru",1,1,1
+noi-com-cao-tan-toshiba-rc-18ix1pv-1l:r-53166106,Nồi cơm điện,Nồi cơm điện mẫu mã đẹp,1,1,1
+may-giat-aqua-inverter-9-5-kg-aqd-a952j-bk:r-56829652,Máy giặt,Ko hiểu sao giặt máy đứng imLần khác thì vắt hoài số trên màn hình đứng im,0,-1,0
+lg-inverter-394-lit-gn-d392bla:r-53827587,Tủ lạnh,"Đẹp như mới, sp tốt",1,1,1
+5a3ed964bfd28f83,Nồi cơm điện,"Nấu nhanh,cơm ngon",1,1,1
+panasonic-82-kg-na-f82y01drv:r-57440064,Máy giặt,May rất đẹp chạy êm nhiều chức năng giặt sạch ko nhàu quần áo,1,1,1
+may-loc-nuoc-ro-karofi-kaq-x26-10-loi:r-56194063,Máy lọc nước,Lúc mua nhân viên lắp đặt không được được hỗ trợ đổi máy nhưng quá tốn thời gian cho viên lắp đặt,0,-1,0
+bd9a24e631e88459,Tivi,tivi đẹp,1,1,1
+sharp-ksh-d22v:r-53425441,Nồi cơm điện,"Xài cũng ok.Sao ở ngoài bán 700k mà điện máy xanh bán tới 950k mắt quá so với thị trường , 2 cái cũng giống y nhau không khác gì.",0,-1,0
+toshiba-gr-b22vu-ukg:r-47467597,Tủ lạnh,Thất về tủ lạnh quá... Làm đá thì lâu để cả ngày trời mà chưa đông được đá ... Để kem mềm nhũng ... Khuyên mn nên mua loại khác,0,1,0
+lg-inverter-1-5-hp-v13win1:r-56978703,Máy lạnh,Ko mat lạnh,-1,1,0
+may-giat-hisense-wtja1015ut:r-57619771,Máy giặt,"MÁY CHẠY ỔN, DÙNG ĐƯỢC",1,1,1
+aqua-inverter-1-hp-aqa-rv10qa2:r-56564081,Máy lạnh,Cục nóng của máy này không tự ngắt khi phòng đủ độ lạnh ah Hay cơ chế của máy chạy liên tục. Thông thường các dòng máy có tiết kiệm điện Inveter hiện nay đều có cơ chế tự ngắt cục nóng khi phòng đủ độ lạnh mà nhỉ. Ai gặp trường hợp nà không.Với máy khi chạy cũng hơi ồn chứ không êm.,0,-1,0
+noi-com-nap-gai-18-lit-panasonic-sr-mvn18frax:r-57242253,Nồi cơm điện,Nồi cơm điện mình mua về bị hở lắp như này có sao ko ạ.,0,0,1
+panasonic-inverter-1-hp-cu-cs-pu9akh-8:r-59187575,Máy lạnh,Mình mới mua hôm 6/3 . Phòng mình 15m2 mua loại 1ngua . Thợ lắp cẩn thận nhưng k hỉu sao máy chỉ mát chứ ko hề lạnh mặc dù để chế độ cool. Ban đêm mở 25 độ nhưng nóng. Nếu mã hàng này có vấn đề cho xin đổi qa loại khác. Chứ tham khảo thấy panasonic chạy rất lạnh.,0,-1,0
+nagakawa-inverter-1-hp-nis-c09r2t28:r-54925229,Máy lạnh,Tác phong chậm chạm hứa hẹn câu ngày sản phẩm ko tốt cũng dám giới thiệu đưa ra thị trường . Mua 1 cái máy lạnh dùng mới 2 tháng đã bị hư cục nóng . Gouj điện thoại bảo hành từ 16/7 qua 17/7 có nhân viên bên điện máy xuống kiểm trả 18/7 nhân viên hãng xuống kiểm tra bảo hành rồi nhân viên báo là sẽ thay linh kiện tầm 1 đến 3 ngày là có mà nay 22/7 vẫn chưa có nhân viên xuống thay . Nhà người ta có con nít nên mua về dùng mua về trưng làm cảnh luôn hay gì . Nếu bên hãng ko thay và bảo hành luôn trong ngày hôn nay thì yêu cầu bên đmx cho nhân viên xuống gỡ máy về hoàn tiền cho khách . Chứ làm ăn thất trách ko tôn trọng quyền lợi khách hàng .,-1,-1,1
+tu-lanh-aqua-inverter-469-lit-aqr-m536xa-gb:r-57370425,Tủ lạnh,tủ lạnh tốt lắm,1,1,1
+toshiba-rc-18mh1pv-f-18-lit:r-56742576,Nồi cơm điện,Rất hài lòng với sản phẩm,1,1,1
+may-giat-electrolux-ultimatecare-300-inverter-10-kg-ewf1024d3wc:r-59815412,Máy giặt,"máy giặt dùng rất tốt, hài lòng",1,1,1
+lg-inverter-394-lit-gn-d392bla:r-57872983,Tủ lạnh,"Tủ lạnh mua hôm 25/1 về 2 ngày thì các kệ cong nức ra. hôm nay 7/2 thì thấy đá viên làm từ sáng tới chiều 12 viên đá kiểm tra thì thấy cửa ngăn lạnh đóng không chắc, đóng cửa ngăn dưới là ngăn trên bật ra. Mong cho bảo trì kiểm tra sớm dùm.",0,-1,0
+panasonic-nr-bx471gpkv:r-57469799,Tủ lạnh,"Mới đầu dùng ổn, nhưng dạo này không thấy đèn econavy sáng nữa , bị mấy tuần nay rồi",0,1,0
+toshiba-rc-10nmfvn-wt:r-29258034,Nồi cơm điện,"Tôi mua một chiếc đã hai mươi ngày tôi xin chân thành cảm ơn các bạn đã có 1 sản phẩm của hãng Toshiba là nồi cơm điện 1 l.có chất lượng tốt, đẹp, dùng nấu cơm, nấu cháo,tuy đắt nhưng tốt,tuy nhiên cốt nồi quá nặng, như gắng dày,chống dính ở biết có bền không.cảm ơn.",0,1,0
+may-giat-aqua-inverter-11-kg-aqw-dr110jt-bk:r-59040604,Máy giặt,Máy giặc này dây tiếp đất nằm ở đâu z,-1,-1,1
+noi-com-cao-tan-toshiba-rc-10ip1pv-1l:r-53564973,Nồi cơm điện,"Nồi cơm đẹp, sử dụng tốt. Nhược điểm: thời gian nấu quá lâu nên hơi tốn điện.",1,1,1
+panasonic-nr-ba229pkvn:r-49678305,Tủ lạnh,"Tủ lạnh chất lượng rất tốt, sài bền và hầu như không hỏng vặt, luôn tin tưởng panasonic !",1,1,1
+may-giat-aqua-inverter-9-5-kg-aqd-a952j-bk:r-56062873,Máy giặt,Vắt k khô cho lắm.,0,1,0
+panasonic-nr-ba229pkvn:r-49877928,Tủ lạnh,"Tủ lạnh xài rất ok , làm lạnh nhanh , tiết kiệm điện rất tốt , rất đáng tiền , mọi người nên mua nha",1,1,1
+toshiba-rc-18mh1pv-f-18-lit:r-52706389,Nồi cơm điện,Mới dùng dc 2 tháng nắp nồi và thành nồi đã ko còn khít với nhau. Cứ cập kênh 🥲🥲🥲,-1,0,0
+noi-com-nap-gai-toshiba-rc-10jh2pv-b-1l:r-53147947,Nồi cơm điện,Mới dùng được 1 tuần có đổi được sang nồi khác giá cao hơn ko shop,0,-1,0
+may-giat-hisense-wtja1015ut:r-57608705,Máy giặt,KHÔNG CÓ VẤN ĐỀ GÌ,1,1,1
+samsung-rs64r53012c-sv:r-53170561,Tủ lạnh,"tủ lạnh bảo quản tốt, tiện nghi",1,1,1
+sharp-ksh-d22v:r-40933972,Nồi cơm điện,Nồi dùng tốt. Dòng nắp rời dễ vệ sinh. Mẫu mã đẹp và dễ sử dụng. Nồi to nấu thoải mái. Giao hàng miễn phí tận nơi. Rất ưng ý,1,1,1
+may-loc-nuoc-ro-nong-nguoi-lanh-mutosi-mp-s1011-10-loi:r-56450135,Máy lọc nước,"Máy lọc nước dùng tốt, lọc nước ngọt, chạy êm",1,1,1
+noi-com-nap-gai-toshiba-rc-18jh2pv-b-18l:r-53524522,Nồi cơm điện,"Mới dùng mình thấy cũng ổn,về sau chưa biết thế nào",1,1,1
+may-loc-nuoc-ro-nong-nguoi-lanh-toshiba-twp-w2399svn-m-10-loi:r-57132749,Máy lọc nước,Tiết kiệm thời gian rất nhiều nên dùng,1,1,1
+tu-tiger-18-lit-jbv-s18w:r-52043610,Nồi cơm điện,sản phẩm sử dụng tốt màu nhìn đẹp,1,1,1
+tu-lanh-funiki-110-lit-hr-t6120tdg:r-58518107,Tủ lạnh,"dùng ổn, cho 5 sao",1,1,1
+tu-lanh-panasonic-300-lit-nr-bv331wgkv:r-56250758,Tủ lạnh,Sử dụng tốt.hài lòng về sản phẩm,1,1,1
+panasonic-nr-ba229pkvn:r-52173072,Tủ lạnh,"Tôi rất hài lòng về sản phẩm,tủ làm đá nhanh,ngăn mát bảo quản thực phẩm tốt,tủ hoạt động êm,tiết kiệm điện năng,tôi sẽ giới thiệu sản phẩm với bạn bè",1,1,1
+tu-lanh-aqua-aqr-t220fa-fb:r-57233312,Tủ lạnh,Mình mua rất hài lòng,1,1,1
+lg-inverter-1-5-hp-v13win1:r-56831197,Máy lạnh,Máy chạy ổn nhưng lắp đặt k được đẹp quấn si quá ẩu..do không có nhà xem nên không kiểm soát được,0,0,1
+samsung-rs64r53012c-sv:r-51286606,Tủ lạnh,"bị bám vân tay, bên trong tủ rộng rãi, làm đá hơi lâu, bảo quản phần ngăn đông mềm nhưng bị cứng, chỉnh chế độ thấp nhất, làm đá cục bự thì nhanh, đá làm tự động thì lâu, hoạt động êm",0,1,0
+ro-sunhouse-sha8866k-7-loi:r-54297469,Máy lọc nước,rất ok nha mn,1,1,1
+may-giat-hisense-wtja1015ut:r-57620102,Máy giặt,"cũng dùng bình thường, tốt ạ",1,1,1
+samsung-inverter-15-hp-ar40h12d0atnsv:r-59381494,Máy lạnh,Mình thấy vẫn ổn bt như giồng khác,1,1,1
+toshiba-gr-b22vu-ukg:r-55648645,Tủ lạnh,Lâu lâu chạm vào mặt ngoài tủ lạnh thì bị giật nhẹ,0,0,1
+2ab94f1dcd8c437a,Máy lọc nước,Máy sd ổn. Mới xài nên chờ xem ntn.,1,1,1
+samsung-inverter-307-lit-rb30n4190by-sv:r-53161972,Tủ lạnh,"Tủ dùng tốt,làm lạnh nhanh, chạy êm",1,1,1
+may-giat-toshiba-9-kg-aw-m1000fv-mk:r-54474119,Máy giặt,cảm thấy hơi ồn,0,1,0
+lg-inverter-1-5-hp-v13win1:r-56983378,Máy lạnh,Rất tốt máy chay êm,1,1,1
+noi-com-cao-tan-toshiba-rc-18ix1pv-1l:r-55857412,Nồi cơm điện,"hàng tốt, chất lượng",1,1,1
+tu-lanh-aqua-aqr-t220fa-fb:r-55411199,Tủ lạnh,Sp dep,1,1,1
+may-giat-hisense-wtja1015ut:r-57619539,Máy giặt,TỐT KHÔNG VẤN ĐỀ GÌ,1,1,1
+bluestone-18-lit-r5525cb:r-52924624,Nồi cơm điện,Sp tốt nhân viên chu đảo lich sự,1,1,1
+may-lanh-panasonic-inverter-15-hp-cu-cs-au12bkh-8:r-59726005,Máy lạnh,Đúng câu tiền nào của đó luôn nè. Nếu k ngại giá cao thì chốt liền luôn,1,1,1
+noi-com-dien-tu-fujihome-12-lit-rc12ls:r-59797823,Nồi cơm điện,Hàng chỉ bán online. Mua có thời gian giao rõ ràng. Mà shiper cứ gọi hẹn ngày này qua ngày khác. Cứ ôm hàng không giao. Trãi nghiệm mua hàng online rất tệ,-1,-1,1
+may-loc-nuoc-ro-karofi-kaq-x18-11-loi:r-57209932,Máy lọc nước,Hang moi dung nen k pit đánh giá s,1,1,1
+sharp-ksh-d22v:r-28790403,Nồi cơm điện,"Sản phẩm tốt, bền, thiết kế gọn , dễ dàng vệ sinh, nhân viên bán hàng tận tình, vui vẻ !!!! Rất ok",1,1,1
+may-giat-haier-inverter-10-kg-hw100-b14387gnu1:r-59456657,Máy giặt,"Máy giặt sạch , chạy êm đó",1,1,1
+aosmith-c1:r-53983966,Máy lọc nước,1. Không có máng hứng nước. 2. Mỗi lần lấy nước máy lại chạy để lấy lại nước ngay. Sao để 1/3 hoặc 1/2 chạy luôn,-1,0,0
+f4f159ad37405f6e,Máy lọc nước,"Em thấy máy có tiện ich khi nước yếu ngừng hoạt động. Thời gian này nước khu vực em ở rất yếu, thậm chí là không có. Nhưng máy vẫn chạy liên tục ạ. Chạy liên tục như vậy mà không có nước thì có làm sao ko ạ.",1,-1,0
+may-loc-nuoc-ro-karofi-kaq-x18-11-loi:r-56563324,Máy lọc nước,Đến thời điểm hiện tại dùng tốt,1,1,1
+noi-com-nap-gai-18-lit-panasonic-sr-mvn18lrax:r-56067532,Nồi cơm điện,Mình mua chưa được 1 tháng mà đổi đến 2 lầnLần 1 nắp nồi bị hở cơm không có hơi lần 2 nước chưa sôi cơm đã lên nấcMình mua tặng mà phải đổi đi đổi lại thực sự rất ngạiMọi người nên xem xét cân nhắc trước khi mua nhé,-1,-1,1
+noi-com-dien-tu-toshiba-rc-18dr2pv-k-18l:r-56436869,Nồi cơm điện,Tốt như giới thiệu.,1,1,1
+aqua-inverter-1-5-hp-aqa-rv13qa3:r-59376918,Máy lạnh,"Làm lạnh ổn. Thợ lắp k hút chân không,",0,0,1
+google-tcl-4k-55-inch-55p635:r-52923368,Tivi,"Sản phẩm đẹp, nv phục vụ nhiệt tình, giao hàng nhanh 👍",1,1,1
+sunhouse-shd8606-18-lit:r-54608931,Nồi cơm điện,Sản phẩm OK lắm ạ,1,1,1
+nagakawa-inverter-1-hp-nis-c09r2t28:r-56856094,Máy lạnh,Nhân viên lắp gáp máy lạnh làm không có tâm. Ống nước để thả chảy như thế.,0,-1,0
+may-giat-toshiba-8kg-aw-m905bvmk:r-52988935,Máy giặt,"Máy hoạt động quá ồn, mỗi lần giặt nghe ầm ầm.",-1,-1,1
+ro-sunhouse-sha8866k-7-loi:r-52521529,Máy lọc nước,nhìn chung máy tốt. Dịch vụ tốt.,1,1,1
+aqua-inverter-1-hp-aqa-rv10qa3:r-59858553,Máy lạnh,"Thợ giao lắp đúng hẹn, máy mới nên chạy êm và mát lạnh. Để sử dụng 1 thời gian mới đánh giá được chất lượng. Dịch vụ của ĐMX tốt.",1,1,1
+samsung-rs64r53012c-sv:r-53109707,Tủ lạnh,"Tủ bảo quản thực phẩm lâu, khả năng làm lạnh nhanh, chạy còn hơi ồn",1,1,1
+panasonic-nr-ba229pkvn:r-54627209,Tủ lạnh,"Hoạt động tối, máy chạy êm, giá cả hợp lý. Nhân viên tư vấn nhiệt tình chu đáo. Tôi sẽ giới thiệu cho bạn bè",1,1,1
+samsung-rb27n4010bu-sv:r-55660171,Tủ lạnh,Tủ lạnh Sài ok chị nhé,1,1,1
+panasonic-inverter-1-hp-cu-cs-pu9akh-8:r-57252447,Máy lạnh,"máy lạnh nhanh và sâu, mới dùng thấy OK",1,1,1
+254d550b669fd1fc,Nồi cơm điện,mua cho mẹ nha có 3 người thấy nấu ổn giá phải chăng nên mua,1,1,1
+panasonic-nr-ba229pkvn:r-53654992,Tủ lạnh,"Sản phẩm được nhận đúng mã, nguyên thùng, nv giao thái độ chuyên nghiệp, chu đáo, tận tâm. Rất hài lòng.",1,1,1
+may-giat-aqua-inverter-9-5-kg-aqd-a952j-bk:r-56926119,Máy giặt,Đã giới thiệu cho bạn bè mua sản phẩm,1,1,1
+samsung-inverter-307-lit-rb30n4190by-sv:r-53162377,Tủ lạnh,"Tủ dùng ổn, chưa có vấn đề gì trục trặc",1,1,1
+may-giat-hisense-wtja1015ut:r-57608439,Máy giặt,"GIẶT ĐỒ HƠI DƠ, MÁY KHÔNG LẤY HẾT NƯỚC GIẶT TRONG HỘC CHỨA, QUẦN ÁO GIẶT KHÔNG ĐƯỢC THƠM",1,0,0
+may-loc-nuoc-ro-nong-nguoi-lanh-hoa-phat-hpn666-11-loi:r-58580315,Máy lọc nước,"Tôi mua hàng giữa t4/2025 dùng đến giờ mới quay lại đánh giá. Sản phẩm tốt, chất lượng, nhân viên của Điện Máy Xanh khu vực thị trấn Văn Giang Hưng yên nhiệt tình. Rất ok về sản phẩm",1,1,1
+may-loc-nuoc-ro-nong-nguoi-lanh-mutosi-mp-s1011-10-loi:r-56450158,Máy lọc nước,"Sản phẩm tốt, êm",1,1,1
+tu-lanh-toshiba-inverter-471-lit-multi-door-gr-rf606wi-pmv-60-ag:r-59873455,Tủ lạnh,"Mua tủ lạnh tại Điện Máy XANH, nhân viên giao hàng tư vấn mua thêm chân đế để tủ cao ráo, sạch sẽ, dễ vệ sinh, đồng thời giới thiệu là hàng của công ty, inox chất lượng cao và báo giá 1.500.000 đồng. Vì tin tưởng uy tín Điện Máy XANH nên tôi mua luôn. Tuy nhiên, sau đó tìm hiểu mới biết sản phẩm này có giá bên ngoài thấp hơn rất nhiều. Tôi không rõ đây có phải hàng chính thức của công ty hay nhân viên tự bán riêng. Đề nghị Điện Máy XANH kiểm tra và làm rõ, nghiêm khắc với những nhân viên lừa dối thế này. Thực sự rất thất vọng",-1,-1,1
+ro-sunhouse-sha8866k-7-loi:r-57461956,Máy lọc nước,"Mới mua đc 9 tháng bị nước yếu, báo hãng xuống kiểm tra thì bảo bị hư bình áp báo phí 750k . Trong khi sản phẩm còn trong bảo hành . Nói hãng thì hãng nói ko có trong danh mục bảo hành . Quá tệ . Hàng kém chất lượng .",-1,-1,1
+may-loc-nuoc-ro-nong-nguoi-lanh-mutosi-mp-s1011-10-loi:r-56280026,Máy lọc nước,"sản phẩm sử dụng ok, hiện tại chưa có vấn đề gì",1,1,1
+may-loc-nuoc-ro-karofi-kaq-x18-11-loi:r-56548252,Máy lọc nước,"Mua về dùng thấy ổn. Máy kêu khá to khi lọc, máy trước mình mua đời cũ không kêu to như cái này, được cái vòi nước mạnh, nhưng mới giót ít nước thì máy đã chạy rồi",0,1,0
+noi-com-nap-gai-toshiba-rc-18jh2pv-b-18l:r-53464609,Nồi cơm điện,"Cơm Nấu Chính, Nhưng khi Nấu Bị Trào Quá nhiều,",-1,-1,1
+panasonic-nr-ba229pkvn:r-52279897,Tủ lạnh,"Tủ lạnh hoạt động tốt , khá tiết kiệm điện, bảo quản thực phẩm tốt, ngăn làm đông nhanh",1,1,1
+panasonic-82-kg-na-f82y01drv:r-55739160,Máy giặt,"Máy giặt êm, gọn gàngGiặt sạch, vắt khô.",1,1,1
+may-giat-electrolux-ultimatecare-500-inverter-10-kg-ewf1023p5wc:r-59822404,Máy giặt,"máy giặt xài ok, ổn",1,1,1
+may-giat-hisense-wtja1015ut:r-57618888,Máy giặt,máy dùng được lắm,1,1,1
+panasonic-82-kg-na-f82y01drv:r-57249923,Máy giặt,"M viết đánh giá sau khi nhận hàng được 3 tiếngMáy ko giặt đc, Máy lỗi ngay khi thử. Gọi bảo hành có vẻ khó khăn. Vẫn đang chờ nhân viên đến. Mới sáng ra thật bực mình",-1,-1,1
+may-loc-nuoc-ro-nong-nguoi-lanh-mutosi-mp-s1011-10-loi:r-56211562,Máy lọc nước,dùng ổn mà thiết kế vòi nóng hay bị vặn lộn,1,1,1
+sharp-ksh-d28v:r-53564723,Nồi cơm điện,Nồi tốt,1,1,1
+noi-com-nap-gai-toshiba-rc-10jh2pv-b-1l:r-54626233,Nồi cơm điện,Trước mắt thấy nồi có độ chống dính tốt,1,1,1
+92837805ca521dbc,Máy lọc nước,Dùng OK,1,1,1
+samsung-inverter-1-hp-ar10cyfaawknsv:r-54334281,Máy lạnh,"Làm lạnh tương đối nhanh, đảo gió lên xuống, trái phải điều khiển tự động, chế độ wind-free dễ chịu Khuyết điểm Dàn lạnh hoạt động tốt, tuy nhiên máy chuyển sang chế độ Quite thì dàn nóng hoạt động nghe rất ồn, các chế độ khác như wind-free cũng vậy, tuỳ lúc dàn nóng hoạt động kêu rất ồn, nếu phần đánh giá có cho quay video thì mình sẽ quay lại cho các bạn có ý định mua tham khảo. Tiết kiệm điện thì chưa biết, do mình mới dùng",0,-1,0
+sunhouse-mama-18-lit-shd8665b:r-52566015,Nồi cơm điện,Lại hư tiếp rồi,-1,-1,1
+may-giat-electrolux-ultimatecare-500-inverter-10-kg-ewf1023p5wc:r-59911382,Máy giặt,"máy dùng tốt lắm, ổn định",1,1,1
+may-loc-nuoc-ro-kangaroo-kg100hu:r-43203535,Máy lọc nước,"Không biết mọi người mua thế nào. Chứ e mua xong lỗi 2 lần , đổi mới vẫn lỗi. Nước thì ko ra mà nước thải cứ chạy ầm ầm. E muốn đổi sang dòng khác thì kêu mất phí 20%. Không thể chấp nhận được cái chính sách này. Haiz.",-1,-1,1
+may-giat-electrolux-ultimatecare-500-inverter-10-kg-ewf1023p5wc:r-59964491,Máy giặt,"sản phẩm sử dụng tốt, chạy êm",1,1,1
+lg-inverter-1-5-hp-v13win1:r-56733850,Máy lạnh,Cần thời gian,1,1,1
+aqua-inverter-1-5-hp-aqa-rv13qa3:r-57964738,Máy lạnh,"máy lạnh làm lạnh cũng được, cũng ok, hiện tại xài thấy tốt",1,1,1
+lg-gr-b256bl:r-56293549,Tủ lạnh,dùng tốt nhé. mẫu mã đẹp.,1,1,1
+may-giat-lg-inverter-9-kg-fb1209s5w:r-59291452,Máy giặt,Khá êm so với cái cũ . săn sale nên giá khá rẻ . chỉ dùng giặc đồ cho trẻ em nên chưa có vắn đề gì,1,1,1
+samsung-inverter-307-lit-rb30n4190by-sv:r-53178753,Tủ lạnh,"Khử mùi tốt, không nghe mùi khó chịu trong tủ lạnh,Làm lạnh và làm đá nhanh",1,1,1
+panasonic-nr-ba229pkvn:r-47212119,Tủ lạnh,Tôi mua tủ ngày 12/7/2021 sử dụng đến nay đã 15 ngày tủ bị kêu kẹt kẹt ở phía ngăn đông mỗi khi làm lạnh và tiếng nước chảy ở khây phía sau mỗi khi tủ ngưng chạy (cứ tủ đủ lạnh ngưng chạy thì ít giờ sau là lại chảy nước). Hiện tượng này đã xãy ra ngây ngày thứ 2 tôi mua về.,-1,-1,1
+daikin-inverter-1-hp-atkb25yvmv:r-57143824,Máy lạnh,máy lạnh sử dụng tốt,1,1,1
+may-giat-sharp-inverter-9-kg-es-fm90cb-sb:r-59063154,Máy giặt,"Máy giặt tôi xả không hết xà phòng và vắt không khô,tôi muốn được hỗ trợ khắc phục",-1,-1,1
+cao-tan-kangaroo-18-lit-kg18rih2:r-57501184,Nồi cơm điện,"mua trúng nồi nấu từ 6 cốc trở lên là bị sống, đổi cái mới thì không có hàng, trả lại thì phải chịu mất phí 10%, chán thật, tự dưng mất tiền mà chẳng mua đuọc hàng",-1,-1,1
+tu-lanh-toshiba-inverter-555-lit-side-by-side-gr-rs696wi-pmv-60-ag:r-59951430,Tủ lạnh,"Khay kệ kính cường lực chịu tải trọng lớn, tự do tháo lắp thay đổi chiều cao, tôi dễ dàng bỏ trữ đồ cho giỗ nhà.",1,-1,0
+may-giat-toshiba-9-kg-aw-m1000fv-mk:r-54727755,Máy giặt,Sản phẩm oker,1,1,1
+lg-inverter-1-5-hp-v13win1:r-56831607,Máy lạnh,Máy chạy êm nhanh mát. Hơp với giá tiền,1,1,1
+panasonic-nr-bx471gpkv:r-48929946,Tủ lạnh,"Sản phẩm xài tốt,êm, tiết kiệm điện,bảo quản thực phẩm rất tốt tôi sẽ giới thiệu cho bạn bè",1,1,1
+daikin-inverter-1-hp-atkb25yvmv:r-57143960,Máy lạnh,máy lạnh được,1,1,1
+google-tivi-sony-4k-50-inch-k-50s30:r-58141297,Tivi,Mua tivi tăng phiếu mua hàng mà bác buộc mua quạt đứng và treo còn mua quạt bàn không cho làm ăn lừa gạt khách hàng. Nếu vậy lúc đầu khách mua thì nói go ràng đi,-1,-1,1
+nagakawa-inverter-1-hp-nis-c09r2t28:r-57301170,Máy lạnh,"Hao điện kinh khủng , hơn con casper 1.5 ngựa mua năm ngoái",-1,-1,1
+panasonic-82-kg-na-f82y01drv:r-58248566,Máy giặt,"giá cả hợp lý. Nhân viên tư vấn nhiệt tình chu đáo, sẽ giới thiệu cho bạn bè và người thân sử dụng",1,1,1
+samsung-rb27n4010bu-sv:r-54622692,Tủ lạnh,"máy dùng tốt, chạy êm, tiết kiệm điện",1,1,1
+may-loc-nuoc-ro-hydrogen-kangaroo-kg12ha-12-loi:r-57245747,Máy lọc nước,Máy rất tốt tôi hài lòng về sản phẩm,1,1,1
+may-loc-nuoc-ro-hydrogen-kangaroo-kg12ha-12-loi:r-57353615,Máy lọc nước,Máy 12 lõi nhiều hydrogen tiện lợi rất thích,1,1,1
+tu-lanh-aqua-aqr-t220fa-fb:r-54735184,Tủ lạnh,"Sau khi trải nghiệm 1 tháng: 1. Tiết kiệm điện đáng kể, mình để dành 1 tháng xem tủ lạnh có tiết kiệm điện so vs tủ lạnh cũ không, và kết quả có tiết kiệm điện rất nhiều 2. Cửa lúc mới mua về thì còn hơi cứng khi mở ra mở vô, nhưng sau 1 tháng thì nó không còn cứng và dễ mở 3. Vận hành êm, cảm giác như không tiếng động 4. Không gian tủ lạnh rộng, gia đình 4 người sài vô tư 5. Khả năng làm lạnh tốt, khay đá mình đo thì 3 tiếng thì đông đá Tủ lạnh tốt 👍",1,1,1
+tu-lanh-aqua-90-lit-aqr-d100fa-bs:r-57946746,Tủ lạnh,"tủ chạy ồn, kêu cọc cạch liên hồi, hãng nói tủ hoạt động vậy, nói chung để trong phòng ngủ và về đêm thì khó ngủ, ai đã mua rồi có gặp trường hợp vậy không",-1,-1,1
+tu-lanh-aqua-aqr-t220fa-fb:r-59330935,Tủ lạnh,"Tủ kêu nghe tiếng ồn, Bảo hành kém ,rờm rà, chỉ làm việc giờ hành chính không hổ trợ khách hàng theo thời gian yêu cầu, mặc dù vẫn trong thời gian bảo hành ....",-1,-1,1
+panasonic-nr-bx471gpkv:r-53675946,Tủ lạnh,Sản phẩm xài rất tốt,1,1,1
+tu-lanh-panasonic-325-lit-nr-bc361vgmv:r-57808097,Tủ lạnh,"Tủ rất đẹp nhìn rất sang trọng, săn sale livestream và các bạn hỗ trợ chốt đơn rất nhanh",1,1,1
+casper-75-kg-wt-75ng1:r-56566852,Máy giặt,Rat tot,1,1,1
+noi-com-nap-gai-toshiba-rc-10jh2pv-b-1l:r-43356420,Nồi cơm điện,"mọi thứ đều ổn, tuy nhiên khi sôi thì nước trào qua lỗ thoát hơi ra ngoài khá nhiều mặc dù cơm nấu rất ít. Nước cơm nấu tràn ra chảy xuống đất 1 vũng luôn. Mình mua chưa được 1 tuần, không biết có được đổi sp khác hay khắc phục tình trạng này không ((",0,-1,0
+may-loc-nuoc-ro-hydrogen-kangaroo-kg12ha-12-loi:r-57334386,Máy lọc nước,Hàng Kangaroo dùng rất ổn định,1,1,1
+aosmith-c2:r-47956360,Máy lọc nước,Mình mua được 1 năm thấy xài ok. Mình thấy đèn báo thay lõi.,1,1,1
+samsung-inverter-307-lit-rb30n4190by-sv:r-53162589,Tủ lạnh,"Tủ bảo quản thực phẩm lâu, làm lạnh nhanh nhưng vẫn còn ồn",0,1,0
+sunhouse-shd8606-18-lit:r-52747836,Nồi cơm điện,Tệ,-1,-1,1
+lg-inverter-1-5-hp-v13win1:r-56878717,Máy lạnh,"Giao hàng và lắp đặt nhanh gọn , mới dùng được khoảng hơn chục ngày thấy máy chạy êm làm lạnh nhanh về lâu dài thì chưa biết",1,1,1
+tu-lanh-aqua-aqr-t220fa-fb:r-55903963,Tủ lạnh,Sp sd tốt,1,1,1
+lg-inverter-394-lit-gn-d392bla:r-55644679,Tủ lạnh,Sài thì ok mà cho mình hỏi sao tủ ngăn đông lại đóng tuyết,0,0,1
+samsung-rb27n4010bu-sv:r-56110204,Tủ lạnh,"Tủ lạnh xài ok. Không ồn, đẹp nữa.",1,1,1
+76caf4bf967289da,Tủ lạnh,"Tủ rất ok, mình rất ưng đồng tủ Panasonic, nó đáp ứng đủ các điều kiện như tiết kiệm điện, làm đá nhanh... mà mình mong muốn",1,1,1
+may-giat-hitachi-inverter-105-kg-bd-1054hvow:r-59866705,Máy giặt,"Máy giặt máy giặt mới nhận bị lỗi chế độ không tải kêu như máy cày , dịch vụ tổng đài khi sự cố nên xếp kỹ thuật xuống kiểm tra kỹ thuật thay vì tự phán đoán đó là bình thường , thiếu chuyên nghiệp Chính kỹ thuật bên DMX kêu mình gọi báo về dmx để được đổi",-1,-1,1
+may-giat-toshiba-8kg-aw-m905bvmk:r-59246132,Máy giặt,"Nước nhà tôi dùng sinh hoạt bao nhiêu năm không sao, máy mới mua duoc 1 tuan dùng 3 lần mà hãng đổ tại nước bẩn làm hỏng van thì chất lượng linh kiện của Toshiba quá kém cỏi hay đang tìm cách lừa dối khách hàng Cam kết đổi trả tháng đầu chỉ là quảng cáo suông. Mọi người nên né gấp hãng này và ddieejn máy xanh ra nếu không muốn mất tiền rước bực vào thân",-1,-1,1
+daikin-inverter-1-hp-atkb25yvmv:r-56818488,Máy lạnh,"Máy chạy êm. Làm lạnh ok nhà mọi người, k mất phí lắp đặt, lắp xong thì phát sinh thêm dây nguồn thôi, nhưng đây nguồn chất lưong chưa ngon, nếu đã lắp thì lắp luôn loại dây lớn tí cho khách luôn.",1,-1,0
+noi-com-nap-gai-toshiba-rc-18jh2pv-b-18l:r-54067298,Nồi cơm điện,Tot,1,1,1
+cuckoo-cr-0671-108-lit:r-58601248,Nồi cơm điện,Nồi dỏm sài hơn 2 tháng bị tróc lớp chống dính. Bảo hành kêu bong tróc ko dc bảo hành. Ko đáng giá 1tr. Nếu 500k có khi mua nồi hãng khác còn ngon hơn,-1,-1,1
+may-giat-hisense-wtja1015ut:r-57608577,Máy giặt,"MÁY DÙNG RẤT TỐT, CHƯA PHÁT HIỆN LỖI",1,1,1
+lg-inverter-1-hp-iec09m2:r-59400946,Máy lạnh,Máy lạnh làm lạnh ổn nhưng cục nóng phát ra tiếng ồn khá lớn so với mong đợi của mình đối với một sản phẩm mới. Điều khiến mình thất vọng hơn là quá trình hỗ trợ bảo hành khá chậm và nhiều lần thất hẹn liên hệ lại.Mình kỳ vọng máy mới sẽ vận hành êm hơn nhưng thực tế cục nóng phát ra tiếng bất thường rõ. Dù hãng giải thích là đặc tính motor AC nhưng trải nghiệm thực tế vẫn gây khó chịu trong sinh hoạt.Hy vọng bên hãng và cửa hàng sẽ xử lý rõ ràng hơn cho khách hàng,-1,-1,1
+946b17b7c9f7a205,Tivi,tivi ok,1,1,1
+may-giat-electrolux-ultimatecare-500-inverter-10-kg-ewf1023p5wc:r-59741474,Máy giặt,"máy dùng tốt lắm, rất oke",1,1,1
+samsung-inverter-307-lit-rb30n4190by-sv:r-53171902,Tủ lạnh,"khách chưa để ý vì đi làm nhiều, nhưng trước mắt thì ok",1,1,1
+panasonic-nr-bx471gpkv:r-48565145,Tủ lạnh,Ngoài việc tủ ồn máy nén và ngăn tủ kêu như máy cày ra thì các thứ khác đều ổn! Đã đổi cái thứ 3 và chuẩn bị sang cái thứ 4!,-1,-1,1
+toshiba-gr-b22vu-ukg:r-36006722,Tủ lạnh,"Về chất lượng tủ thì ok, mỗi tội khay đá ọp ẹp quá, cộng thêm khay đá đi theo tủ mình để đóng đá thì ngay lần đầu tiên khay đã bị nứt vỡ",0,-1,0
+panasonic-nr-bx471gpkv:r-46844119,Tủ lạnh,"máy lạnh đông đá, không sử dụng làm đá được vì cứ bỏ nước vào nó sẽ bị đông các cạnh không kéo ra được. Nhưng ktv dmx chỉ dẫn ktv pana xuống rồi về, còn ktx pana báo về hãng tủ bình thường có sự chứng kiến và kiểm tra của ktx dmx. Tổng đài dmx gọi không được",-1,-1,1
+panasonic-inverter-1-hp-cu-cs-pu9akh-8:r-59247149,Máy lạnh,Bán điều hòa cục nóng kêu như máy sát. Gọi kêu xuống bảo hành chưa xuống mà nhân viên báo với tổng đài đã xuống và đã sử lý. Sản phẩm tệ hại. Thái độ làm việc tồi tàn,-1,-1,1
+may-loc-nuoc-ro-kangaroo-kg100hu:r-56822686,Máy lọc nước,"Mình sử dụng 3 ngày thấy có cặn đen, báo Điện máy xanh, họ gọi hãng xuống sửa mà hãng nói không chịu bảo hành, cần trả tiền, nói chung giờ vẫn chưa sửa được luôn",-1,-1,1
+panasonic-82-kg-na-f82y01drv:r-56231580,Máy giặt,Mới mua tối qua 5.890 triệu chưa được 12 tiếng còn 4.900 triệu. Bán hàng giá cả chênh lệch gì ko rõ ràng zầy. Cảm thấy ức chế thật sự,-1,-1,1
+may-giat-electrolux-ultimatecare-500-inverter-10-kg-ewf1023p5wc:r-58903396,Máy giặt,"máy dùng oke, xài tốt",1,1,1
+ro-nong-nguoi-lanh-hydrogen-ion-kiem-mutosi-mp-s128h-10-loi:r-59057465,Máy lọc nước,"Máy rất tệ, mua mới 1 tháng đầu lâu lâu tự chảy ở 2 vòi nước, sau chảy từ hệ thống các lõi lọc, gọi bảo hành thì kỷ thuật xuất bảo đi áp lực nước nhà nên gắn van giảm áp lực dùng nước máy nhé được 2 tháng giờ nước chảy tràn lan cả nhà, chảy nhiều, nhanh gấp 3 lần lúc mới, càng ngày càng nhiều, mua máy mới còn thua máy cũ. Xử lý gấp nước cả nhà giờ phải khỏa van nước.",-1,-1,1
+smart-tivi-nanocell-lg-ai-4k-55-inch-55nano80asa:r-58487175,Tivi,"TIVI NANOCELL LG 55NANO80ASA Dùng rất tốt, hình ảnh âm thanh rõ ràng",1,1,1
+daikin-inverter-1-hp-atkb25yvmv:r-57260828,Máy lạnh,Hàng chuẩn,1,-1,0
+may-loc-nuoc-ro-nong-nguoi-lanh-sunhouse-ultrax-sha76601s-11-loi:r-59462226,Máy lọc nước,Máy chảy nước yếu lắm. Nhưng DMX hỗ trợ đổi kg tốn phí là okla,-1,-1,1
+may-giat-electrolux-ultimatecare-500-inverter-10-kg-ewf1023p5wc:r-59726979,Máy giặt,"máy dùng tốt, ok lắm",1,1,1
+lg-inverter-1-5-hp-v13win1:r-56445318,Máy lạnh,Máy chạy rất oke,1,1,1
+57aac1c252cca64d,Tủ lạnh,Cho hoi tủ có lấy nước thải bên ngoai không,1,0,0
+toshiba-rc-18mh2pv-f-18-lit:r-54675723,Nồi cơm điện,dung ok lam,1,1,1
+sunhouse-shd8606-18-lit:r-56711820,Nồi cơm điện,xài ok nhé,1,1,1
+aqua-inverter-1-hp-aqa-rv10qa3:r-57950353,Máy lạnh,"máy lạnh Aqua xài tốt lắm, hiện chưa có vấn đề gì, còn theo dõi thêm",1,1,1
+may-loc-nuoc-ro-hydrogen-kangaroo-kg12ha-12-loi:r-57335417,Máy lọc nước,Mình sử dụng rất là ok,1,1,1
+panasonic-nr-ba229pkvn:r-54064549,Tủ lạnh,"Tủ lạnh chạy êm, làm lạnh ok",1,1,1
+samsung-inverter-345l-rt35cg5544b1sv:r-55034701,Tủ lạnh,Dùng ok phù hợp giá cả phong cách phục vụ bán hàng tư vấn ok tẩy tốt giao hàng đúng quy chuẩn,1,1,1
+toshiba-inverter-1-hp-ras-h10p2kcvg-v:r-59208704,Máy lạnh,"lắp và tư vấn nhiệt tình, hãng toshiba nên khá yên tâm",1,1,1
+tu-lanh-aqua-inverter-358-lit-aqr-t410fa-wgb:r-58773614,Tủ lạnh,"Cái joan cao su ở của quá tệ. Dễ bị bật ra, không được kín khít nếu đóng không cẩn thận.",-1,0,0
+noi-com-nap-gai-toshiba-rc-10jh2pv-b-1l:r-56989552,Nồi cơm điện,"Nấu cơm nhanh,phù hợp gia đình 23 người",1,1,1
+sunhouse-inverter-1-hp-shr-aw09ic650:r-59101454,Máy lạnh,"Mới mua và được lắp chiều hôm nay. Sau khi thợ lắp về và test 16 độ thì vẫn có tí mát, đến tối dù đã cài 16 độ thấp nhất, đóng cửa phòng kín và đi ra ngoài tầm 15p, sau đó vào lại phòng nhưng vẫn nóng chỉ có tí hơi gió nhiệt độ bên ngoài lúc đó là 22 độ Thật sự thất vọng và không thể giới thiệu cho bạn bè. Mọi người cân nhắc khi mua.",-1,-1,1
+may-loc-nuoc-ro-nong-nguoi-lanh-mutosi-mp-s1011-10-loi:r-56279362,Máy lọc nước,"sản phẩm ổn, nước lọc sạch, ok",1,1,1
+may-giat-hisense-wtja1015ut:r-57620359,Máy giặt,"MÌNH DÙNG THẤY OK, BÌNH THƯỜNG KHÔNG CÓ VẤN ĐỀ",1,1,1
+daikin-inverter-1-hp-atkb25yvmv:r-57315357,Máy lạnh,Máy mua 22/8 sd ngày đầu ít mát.cố gắng sd đến 7/9 có hiện tượng tự ngắt sau 12h mở. Chỉnh 16 mà mát như 26. Gọi bh thì lại xem rồi chuyển cho hãng.hãng thì hẹn hò.sài chưa đc 1 tháng y/c 1 đổi 1 thì tổng đài báo chỉ chờ bảo hành. Chán chưa từng có.,-1,-1,1
+noi-com-nap-gai-toshiba-rc-10jh2pv-b-1l:r-54308311,Nồi cơm điện,nấu cơm khong chín,-1,1,0
+may-loc-nuoc-ro-hydrogen-kangaroo-kgrp10-10-loi:r-57356473,Máy lọc nước,"Dịch vụ giao hàng lắp đặt rất tệ. Hôm nhân viên giao hàng mình không có nhà nên bạn nhân viên bảo giao hàng trước, có gì gọi lại lắp đặt sau. Xong giờ mình gọi lại nhờ lắp đặt thì DMX nói chỉ lắp đặt lúc giao hàng, trao đổi lại với nhân viên không dc nên nói mình chịu phí 120k, mình ok, rồi cuối cùng lại nói không hỗ trợ lắp đặt nữa.",-1,-1,1
+nagakawa-inverter-1-hp-nis-c09r2t28:r-58765132,Máy lạnh,"Mua máy lạnh về để treo tường, mà chỉnh trái phải thì dùng tay thò vào chỉnh. Thử hỏi ai nghe mà dám mua, tôi sơ ý không xem kỹ nên giờ thấy bực bội. Điện máy xanh tôi mua nhiều nhưng thật sự thất vọng với loại sản phẩm tồi. Đây là lý do vn kg bao giờ theo kịp với các hãng khác như Panasonic......",-1,-1,1
+tu-tiger-18-lit-jbv-s18w:r-52696594,Nồi cơm điện,Nồi cơm điện quá tuyệt vời..,1,1,1
+sharp-ks-18tjv:r-29619682,Nồi cơm điện,Nói chung nấu được. Cơm ngon ở mức độ 6.5 điểm. Cơm chín chưa được đều lắm. Ưu điểm tốc độ nấu nhanh.,1,1,1
+nagakawa-inverter-1-hp-nis-c09r2t28:r-57002990,Máy lạnh,"Rẻ thì mua dùng thôi, sợ dính bảo hành của dmx",0,-1,0
+lg-inverter-394-lit-gn-d392bla:r-52989311,Tủ lạnh,"sản phẩm dùng rất tốt, ổn định, êm",1,1,1
+tu-lanh-toshiba-inverter-515-lit-gr-rf677wi-pgv-22-xk:r-59925030,Tủ lạnh,"chế độ linh hoạt khá tiện, thg mình sẽ chọn thịt cá, vì hộc sẽ giảm mùi hôi ra toàn bộ tủ",1,1,1
+smart-tivi-lg-ai-4k-55-inch-55ua8450psa:r-58489005,Tivi,"mới dùng nhưng thấy tạm ổn, cho 5 sao",1,0,0
+panasonic-inverter-366-lit-nr-tl381vgmv:r-50414175,Tủ lạnh,"Tiết kiệm điện, làm đá tốt, sản phẩm rất tốt.",1,1,1
+panasonic-inverter-1-hp-cu-cs-pu9akh-8:r-56711963,Máy lạnh,Làm lạnh nhanh,1,1,1
+may-giat-toshiba-tw-t21bu105uwv-mg:r-59767209,Máy giặt,"Mới giặt thử được 1 lần, máy chạy êm, khi vắt máy không rung và ồn như máy Aqua mình xài trước. Để xài thêm xem thế nào",1,1,1
+dien-giai-ion-kiem-robot-ionprince-59x-4-loi-5-tam-dien-cuc:r-56060861,Máy lọc nước,Muốn thay lõi thì gọi số nào vậy,0,-1,0
+may-giat-toshiba-tw-t21bu105uwv-mg:r-57519673,Máy giặt,"Mới mua 2 ngày đã xảy ra lỗi. Ngày đầu xài rất êm ái ngày thứ hai động cơ ồn hơn quần áo lòi ra mép cao su bên ngoài, tấm ron cao su bong ra bên ngoài",-1,-1,1
+may-loc-nuoc-nong-lanh-ro-korihome-wpk-903:r-56273422,Máy lọc nước,Mới mua mà máy rỉ nước ra khắp nhà chán,-1,-1,1
+may-giat-toshiba-9-kg-aw-m1000fv-mk:r-57119120,Máy giặt,máy nước vào yếu mà bên kĩ thuật bảo hành nói là máy zây đó.làm ăn gì kì k trách nhiệm k tư vấn giải thjk rỏ ràng cho ng dùng.,-1,-1,1
+ro-sunhouse-sha8866k-7-loi:r-54318558,Máy lọc nước,"Máy chạy êm, nhân viên tận tình chu đáo.",1,1,1
+panasonic-82-kg-na-f82y01drv:r-57540363,Máy giặt,Màu sắc phù hợpMáy hoạt động okGiá cá phù hợp vs túi tiền người dùng,1,1,1
+panasonic-inverter-1-hp-cu-cs-pu9akh-8:r-56871867,Máy lạnh,Máy làm lạnh nhanh.tiết kiệm điện,1,1,1
+panasonic-82-kg-na-f82y01drv:r-57555324,Máy giặt,"Sản phẩm chất lượng tốt,máy êm.khá hài lòng về sản phầm.nvcskh rất tốt.",1,1,1
+daikin-inverter-1-5-hp-atkb35yvmv:r-56832309,Máy lạnh,"Mình mới lắp con này,nhân viên lắp cho máy có 1,5met ống đồng,trong khi mình gọi hãng Daikin họ nói là lắp phải tối thiểu 2,5met ống đồng mới đúng kĩ thuật không là sau này nếu hỏng do nguyên nhân lắp ống đồng quá ngắn thì họ không bảo hành lỗi đó.Cũng không thấy nhân viên hút chân không,nói là đã đuổi gas rồi.Dịch vụ của Điện Máy Xanh càng ngày càng kém dần.",0,-1,0
+noi-com-nap-gai-sunhouse-1-8-lit-shd8611n:r-58059068,Nồi cơm điện,"Mình mua về dùng 33 ngày thì bị rơ le nhiệt hỏng, làm chảy nhựa phía dưới đáy nồi. Mình biết bảo hành cũng phải 14 ngày nên ra tiệm thay hết 50k",-1,-1,1
+may-loc-nuoc-ro-hydrogen-kangaroo-kg12ha-12-loi:r-57334381,Máy lọc nước,Sản phẩm sử dụng tốt.,1,1,1
+may-giat-electrolux-ultimatecare-700-inverter-10-kg-ewf1043r7wc:r-59745915,Máy giặt,"máy xài rất tốt, oke, hài lòng",1,1,1
+may-giat-aqua-inverter-9-5-kg-aqd-a952j-bk:r-57277033,Máy giặt,"Mơia mua hôm trước hôm sau mà vỡ khay đựng đáhỏi thì bảo là k hỗ trợ thay,chỉ hỗ trợ phần chính thoi,vậy mà quảng cáo là hỏng đâu sửa đấy,có nhân viên tại nhàlàm ăn trò trẻ con",-1,-1,1
+panasonic-82-kg-na-f82y01drv:r-58899376,Máy giặt,"máy chạy êm , tiết kiem điện năng , tôi rất hài lòng",1,1,1
+noi-com-nap-gai-toshiba-rc-18jh2pv-b-18l:r-53971398,Nồi cơm điện,Hài lòng ạ,1,1,1
+smart-tivi-lg-ai-4k-55-inch-55ua8450psa:r-58489078,Tivi,màn hình chưa nét lắm,1,1,1
+panasonic-inverter-366-lit-nr-tl381vgmv:r-50591195,Tủ lạnh,Dùng tốt tôi hài lòng về sản phẩm,1,1,1
+sharp-ksh-d22v:r-45850096,Nồi cơm điện,Tôi mới đổi nồi cơm này hôm qua và sài rất tốt nấu thử lần đầu là chín ngay và cơm rất ngon,1,1,1
+panasonic-nr-bx471gpkv:r-46407050,Tủ lạnh,"Đánh giá sau 1 tuần sử dụng Sản phẩm ok, không có gì phàn nàn. Nhân viên nhiệt tình. Mua tại Quảng Nam, mua km 18tr vào tháng 6.2021.",1,1,1
+toshiba-gr-b22vu-ukg:r-55421068,Tủ lạnh,Mẫu đẹp xài rất ok,1,1,1
+may-loc-nuoc-ro-nong-nguoi-lanh-kangaroo-kg10a17-10-loi:r-57147084,Máy lọc nước,"Mới mua về sử dụng nhưng ko làm lạnh dk,chỉ dùng dk nước nóng và nguội..",-1,1,0
+samsung-inverter-307-lit-rb30n4190by-sv:r-53160942,Tủ lạnh,sản phẩm xài tốt,1,1,1
+noi-com-nap-gai-18-lit-panasonic-sr-mvn18frax:r-53313140,Nồi cơm điện,Mới dùng cũng thấy ổn.hi vọng sẽ bền để dùng đc lâu,1,1,1
+noi-com-cao-tan-toshiba-rc-18ix1pv-1l:r-54733159,Nồi cơm điện,nồi đẹp.nhân viên quá tận tình vui vẽ.rất hài lòng,1,1,1
+noi-com-dien-philips-1-8-lit-hd3008-30:r-57603010,Nồi cơm điện,Chưa dùng nên chưa biết dùng ổn không. Hãng philips nổi tiếng nên sẽ dùng thử,1,1,1
