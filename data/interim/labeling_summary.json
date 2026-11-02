@@ -39,7 +39,7 @@
         "1": 922
       }
     },
-    "test_gold": {
+    "test": {
       "total": 500,
       "label_target_dist": {
         "-1": 120,

@@ -1,0 +1,62 @@
+\chapter{Kết luận và hướng phát triển}
+
+\section{Kết luận}
+Nhóm đã xây dựng pipeline xử lý bình luận sản phẩm tiếng Việt từ dữ liệu thô đến huấn luyện và đánh giá các baseline. Pipeline gồm chuẩn hóa/word segmentation, lọc stopword bảo toàn phủ định, gán nhãn hybrid từ rating và lexicon, tạo split phân tầng, trích chọn BoW/TF--IDF/Word2Vec và huấn luyện Naïve Bayes/LinearSVC. Các artifact metrics, dự đoán và hình đánh giá được lưu để tái lập.
+
+Trong thí nghiệm baseline đã chạy, Word2Vec + LinearSVC có Macro-F1 test cao nhất (0,6949) và Accuracy 0,828; Majority baseline có Macro-F1 0,2602. Kết quả theo lớp cho thấy Neutral còn khó (F1 0,3704), trong khi Positive và Negative có F1 cao hơn theo pseudo-label. Đây là phát hiện thực nghiệm ban đầu, không phải bằng chứng đã xác thực trên nhãn người gán.
+
+\section{Hạn chế}
+Hạn chế trọng yếu là toàn bộ nhãn train/validation/test hiện được sinh tự động. Reconciliation 490 trường hợp không đồng nghĩa đã xác nhận đúng cảm xúc, và đánh giá trên test cùng nguồn nhãn có thể khuyến khích vòng lặp tự củng cố. Ngoài ra, split chưa group theo sản phẩm, Neutral có support thấp, và các Transformer đã có mã nhưng chưa có kết quả thực nghiệm trong lần chạy báo cáo này.
+
+\section{Hướng phát triển}
+\begin{enumerate}
+  \item Gán độc lập một tập con phân tầng bởi tối thiểu hai người, adjudicate bất đồng, tính Cohen's kappa và đánh giá lại mô hình trên nhãn đã kiểm định.
+  \item Tạo benchmark group split theo sản phẩm, nhiều seed hoặc repeated cross-validation; giữ test độc lập khỏi mọi quyết định tuning.
+  \item Fine-tune PhoBERT và XLM-R Large, báo cáo cùng protocol về Macro-F1, per-class scores, bootstrap interval và chi phí tính toán.
+  \item Mở rộng lexicon theo ngành hàng, kiểm tra phủ định/phạm vi mệnh đề, xử lý câu đa khía cạnh và cân nhắc aspect-based sentiment.
+  \item Đánh giá hiệu chỉnh xác suất, ngưỡng từ chối dự đoán và khả năng chuyển giao sang sản phẩm/thời điểm khác.
+\end{enumerate}
+
+\section{Biểu đồ nên có để đáp ứng yêu cầu bài tập}
+Báo cáo phân cụm mẫu trình bày biểu đồ theo từng bước xử lý, biểu diễn kết quả thuật toán và dành phần riêng so sánh/diễn giải kết quả. Có thể kế thừa cách tổ chức đó, nhưng không dùng các biểu đồ Elbow, dendrogram, biểu đồ cụm RFM hay Silhouette của bài toán clustering cho phân loại cảm xúc. Với yêu cầu trong đề bài, nhóm nên ưu tiên các biểu đồ sentiment dưới đây:
+
+\begin{table}[H]
+\centering
+\caption{Danh sách biểu đồ phù hợp cho hệ thống phân loại cảm xúc Điện Máy Xanh}
+\label{tab:recommended-charts}
+\small
+\begin{tabularx}{\textwidth}{p{0.6cm}p{3.5cm}Yp{3.0cm}}
+\toprule
+Ưu tiên & Biểu đồ & Mục đích phân tích & Trạng thái trong repo \\
+\midrule
+Bắt buộc & Cột phân bố nhãn theo train/val/test và rating/category & Mô tả mất cân bằng, độ bao phủ ngành hàng và mức chênh giữa rating gốc với nhãn đích. Dùng số lượng hoặc tỷ lệ có ghi rõ mẫu số. & \code{eda_data_overview.png} \\
+Bắt buộc & Heatmap rating $\times$ label target & Cho thấy reconciliation đã thay đổi nhãn ở đâu; dùng tỷ lệ theo hàng và ghi số lượng trong ô. & \code{rating_target_heatmap.png} \\
+Bắt buộc & Bar chart Macro-F1 trên validation/test & So sánh biểu diễn (BoW, TF--IDF, Word2Vec) và thuật toán (NB, SVM); không chỉ dựa vào Accuracy. & \code{macro_f1_val_test.png} \\
+Bắt buộc & Per-class Precision/Recall/F1, tốt nhất là grouped bars & Phân tích riêng Negative, Neutral và Positive, tránh để lớp đông chi phối kết luận tổng thể. & Bảng và hình \code{per_class_f1_models.png} \\
+Bắt buộc & Confusion matrix số đếm + chuẩn hóa theo hàng & Xác định lớp/cặp nhầm lẫn; cần ít nhất mô hình tốt nhất và nên có top model NB/SVM. & Sinh cho từng baseline tại \code{figures/cm_*.png} \\
+Nên có & Macro-F1 kèm bootstrap CI 95\% & Thể hiện bất định và tránh tuyên bố chênh lệch nhỏ là có ý nghĩa. & \code{macro_f1_test_ci.png} \\
+Nên có & Error count theo ngành hàng và cặp nhầm lẫn & Phát hiện nhóm sản phẩm hoặc chủ đề dễ bị phân loại sai; bổ sung bảng ví dụ văn bản đã ẩn thông tin cá nhân. & Notebook có bảng; nên thêm stacked bar/heatmap nếu phân tích theo category. \\
+Mở rộng & Precision--Recall curve one-vs-rest theo lớp & Hữu ích khi điều chỉnh threshold cho cảnh báo tiêu cực; lấy decision score/probability, không dùng nhãn cứng. & Chưa sinh mặc định; phù hợp khi lưu score của mô hình. \\
+Mở rộng & Hiệu năng so với thời gian/VRAM; calibration/reliability plot & So sánh chất lượng và chi phí PhoBERT/XLM-R, đánh giá độ tin cậy confidence. & Chỉ thực hiện sau khi fine-tune Transformer. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\noindent\textbf{Quy tắc trình bày:} tất cả hình phải có tiêu đề/caption, tên trục, thứ tự lớp nhất quán (Negative, Neutral, Positive), nguồn dữ liệu và trạng thái nhãn (pseudo-label hay human-audited). Các hình trong \code{figures/reference/} không phải kết quả DMX và không được đưa vào phần kết quả.
+
+\section*{Phân công nhóm bốn thành viên}
+Bảng sau là khung để nhóm điền danh tính và tỷ lệ đóng góp thực tế; không điền tên hoặc tỷ lệ khi chưa có thông tin xác nhận.
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{c p{3.2cm} p{2.3cm} Y c}
+\toprule
+STT & Họ và tên & MSSV & Phần việc & Tỷ lệ đóng góp \\
+\midrule
+1 & [Điền tên] & [Điền MSSV] & Thu thập dữ liệu, kiểm tra chất lượng và quy trình nhãn & [\%] \\
+2 & [Điền tên] & [Điền MSSV] & Tiền xử lý, feature extraction, Naïve Bayes & [\%] \\
+3 & [Điền tên] & [Điền MSSV] & SVM, đánh giá, confusion matrix và error analysis & [\%] \\
+4 & [Điền tên] & [Điền MSSV] & PhoBERT/XLM-R, notebook, tích hợp và biên tập báo cáo & [\%] \\
+\bottomrule
+\end{tabularx}
+\end{table}
+\noindent Nhóm cần tự xác nhận tỷ lệ đóng góp sao cho tổng bằng 100\% và phản ánh đúng công việc đã thực hiện.

@@ -1,28 +1,21 @@
-# CLAUDE.md — Quick Reference for AI Coding Agents (`dmx-nlp-sentiment`)
+# Claude Code quick reference
 
-This file provides a fast entry point for Claude Code and other AI coding agents working in this repository. For full rules and step-by-step workflows, read:
+Start with `README.md`, `INSTRUCTIONS.md`, and `notebooks/01_sentiment_analysis_report.ipynb` for the project overview, run commands and report flow.
 
-- **[`AGENTS.md`](AGENTS.md)**: Project context, 5 critical guardrails/invariants, and quality checklist.
-- **[`SKILLS.md`](SKILLS.md)**: 7 modular agent skills (`skill:01-crawl-dmx` through `skill:07-eval-plot-report`).
-- **[`PLAN.md`](PLAN.md)**: Project roadmap, directory architecture, and 4-member PTIT team task division.
-- **[`INSTRUCTIONS.md`](INSTRUCTIONS.md)**: Complete Python templates for Vietnamese NLP preprocessing, feature extraction (BoW, TF-IDF, Word2Vec), Naïve Bayes & SVM training, end-to-end **PhoBERT** fine-tuning, visualization functions, and PTIT report template.
+## Data and label caveat
+- Raw reviews live in `data/raw/`; do not overwrite them.
+- `label_target` and all current split labels are hybrid auto-labels. `data/processed/test.csv` is held-out pseudo-label data, **not a human-gold test**. State this prominently in analysis and reports.
+- Label IDs: `-1=Negative`, `0=Neutral`, `1=Positive`.
+- `figures/reference/` contains charts from another repository; never cite these as DMX results.
 
----
+## Key entrypoints
+```bash
+python auto_label_review.py
+python scripts/train_classical.py --bootstrap 2000
+python scripts/train_transformer.py --model-name vinai/phobert-base-v2
+python scripts/train_transformer.py --model-name FacebookAI/xlm-roberta-large --batch-size 2 --gradient-accumulation-steps 8
+python scripts/export_annotation_sample.py --n 300
+jupyter lab notebooks/01_sentiment_analysis_report.ipynb
+```
 
-## Key Repository Facts & Guardrails
-
-1. **Dataset (`data/raw/reviews.csv` & `reviews.jsonl`)**:
-   - Real crawled dataset of **12,189 Điện Máy Xanh product reviews** across 6 categories (`Tủ lạnh`, `Nồi cơm điện`, `Máy lạnh`, `Máy giặt`, `Máy lọc nước`, `Tivi`).
-   - **Never overwrite or delete files in `data/raw/`**. Write all processed/split datasets (`train.csv`, `val.csv`, `test_gold.csv`) to `data/processed/`.
-2. **Reference Figures (`figures/reference/*.png`)**:
-   - ⚠️ **Important**: The `.png` files in `figures/reference/` are **reference charts from another repository on the same topic** (biểu đồ tham khảo từ một repo khác cùng chủ đề).
-   - Use them only as the **visual format specification** (2-panel Confusion Matrix: raw counts + row-normalized recall %, and horizontal Macro-F1 comparison bar chart). Running `python3 scripts/train_classical.py` and `python3 scripts/train_phobert.py` will generate the real Điện Máy Xanh figures directly into `figures/`.
-3. **Reference Report (`docs/Bài Tập Lớn I - Lazada.pdf`)**:
-   - Official PTIT report template (for the Lazada sentiment analysis topic). Follow its exact 4-section structure (`I. Đề bài`, `II. Cơ sở lý thuyết`, `III. Thực nghiệm và kết quả`, `IV. Kết luận`) while adding the **Requirement 4 Extension: Modern Transformer Model (`PhoBERT`)**.
-4. **Vietnamese NLP Rules**:
-   - Always normalize Unicode to `NFC` first.
-   - Always segment Vietnamese compound words with `_` using `pyvi` or `underthesea`.
-   - **Never remove negation or sentiment-intensity words** (`không`, `chưa`, `chẳng`, `rất`, `quá`, `hơi`, `kém`, `tệ`, `tốt`, `lỗi`, `nhưng`) during stopword filtering.
-   - For `PhoBERT` (`vinai/phobert-base-v2`), pass word-segmented text **with stopwords intact**.
-5. **Zero Data Leakage**:
-   - Fit `CountVectorizer`, `TfidfVectorizer`, `Word2Vec`, and class-imbalance resamplers (`RandomOverSampler`/`RandomUnderSampler`) **exclusively on `train`**, never on `val` or `test_gold`.
+Use validation Macro-F1 for selection, evaluate the held-out test once, and keep label protocol identical across models. Fit vectorizers and learned features on train only. Preserve negation/intensity/contrast tokens. Do not call XLM-R Large SOTA without a fair human-labeled benchmark.

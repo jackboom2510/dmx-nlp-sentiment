@@ -1,0 +1,40 @@
+\chapter{Giới thiệu}
+
+\section{Bối cảnh}
+Đánh giá trực tuyến là nguồn dữ liệu quan trọng để người mua tham khảo và doanh nghiệp nhận biết vấn đề về chất lượng sản phẩm, giao hàng, lắp đặt và chăm sóc khách hàng. Số lượng bình luận lớn khiến việc đọc và tổng hợp thủ công tốn thời gian. Phân tích cảm xúc tự động có thể hỗ trợ sàng lọc phản hồi, theo dõi xu hướng và ưu tiên các phản ánh tiêu cực.
+
+Tiếng Việt trong dữ liệu thương mại điện tử có nhiều đặc điểm gây khó khăn cho xử lý tự động: từ ghép nhiều âm tiết, viết tắt/teencode, lỗi chính tả, câu ngắn, cách nói khẩu ngữ, cấu trúc phủ định và câu vừa khen vừa chê. Một bình luận tích cực về giao hàng vẫn có thể phàn nàn về sản phẩm; do đó phân loại cảm xúc cần dựa trên ngữ cảnh thay vì chỉ dựa vào rating.
+
+\section{Phát biểu bài toán}
+Cho một bình luận sản phẩm tiếng Việt $x$, hệ thống dự đoán một trong ba lớp:
+\begin{itemize}
+  \item \textbf{Negative ($-1$):} phàn nàn, lỗi kỹ thuật, chất lượng thấp hoặc trải nghiệm dịch vụ kém;
+  \item \textbf{Neutral ($0$):} thông tin trung lập, chưa đủ căn cứ, hoặc đánh giá pha trộn không nghiêng rõ;
+  \item \textbf{Positive ($1$):} khen sản phẩm, dịch vụ, giao hàng hoặc trải nghiệm sử dụng.
+\end{itemize}
+Đây là phân loại cảm xúc cấp bình luận (document-level sentiment), chưa giải quyết đầy đủ cảm xúc đa khía cạnh trong cùng một câu.
+
+\section{Mục tiêu và câu hỏi nghiên cứu}
+Mục tiêu tổng quát là xây dựng pipeline có thể tái lập từ dữ liệu thô đến đánh giá, đồng thời phân tích vai trò của biểu diễn văn bản và mô hình. Các câu hỏi nghiên cứu gồm:
+\begin{enumerate}
+  \item BoW và TF--IDF cho kết quả khác nhau như thế nào với cùng bộ phân loại?
+  \item Linear SVM có cải thiện Macro-F1 so với Naïve Bayes trên dữ liệu mất cân bằng không?
+  \item Word2Vec mean pooling có giữ được tín hiệu cảm xúc so với các biểu diễn n-gram thưa không?
+  \item Fine-tuning PhoBERT và XLM-RoBERTa Large có cải thiện hiệu năng các lớp thiểu số so với baseline cổ điển không?
+  \item Các kiểu nhầm lẫn chính là gì, và mức độ nào có thể do nhiễu nhãn tự động?
+\end{enumerate}
+
+\section{Phạm vi và đóng góp}
+Dự án sử dụng dữ liệu đánh giá sản phẩm công khai thuộc nhiều nhóm hàng của Điện Máy Xanh. Phạm vi triển khai gồm thu thập/chuyển đổi dữ liệu, chuẩn hóa tiếng Việt, tạo nhãn hybrid, trích chọn BoW/TF--IDF/Word2Vec, huấn luyện baseline/NB/SVM, xây dựng runner fine-tune PhoBERT/XLM-R, và tạo notebook LaTeX/report có thể tái lập.
+
+Các đóng góp chính:
+\begin{itemize}
+  \item Tổ chức mã nguồn theo các mô-đun dữ liệu, đặc trưng, mô hình và đánh giá;
+  \item Dùng nhãn kết hợp rating và từ điển cảm xúc để phát hiện trường hợp rating không khớp nội dung;
+  \item So sánh các baseline trên cùng một split và báo cáo Macro-F1/per-class/confusion/CI;
+  \item Nêu rõ giới hạn pseudo-label, thay vì diễn giải điểm số như chất lượng đã được xác thực bằng gold labels;
+  \item Cung cấp mã cho Transformer hiện đại và quy trình lấy mẫu để đánh giá độc lập bằng người gán nhãn.
+\end{itemize}
+
+\section{Bố cục báo cáo}
+Chương 2 giới thiệu cơ sở lý thuyết; Chương 3 mô tả dữ liệu, nhãn và pipeline; Chương 4 trình bày thiết kế thực nghiệm và kết quả hiện có; Chương 5 kết luận, giới hạn và hướng phát triển.

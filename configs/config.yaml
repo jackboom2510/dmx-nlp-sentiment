@@ -18,7 +18,7 @@ paths:
   interim_summary: "data/interim/labeling_summary.json"
   train_csv: "data/processed/train.csv"
   val_csv: "data/processed/val.csv"
-  test_gold_csv: "data/processed/test_gold.csv"
+  test_csv: "data/processed/test.csv"
   figures_dir: "figures"
   reference_figures_dir: "figures/reference"
   metrics_dir: "outputs/metrics"
@@ -26,7 +26,7 @@ paths:
 
 auto_labeling:
   default_mode: "hybrid-lexicon"   # Tùy chọn: hybrid-lexicon | embedding-prototype | zero-shot | pretrained
-  test_gold_size: 500
+  test_size: 500
   val_ratio: 0.15
   pos_threshold: 0.65
   neg_threshold: -0.65
@@ -72,13 +72,15 @@ models:
     w2v_c: 1.0
     class_weight: "balanced"
     max_iter: 5000
-  phobert:
-    model_name: "vinai/phobert-base-v2"
-    max_length: 128
+  transformer:
+    phobert_model_name: "vinai/phobert-base-v2"
+    multilingual_model_name: "FacebookAI/xlm-roberta-large"
+    max_length: 160
     learning_rate: 2.0e-5
-    train_batch_size: 16
-    eval_batch_size: 32
-    epochs: 4
+    train_batch_size: 8
+    gradient_accumulation_steps: 2
+    epochs: 5
     weight_decay: 0.01
     warmup_ratio: 0.1
+    early_stopping_patience: 2
     use_class_weights: true

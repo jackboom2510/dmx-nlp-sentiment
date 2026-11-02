@@ -1,0 +1,155 @@
+% Compile with XeLaTeX from this directory; see README.md.
+\documentclass[12pt,a4paper,oneside]{report}
+
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Termes}
+\setsansfont{TeX Gyre Heros}
+\setmonofont{Latin Modern Mono}
+\usepackage{polyglossia}
+\setdefaultlanguage{vietnamese}
+\setotherlanguage{english}
+
+\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=3cm,right=2cm]{geometry}
+\usepackage{graphicx}
+\graphicspath{{../../figures/}}
+\usepackage{booktabs,tabularx,longtable,array,multirow}
+\usepackage{amsmath,amssymb}
+\usepackage{siunitx}
+\usepackage{float}
+\usepackage{caption,subcaption}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{titlesec}
+
+\definecolor{ptitblue}{HTML}{123B63}
+\definecolor{softblue}{HTML}{EAF2F8}
+\definecolor{warnred}{HTML}{8A1C1C}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=ptitblue,
+  citecolor=ptitblue,
+  urlcolor=ptitblue,
+  pdftitle={Phân tích cảm xúc bình luận sản phẩm Điện Máy Xanh},
+  pdfauthor={Nhóm 4 thành viên}
+}
+\setstretch{1.25}
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0.2em}
+\setlist[itemize]{leftmargin=1.2cm,itemsep=0.2em}
+\setlist[enumerate]{leftmargin=1.3cm,itemsep=0.2em}
+\captionsetup{font=small,labelfont=bf}
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries\color{ptitblue}\centering}
+  {\Large CHƯƠNG \thechapter}{0.4em}{\Large}
+\titlespacing*{\chapter}{0pt}{-12pt}{22pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small PTIT -- Phân tích và Khai phá Dữ liệu Văn bản}
+\fancyhead[R]{\small Phân tích cảm xúc Điện Máy Xanh}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcommand{\Neg}{\textsc{Negative}}
+\newcommand{\Neu}{\textsc{Neutral}}
+\newcommand{\Pos}{\textsc{Positive}}
+\newcommand{\PseudoLabel}{\textit{pseudo-label}}
+\newcommand{\code}[1]{\texttt{\detokenize{#1}}}
+
+\begin{document}
+\begin{titlepage}
+  \centering
+  {\large HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG\\[0.25em]
+  KHOA / BỘ MÔN: [ĐIỀN TÊN KHOA/BỘ MÔN]}\\[2.2cm]
+  {\large BÁO CÁO BÀI TẬP LỚN}\\[0.5em]
+  {\large HỌC PHẦN: PHÂN TÍCH VÀ KHAI PHÁ DỮ LIỆU VĂN BẢN}\\[1.6cm]
+  {\Huge\bfseries\color{ptitblue} PHÂN TÍCH CẢM XÚC BÌNH LUẬN SẢN PHẨM\\[0.4em]
+  ĐIỆN MÁY XANH}\\[0.5cm]
+  {\Large Vietnamese Product Review Sentiment Analysis}\\[1.8cm]
+  \begin{tabular}{|c|p{5.0cm}|p{2.4cm}|p{4.0cm}|c|}\hline
+    \textbf{STT} & \textbf{Họ và tên} & \textbf{Mã sinh viên} & \textbf{Phần việc chính} & \textbf{Tỷ lệ}\\\hline
+    1 & [Thành viên 1] & [MSSV] & Thu thập dữ liệu, kiểm tra nhãn & [\%]\\\hline
+    2 & [Thành viên 2] & [MSSV] & Tiền xử lý, đặc trưng, Naïve Bayes & [\%]\\\hline
+    3 & [Thành viên 3] & [MSSV] & SVM, đánh giá và phân tích lỗi & [\%]\\\hline
+    4 & [Thành viên 4] & [MSSV] & Transformer, notebook, tổng hợp báo cáo & [\%]\\\hline
+  \end{tabular}\\[1.0cm]
+  {\large Giảng viên hướng dẫn: [ĐIỀN HỌ TÊN GIẢNG VIÊN]}\\[0.6cm]
+  {\large Hà Nội -- \today}
+\end{titlepage}
+
+\pagenumbering{roman}
+\chapter*{Lời cam đoan}
+Nhóm cam đoan nội dung báo cáo phản ánh đúng quy trình, mã nguồn và các kết quả đã thực hiện. Những biểu đồ tham khảo từ repository khác được phân biệt rõ với biểu đồ sinh trên dữ liệu Điện Máy Xanh. Các kết quả định lượng hiện tại được đánh giá trên nhãn tự động; nhóm không xem chúng là nhãn chuẩn do con người xác nhận.
+
+\chapter*{Tóm tắt}
+Báo cáo xây dựng pipeline phân loại cảm xúc ba lớp cho bình luận sản phẩm tiếng Việt trên Điện Máy Xanh. Dữ liệu được chuẩn hóa, tách từ và gán nhãn lai bằng rating kết hợp từ điển cảm xúc theo miền, quy tắc phủ định/cường độ và xử lý mâu thuẫn rating--văn bản. Sau lọc, tập dữ liệu gồm 9.516 bình luận duy nhất; 490 trường hợp mâu thuẫn được đánh dấu hoặc hiệu chỉnh. Nhóm so sánh Bag of Words (BoW), TF--IDF và Word2Vec với Naïve Bayes và Linear SVM. Trong lần thực nghiệm baseline đã lưu, Word2Vec + LinearSVC đạt Accuracy 0,828 và Macro-F1 0,695 trên tập test giữ lại. Lớp Neutral vẫn là lớp khó nhất, với F1 bằng 0,370. Mã nguồn hỗ trợ fine-tuning PhoBERT và XLM-RoBERTa Large, tuy nhiên chưa có kết quả fine-tuning Transformer được tạo trong lần chạy này.
+
+\vspace{0.5em}
+\noindent\textbf{Từ khóa:} phân tích cảm xúc, tiếng Việt, Điện Máy Xanh, TF--IDF, SVM, PhoBERT, XLM-RoBERTa.
+
+\begin{center}
+\colorbox{softblue}{\parbox{0.92\textwidth}{\textcolor{warnred}{\textbf{Cảnh báo về đánh giá:}} nhãn \code{label_target} và nhãn của \code{data/processed/test.csv} do quy tắc hybrid tự động tạo. Đây là đánh giá trên pseudo-label, không phải đánh giá trên tập gold được gán nhãn độc lập.}}
+\end{center}
+
+\tableofcontents
+\listoffigures
+\listoftables
+\clearpage
+\pagenumbering{arabic}
+
+\input{chapters/01_introduction}
+\input{chapters/02_theory}
+\input{chapters/03_data_method}
+\input{chapters/04_experiments_results}
+\input{chapters/05_conclusion}
+
+\begin{thebibliography}{99}
+\bibitem{nguyen2020phobert}
+D. Q. Nguyen and A. T. Nguyen, ``PhoBERT: Pre-trained language models for Vietnamese,'' in \textit{Findings of the Association for Computational Linguistics: EMNLP 2020}, pp. 1037--1042, 2020. doi: 10.18653/v1/2020.findings-emnlp.92.
+
+\bibitem{conneau2020xlmr}
+A. Conneau et al., ``Unsupervised Cross-lingual Representation Learning at Scale,'' in \textit{Proceedings of ACL 2020}, pp. 8440--8451, 2020. doi: 10.18653/v1/2020.acl-main.747.
+
+\bibitem{cortes1995svm}
+C. Cortes and V. Vapnik, ``Support-vector networks,'' \textit{Machine Learning}, vol. 20, pp. 273--297, 1995. doi: 10.1007/BF00994018.
+
+\bibitem{manning2008ir}
+C. D. Manning, P. Raghavan, and H. Schütze, \textit{Introduction to Information Retrieval}. Cambridge University Press, 2008.
+
+\bibitem{mik1989w2v}
+T. Mikolov, K. Chen, G. Corrado, and J. Dean, ``Efficient Estimation of Word Representations in Vector Space,'' arXiv:1301.3781, 2013.
+
+\bibitem{sklearn}
+F. Pedregosa et al., ``Scikit-learn: Machine Learning in Python,'' \textit{Journal of Machine Learning Research}, vol. 12, pp. 2825--2830, 2011.
+
+\bibitem{dmx}
+Điện Máy Xanh, ``Đánh giá sản phẩm,'' dữ liệu đánh giá công khai được thu thập phục vụ bài tập lớn, 2025. Truy cập: \url{https://www.dienmayxanh.com/}.
+
+\bibitem{lazada-template}
+Học viện Công nghệ Bưu chính Viễn thông, \textit{Bài Tập Lớn I -- Lazada.pdf}, tài liệu mẫu báo cáo môn học do nhóm sử dụng tham khảo bố cục.
+
+\bibitem{clustering-template}
+Học viện Công nghệ Bưu chính Viễn thông, \textit{Bài tập lớn 1 -- Clustering.pdf}, báo cáo mẫu do người dùng cung cấp để tham khảo cách chia chương, trình bày quy trình, diễn giải kết quả và tổ chức đóng góp thành viên. Chủ đề và các biểu đồ clustering không được áp dụng như kết quả sentiment.
+\end{thebibliography}
+
+\appendix
+\chapter{Tái lập thực nghiệm}
+Mã nguồn, cấu hình và notebook được quản lý trong repository \code{dmx-nlp-sentiment}. Các lệnh chạy chính:
+\begin{verbatim}
+python auto_label_review.py
+python scripts/train_classical.py --bootstrap 1000
+python scripts/train_transformer.py --model-name vinai/phobert-base-v2
+python scripts/train_transformer.py --model-name FacebookAI/xlm-roberta-large \
+  --batch-size 2 --gradient-accumulation-steps 8
+jupyter lab notebooks/01_sentiment_analysis_report.ipynb
+\end{verbatim}
+Checkpoint Transformers cần tải từ Hugging Face và có thể cần GPU. Kết quả báo cáo trong bản hiện tại bao gồm baseline cổ điển; không đưa số liệu Transformer nếu chưa chạy script tương ứng.
+
+\chapter{Lưu ý về hình tham khảo}
+Các ảnh trong \code{figures/reference/} là biểu đồ tham khảo từ repository khác cùng chủ đề, không phải kết quả của Điện Máy Xanh. Báo cáo này chỉ sử dụng các hình mới được sinh trong thư mục \code{figures/} ở mức gốc, ví dụ \code{macro_f1_val_test.png} và \code{cm_word2vec__linearsvc.png}.
+
+\end{document}

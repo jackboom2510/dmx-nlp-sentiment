@@ -79,6 +79,11 @@ target/
 # Jupyter Notebook
 .ipynb_checkpoints
 
+# Generated model checkpoints and private/manual annotation workbooks
+outputs/models/
+outputs/checkpoints/
+outputs/annotation/
+
 # IPython
 profile_default/
 ipython_config.py
