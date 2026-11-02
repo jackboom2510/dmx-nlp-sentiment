@@ -1,4 +1,5 @@
 # HƯỚNG DẪN THỰC THI CHI TIẾT & VIẾT BÁO CÁO (STEP-BY-STEP INSTRUCTIONS)
+
 ## Dự án: Phân loại Cảm xúc Bình luận Sản phẩm Điện Máy Xanh (`dmx-nlp-sentiment`)
 
 Tài liệu này cung cấp hướng dẫn chi tiết từng bước từ cài đặt môi trường, chạy quy trình thu thập dữ liệu, tiền xử lý tiếng Việt, trích chọn đặc trưng (BoW, TF-IDF, Word2Vec), huấn luyện mô hình truyền thống (Naïve Bayes, SVM), xây dựng mô hình hiện đại (**PhoBERT** – bổ sung ý 4), cho tới khung nội dung chi tiết để viết báo cáo theo đúng mẫu **`docs/Bài Tập Lớn I - Lazada.pdf`**.
@@ -8,6 +9,7 @@ Tài liệu này cung cấp hướng dẫn chi tiết từng bước từ cài �
 ## PHẦN A: CÀI ĐẶT MÔI TRƯỜNG (ENVIRONMENT SETUP)
 
 ### 1. Tạo môi trường ảo và cài đặt thư viện
+
 Chạy các lệnh sau tại thư mục gốc của dự án:
 
 ```bash
@@ -29,6 +31,7 @@ pip install -r requirements.txt
 ### BƯỚC 1: Thu thập dữ liệu & Tự động gán nhãn cảm xúc (`auto_label_review.py`)
 
 #### 1.1. Chạy công cụ thu thập dữ liệu (`scripts/crawl/`)
+
 Dự án sử dụng Playwright kết hợp trình duyệt Chromium để thu thập bình luận từ 6 ngành hàng trên Điện Máy Xanh (`Tủ lạnh`, `Nồi cơm điện`, `Máy lạnh`, `Máy giặt`, `Máy lọc nước`, `Tivi`):
 
 ```bash
@@ -43,6 +46,7 @@ python3 scripts/crawl/json_to_csv.py
 ```
 
 #### 1.2. Thống kê tập dữ liệu thu thập được (`data/raw/reviews.csv`)
+
 - Tổng số dòng thu thập: **12,189 bình luận** (`9,516` bình luận duy nhất hợp lệ sau khi khử 49 dòng rỗng/rác và 2,624 dòng trùng lặp).
 - Phân bố theo ngành hàng:
   - **Tủ lạnh**: 3,366 bình luận (27.6%)
@@ -57,13 +61,16 @@ python3 scripts/crawl/json_to_csv.py
   - **2 sao**: 706 | **1 sao**: 1,347 $\rightarrow$ Nhãn **Negative (`-1`)**: **2,053 mẫu (16.84%)**
 
 #### 1.3. Quy trình tạo nhãn `label_target` bằng `auto_label_review.py` (Unsupervised + Star Reconciliation)
+
 Thay vì chỉ gán nhãn máy móc theo số sao hoặc phải đọc thủ công toàn bộ 12,189 dòng, dự án cung cấp script **`auto_label_review.py`** (mã nguồn lõi tại `src/data/auto_labeler.py` & `scripts/auto_label_review.py`) hỗ trợ 4 chế độ đánh giá cảm xúc không giám sát / bán giám sát:
+
 1. **`--mode hybrid-lexicon` *(Mặc định – khuyên dùng)***: Kết hợp từ điển cảm xúc miền Điện máy + Quy tắc đảo cực từ phủ định (`không`, `chưa`, `chẳng`) + Trọng số mệnh đề sau liên từ chuyển ý (`nhưng`, `tuy_nhiên`, `mỗi_tội`) để đối chiếu với số sao (`rating`).
 2. **`--mode embedding-prototype`**: Dùng Sentence Embeddings (`keepitreal/vietnamese-sbert`) tính Cosine Similarity với 3 câu hạt giống (Prototypes) đại diện cho 3 nhãn.
 3. **`--mode zero-shot`**: Dùng mô hình Multilingual NLI (`MoritzLaurer/mDeBERTa-v3-base-mnli-xnli`).
 4. **`--mode pretrained`**: Dùng Teacher Model tiếng Việt có sẵn (`wonrax/phobert-base-vietnamese-sentiment`).
 
 **Cách chạy**:
+
 ```bash
 # Chạy chế độ mặc định (Hybrid Unsupervised Lexicon + Star Reconciliation)
 python3 auto_label_review.py
@@ -73,6 +80,7 @@ python3 auto_label_review.py --mode embedding-prototype
 ```
 
 **Kết quả sinh ra tự động**:
+
 - `data/interim/reviews_labeled.csv`: Toàn bộ **9,516** bình luận duy nhất đã tách từ và gán nhãn `label_target` (`-1: 2,415`, `0: 633`, `1: 6,468`).
 - `data/interim/rating_text_conflicts.csv`: Danh sách **490 bình luận bị lệch giữa số sao và nội dung câu chữ** đã được phát hiện và hiệu chỉnh (rất hữu ích để trích dẫn ví dụ thực tế vào Báo cáo!).
 - `data/processed/train.csv` (**7,664 mẫu**), `data/processed/val.csv` (**1,352 mẫu**), `data/processed/test_gold.csv` (**500 mẫu**).
@@ -288,6 +296,7 @@ svm_w2v = LinearSVC(class_weight="balanced", C=1.0, random_state=42).fit(X_train
 ### BƯỚC 4B (BỔ SUNG Ý 4): Xây dựng Mô hình Hiện đại – Fine-tune PhoBERT (`vinai/phobert-base-v2`)
 
 #### 1. Tại sao chọn Fine-tune PhoBERT làm mô hình hiện đại?
+
 - **Khắc phục nhược điểm của BoW / TF-IDF / Word2Vec trung bình**:
   - Trong câu *"Máy giặt chạy không êm nhưng vắt rất khô"*, BoW/TF-IDF tách rời các từ nên dễ bị nhiễu bởi từ *"êm"* và *"rất"*, còn Word2Vec trung bình cộng làm triệt tiêu thông tin vị trí.
   - **PhoBERT** (Pre-trained RoBERTa cho tiếng Việt của VinAI Research) sử dụng **12 tầng Transformer Encoder** với cơ chế **Multi-Head Self-Attention** giúp biểu diễn từng từ phụ thuộc vào ngữ cảnh toàn câu.
@@ -485,29 +494,29 @@ def plot_macro_f1_comparison(model_names, val_scores, test_scores, save_path="fi
 
 ##### Bảng A: Tổng hợp hiệu năng các mô hình (Mẫu tham khảo từ `figures/`)
 
-| Mô hình thực nghiệm | Accuracy | Macro-F1 | Weighted-F1 | Macro-Precision | Macro-Recall | File biểu đồ mẫu trong `figures/` |
-| :--- | :-: | :-: | :-: | :-: | :-: | :--- |
-| **0. Baseline (Lớp đông nhất)** | 0.3280 | 0.1647 | 0.1620 | 0.1093 | 0.3333 | `figures/cm_baseline_lop_dong_nhat.png` |
-| **1. BoW + Naïve Bayes** | 0.6540 | 0.5677 | 0.6924 | 0.6077 | 0.6016 | `figures/cm_bow_nb.png` |
-| **2. BoW + SVM** | 0.6820 | 0.5812 | 0.7000 | 0.6092 | 0.6281 | `figures/cm_bow_svm.png` |
-| **3. TF-IDF + Naïve Bayes** | **0.7420** | **0.6329** | **0.7639** | 0.6381 | 0.6660 | `figures/cm_tf_idf_nb.png` |
-| **4. TF-IDF + SVM** | 0.7340 | 0.6255 | 0.7531 | 0.6321 | 0.6623 | `figures/cm_tf_idf_svm.png` |
-| **5. Word2Vec + Naïve Bayes** | 0.6460 | 0.5829 | 0.6890 | 0.6118 | 0.6318 | `figures/cm_w2v_nb.png` |
-| **6. Word2Vec + SVM** | 0.6160 | 0.5710 | 0.6670 | 0.6384 | 0.6362 | `figures/cm_w2v_svm.png` |
-| **7. PhoBERT (Mô hình hiện đại - Ý 4)** | 0.7140 | **0.6320** | 0.7515 | **0.6623** | **0.6831** | `figures/cm_phobert.png` |
-| *(Tham khảo) TF-IDF + NB (Không bỏ stopword)* | *0.7140* | *0.6389* | *0.7497* | *0.6625* | *0.6965* | `figures/cm_tf_idf_nb_khong_bo_stopword_tham_khao.png` |
+| Mô hình thực nghiệm                             |     Accuracy     |     Macro-F1     |   Weighted-F1   | Macro-Precision |   Macro-Recall   | File biểu đồ mẫu trong `figures/`                  |
+| :-------------------------------------------------- | :--------------: | :--------------: | :--------------: | :--------------: | :--------------: | :------------------------------------------------------- |
+| **0. Baseline (Lớp đông nhất)**           |      0.3280      |      0.1647      |      0.1620      |      0.1093      |      0.3333      | `figures/cm_baseline_lop_dong_nhat.png`                |
+| **1. BoW + Naïve Bayes**                     |      0.6540      |      0.5677      |      0.6924      |      0.6077      |      0.6016      | `figures/cm_bow_nb.png`                                |
+| **2. BoW + SVM**                              |      0.6820      |      0.5812      |      0.7000      |      0.6092      |      0.6281      | `figures/cm_bow_svm.png`                               |
+| **3. TF-IDF + Naïve Bayes**                  | **0.7420** | **0.6329** | **0.7639** |      0.6381      |      0.6660      | `figures/cm_tf_idf_nb.png`                             |
+| **4. TF-IDF + SVM**                           |      0.7340      |      0.6255      |      0.7531      |      0.6321      |      0.6623      | `figures/cm_tf_idf_svm.png`                            |
+| **5. Word2Vec + Naïve Bayes**                |      0.6460      |      0.5829      |      0.6890      |      0.6118      |      0.6318      | `figures/cm_w2v_nb.png`                                |
+| **6. Word2Vec + SVM**                         |      0.6160      |      0.5710      |      0.6670      |      0.6384      |      0.6362      | `figures/cm_w2v_svm.png`                               |
+| **7. PhoBERT (Mô hình hiện đại - Ý 4)** |      0.7140      | **0.6320** |      0.7515      | **0.6623** | **0.6831** | `figures/cm_phobert.png`                               |
+| *(Tham khảo) TF-IDF + NB (Không bỏ stopword)*  |    *0.7140*    |    *0.6389*    |    *0.7497*    |    *0.6625*    |    *0.6965*    | `figures/cm_tf_idf_nb_khong_bo_stopword_tham_khao.png` |
 
 ##### Bảng B: Chi tiết Precision / Recall / F1 theo từng lớp cảm xúc (Mẫu tham khảo từ `figures/`)
 
-| Mô hình | Negative (`-1`, $n=289$) P / R / F1 | Neutral (`0`, $n=47$) P / R / F1 | Positive (`1`, $n=164$) P / R / F1 |
-| :--- | :-: | :-: | :-: |
-| **BoW + NB** | 0.9461 / 0.5467 / 0.6930 | 0.1145 / 0.3191 / 0.1685 | 0.7624 / 0.9390 / 0.8415 |
-| **BoW + SVM** | **0.9940** / 0.5744 / 0.7281 | 0.1739 / 0.3404 / 0.2302 | 0.6598 / 0.9695 / 0.7852 |
-| **TF-IDF + NB** | 0.9474 / **0.6851** / **0.7952** | 0.1868 / 0.3617 / 0.2464 | 0.7800 / 0.9512 / 0.8571 |
-| **TF-IDF + SVM** | 0.9602 / 0.6678 / 0.7878 | **0.1954** / 0.3617 / **0.2537** | 0.7406 / 0.9573 / 0.8351 |
-| **Word2Vec + NB** | 0.8731 / 0.5952 / 0.7078 | 0.1748 / 0.5319 / **0.2632** | 0.7875 / 0.7683 / 0.7778 |
-| **Word2Vec + SVM** | 0.9517 / 0.4775 / 0.6359 | 0.1453 / **0.5532** / 0.2301 | 0.8182 / 0.8780 / 0.8471 |
-| **PhoBERT (Ý 4)** | 0.9887 / 0.6055 / 0.7511 | 0.1692 / 0.4681 / 0.2486 | **0.8290** / **0.9756** / **0.8964** |
+| Mô hình                |   Negative (`-1`, $n=289$) P / R / F1   |     Neutral (`0`, $n=47$) P / R / F1     |         Positive (`1`, $n=164$) P / R / F1         |
+| :----------------------- | :------------------------------------------: | :------------------------------------------: | :----------------------------------------------------: |
+| **BoW + NB**       |           0.9461 / 0.5467 / 0.6930           |           0.1145 / 0.3191 / 0.1685           |                0.7624 / 0.9390 / 0.8415                |
+| **BoW + SVM**      |      **0.9940** / 0.5744 / 0.7281      |           0.1739 / 0.3404 / 0.2302           |                0.6598 / 0.9695 / 0.7852                |
+| **TF-IDF + NB**    | 0.9474 / **0.6851** / **0.7952** |           0.1868 / 0.3617 / 0.2464           |                0.7800 / 0.9512 / 0.8571                |
+| **TF-IDF + SVM**   |           0.9602 / 0.6678 / 0.7878           | **0.1954** / 0.3617 / **0.2537** |                0.7406 / 0.9573 / 0.8351                |
+| **Word2Vec + NB**  |           0.8731 / 0.5952 / 0.7078           |      0.1748 / 0.5319 / **0.2632**      |                0.7875 / 0.7683 / 0.7778                |
+| **Word2Vec + SVM** |           0.9517 / 0.4775 / 0.6359           |      0.1453 / **0.5532** / 0.2301      |                0.8182 / 0.8780 / 0.8471                |
+| **PhoBERT (Ý 4)** |           0.9887 / 0.6055 / 0.7511           |           0.1692 / 0.4681 / 0.2486           | **0.8290** / **0.9756** / **0.8964** |
 
 ---
 
@@ -516,16 +525,20 @@ def plot_macro_f1_comparison(model_names, val_scores, test_scores, save_path="fi
 Khi soạn thảo file Word/PDF báo cáo nộp cho giảng viên, nhóm hãy trình bày theo đúng bố cục 4 Phần lớn dưới đây:
 
 ### Trang bìa & Mục lục + Bảng đóng góp thành viên
+
 - **Tiêu đề**: HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG – BỘ MÔN PHÂN TÍCH VÀ KHAI PHÁ DỮ LIỆU VĂN BẢN – BÁO CÁO BÀI TẬP LỚN I.
 - **Bảng đóng góp thành viên**: Đặt ngay dưới mục lục (trang 2) gồm 4 cột: `STT | Họ tên | Mã sinh viên | Công việc | Mức độ đóng góp (25%)`.
 
 ### Phần I. Đề bài
+
 - Xây dựng hệ thống phân loại cảm xúc bình luận sản phẩm trên sàn thương mại điện tử **Điện Máy Xanh**.
 - Quy ước 3 nhãn: **Tích cực (`1`)**, **Trung tính (`0`)**, **Tiêu cực (`-1`)**.
 - Liệt kê 5 bước thực hiện chuẩn + **Nội dung mở rộng ở Bước 4**: Xây dựng mô hình học sâu hiện đại **PhoBERT** giải quyết bài toán.
 
 ### Phần II. Cơ sở lý thuyết
+
 Trình bày ngắn gọn, súc tích theo đúng phong cách báo cáo mẫu (khoảng 3–4 trang):
+
 1. **Phương pháp Bag of Words (BoW)**: Khái niệm, Ý tưởng, Cách hoạt động, Ưu điểm, Nhược điểm (mất ngữ cảnh, ma trận thưa, OOV).
 2. **Phương pháp TF-IDF**: Khái niệm, Công thức $TF(t,d)$, công thức làm mượt $IDF(t, D) = \ln\frac{1 + |D|}{1 + df(d, t)} + 1$, công thức chuẩn hóa $L_2$ của `scikit-learn`, Ưu/Nhược điểm.
 3. **Phương pháp Word Embeddings (Word2Vec)**: Biểu diễn vector dày đặc (dense vectors) khoảng 100–300 chiều, kiến trúc Skip-gram/CBOW, cách lấy trung bình vector từ (Mean Pooling) cho văn bản, Ưu/Nhược điểm.
@@ -539,6 +552,7 @@ Trình bày ngắn gọn, súc tích theo đúng phong cách báo cáo mẫu (kh
 8. **Thư viện hỗ trợ**: `playwright`, `pyvi`/`underthesea`, `langdetect`, `scikit-learn`, `gensim`, `imbalanced-learn`, `transformers` & `pytorch`.
 
 ### Phần III. Thực nghiệm và Kết quả
+
 1. **Code thực nghiệm & Thiết kế tập dữ liệu**:
    - Đưa link GitHub repository chứa code thu thập dữ liệu, tiền xử lý và huấn luyện mô hình.
    - Giải thích rõ quy trình chia tập dữ liệu: Tập **Validation** đánh giá trên nhãn sao (Silver label) và Tập **Test (`n=500`)** được gán nhãn thủ công (**Gold label**) để phản ánh trung thực chất lượng mô hình.
@@ -560,6 +574,7 @@ Trình bày ngắn gọn, súc tích theo đúng phong cách báo cáo mẫu (kh
      - Mọi mô hình đều có độ sụt giảm khoảng `0.10 - 0.15` điểm Macro-F1 khi chuyển từ `Val (nhãn sao)` sang `Test (nhãn gold)`. Nguyên nhân là do các mô hình được huấn luyện trên nhãn sao (nơi nhiều bình luận chê nhẹ hoặc góp ý vẫn được người dùng chấm 4–5 sao hoặc 3 sao), dẫn đến ranh giới giữa `Negative` và `Neutral` bị dịch chuyển (ví dụ ở PhoBERT: 105 mẫu `Negative` được dự đoán sang `Neutral`, nhưng chỉ có 9 mẫu bị nhầm sang `Positive`).
 
 ### Phần IV. Kết luận
+
 1. **Kết quả đạt được**: Tổng kết việc hoàn thành toàn bộ quy trình từ thu thập 12,189 bình luận Điện Máy Xanh, tiền xử lý tiếng Việt, thử nghiệm 3 bộ đặc trưng (BoW, TF-IDF, Word2Vec) với 2 thuật toán (NB, SVM) đến triển khai thành công mô hình Transformer hiện đại **PhoBERT**.
 2. **Các hạn chế & Hướng cải thiện**:
    - **Nhiễu nhãn huấn luyện (Noisy Silver Labels)**: Tập Train vẫn dựa vào số sao người dùng chấm nên chứa nhiễu giữa lớp `Neutral` (3 sao) và `Negative`/`Positive`. $\rightarrow$ *Hướng cải thiện*: Áp dụng kỹ thuật **Confident Learning (`cleanlab`)** hoặc dùng LLM để lọc/gán lại nhãn tập huấn luyện trước khi train.
