@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>20 Testcase — Báo cáo v1.6 &amp; Notebook PhoBERT (Colab)</title>
+<style>
+:root{--bg:#f5f3ef;--card:#fff;--ink:#1c1917;--ink2:#57534e;--ink3:#a8a29e;--line:#e7e2d9;--clay:#c15f3c;--clay-soft:#fbeee8;--blue:#2a78d6;--blue-soft:#e8f1fc;--green:#1f7a4d;--green-soft:#e6f4ec;--amber:#9a6a12;--amber-soft:#fdf3d7;--red:#b3372f;--red-soft:#fbe9e7;--mono:ui-monospace,'SF Mono',Menlo,Consolas,monospace;--sans:-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans','DejaVu Sans',Arial,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.65}
+code,.mono{font-family:var(--mono);font-size:.86em;background:#f3efe8;border:1px solid var(--line);border-radius:5px;padding:.05em .35em;word-break:break-word}
+pre{font-family:var(--mono);font-size:12px;line-height:1.55;background:#1c1917;color:#f5f0e8;border-radius:10px;padding:12px 14px;overflow-x:auto;white-space:pre-wrap;margin:6px 0}
+pre code{background:none;border:none;color:inherit;padding:0}
+.topbar{position:sticky;top:0;z-index:50;background:rgba(255,253,249,.93);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.topbar-in{max-width:1380px;margin:0 auto;padding:10px 22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.dot{width:9px;height:9px;border-radius:50%}.logo{width:30px;height:30px;border-radius:8px;background:var(--clay);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800}
+.topbar h1{font-size:16px;margin:0}.topbar .sub{color:var(--ink2);font-size:12.5px}
+.badge{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}.badge span{font-size:11.5px;font-weight:600;border:1px solid var(--line);background:#fff;border-radius:999px;padding:3px 10px;color:var(--ink2)}
+.badge .hot{background:var(--clay-soft);border-color:#efc9b8;color:var(--clay)}
+button.btn{font-family:var(--sans);font-size:13px;font-weight:600;border:1px solid var(--line);background:#fff;border-radius:8px;padding:7px 14px;cursor:pointer}
+button.btn:hover{border-color:var(--clay);color:var(--clay)}button.btn.primary{background:var(--clay);border-color:var(--clay);color:#fff}
+.wrap{max-width:1380px;margin:0 auto;padding:26px 22px 70px}
+h2{font-size:22px;margin:34px 0 8px}h2:first-child{margin-top:0}h2 .no{color:var(--clay);font-family:var(--mono);font-size:14px;margin-right:8px}
+.lead{color:var(--ink2);max-width:900px}
+.warn{background:var(--amber-soft);border:1px solid #ead9a0;border-radius:10px;padding:12px 16px;font-size:13.5px}
+.info{background:var(--blue-soft);border:1px solid #c3dbf7;border-radius:10px;padding:12px 16px;font-size:13.5px}
+.good{background:var(--green-soft);border:1px solid #bfe3cf;border-radius:10px;padding:12px 16px;font-size:13.5px}
+.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:#fff}
+table{border-collapse:collapse;width:100%;font-size:12.5px}th{background:#faf7f1;text-align:left;color:var(--ink2);padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}td{padding:7px 10px;border-bottom:1px solid #f0ece4;vertical-align:top}tr:last-child td{border-bottom:none}
+.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:16px 0}
+.controls input[type=search]{flex:1 1 260px;font-family:var(--sans);font-size:14px;padding:9px 13px;border:1px solid var(--line);border-radius:9px;background:#fff}
+.controls select{font-family:var(--sans);font-size:13.5px;padding:9px;border:1px solid var(--line);border-radius:9px;background:#fff}
+.qcount{font-family:var(--mono);font-size:12.5px;color:var(--ink2)}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(430px,1fr));gap:14px}@media(max-width:560px){.tgrid{grid-template-columns:1fr}}
+.tc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:7px}
+.tc:hover{border-color:#d8cfc0;box-shadow:0 4px 18px rgba(28,25,23,.06)}
+.thead{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tid{font-family:var(--mono);font-weight:800;font-size:13px;color:#fff;background:var(--clay);border-radius:6px;padding:1px 8px}
+.ttitle{font-weight:700;font-size:14.5px;flex:1}
+.tag{display:inline-block;font-size:11px;font-weight:700;border-radius:999px;padding:2px 9px;background:var(--blue-soft);color:var(--blue)}
+.tag.clay{background:var(--clay-soft);color:var(--clay)}.tag.green{background:var(--green-soft);color:var(--green)}.tag.amber{background:var(--amber-soft);color:var(--amber)}.tag.red{background:var(--red-soft);color:var(--red)}
+.trow{font-size:13px}.trow b.lbl{color:var(--ink2);font-size:11px;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:1px}
+.expect{background:#faf7f1;border:1px solid var(--line);border-radius:8px;padding:8px 11px;font-size:12px;font-family:var(--mono);line-height:1.6;white-space:pre-wrap;word-break:break-word}
+.pass{font-size:12.5px;background:var(--green-soft);border:1px solid #bfe3cf;border-radius:8px;padding:7px 10px}
+.fail{font-size:12.5px;background:var(--red-soft);border:1px solid #f0c4c0;border-radius:8px;padding:7px 10px}
+.trap{background:#fdf6ec;border:1px dashed #e6cf9e;border-radius:8px;padding:8px 11px;font-size:12.5px}.trap b{color:var(--amber)}
+.stars{color:var(--clay);font-size:12px;letter-spacing:1px}
+footer{border-top:1px solid var(--line);padding:20px 22px;color:var(--ink2);font-size:12.5px;max-width:1380px;margin:0 auto}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-in">
+  <div style="display:flex;gap:5px"><span class="dot" style="background:#e0655a"></span><span class="dot" style="background:#e8b13f"></span><span class="dot" style="background:#57ab6b"></span></div>
+  <div class="logo">TC</div>
+  <div><h1>20 Testcase kiểm chứng báo cáo v1.6 — trọng tâm notebook PhoBERT</h1>
+  <div class="sub">Từ phức tạp → nâng cao · mọi mốc kỳ vọng lấy từ output đã lưu trong notebook &amp; artifacts của repo sentiment-classification</div></div>
+  <div class="badge"><span class="hot">● HTML Artifact</span><span>20 testcase · 4 nhóm</span></div>
+  <button class="btn" onclick="window.print()">🖨 In / lưu PDF</button>
+</div></div>
+
+<div class="wrap">
+<h2><span class="no">00</span>Phạm vi &amp; cách đọc bộ testcase</h2>
+<p class="lead">Repo không có thư mục <code>colab/</code> — notebook “Colab” của dự án là <code>notebooks/02_phobert_colab.ipynb</code> (15 ô), kèm bản đối chứng nhãn-sao <code>results/archive_star/02_phobert_colab_star.ipynb</code> và notebook khám phá <code>notebooks/01_eda.ipynb</code> (18 ô). Cả 20 testcase dưới đây bám vào đúng ba file này và các artifact mà chúng sinh ra. Mỗi testcase là một <b>bài kiểm tra có thể chạy/chứng minh ngay trước hội đồng</b>: có tiền điều kiện, input cụ thể, thao tác, kết quả kỳ vọng chính xác tới từng con số, tiêu chí Đạt / Không đạt và câu hỏi xoáy tiếp theo.</p>
+<div class="warn"><b>Quy ước điều kiện chạy:</b> <span class="tag green">Đọc artifact</span> không cần chạy lại gì — đối chiếu file có sẵn · <span class="tag">CPU</span> chạy được bằng pandas/sklearn trong vài phút · <span class="tag amber">GPU / checkpoint</span> cần <code>models/phobert_best</code> hoặc GPU để huấn luyện lại (mặc định repo <b>không</b> có sẵn thư mục này) · <span class="tag red">Tự viết mới</span> chưa có code sẵn, phải tự cài đặt. Độ khó ★ tăng dần từ Nhóm I → IV.</div>
+
+<h2><span class="no">01</span>Bảng tổng quan 20 testcase</h2>
+<div class="tblwrap"><table>
+<tr><th>ID</th><th>Testcase</th><th>Nhóm / nguồn</th><th>Độ khó</th><th>Điều kiện</th><th>Chứng minh điều gì</th></tr>
+<tr><td><code>TC-01</code></td><td>Tái lập phễu làm sạch 9.481 → 6.540</td><td>EDA ô 3 · Bảng 3.1</td><td>★★</td><td><span class="tag green">Đọc artifact</span></td><td>Hiểu thứ tự các bước lọc &amp; khử trùng</td></tr>
+<tr><td><code>TC-02</code></td><td>Top n-gram đặc trưng từng lớp, chỉ fit trên train</td><td>EDA ô 13 · Hình 3.3</td><td>★★</td><td><span class="tag">CPU</span></td><td>Kỷ luật chống rò rỉ đặc trưng</td></tr>
+<tr><td><code>TC-03</code></td><td>Nhiễu nhãn sao theo mức sao trên pool 6.024</td><td>EDA ô 16 · Hình 3.2</td><td>★★</td><td><span class="tag green">Đọc artifact</span></td><td>Phân biệt 20,9% (pool) vs 31,2% (gold test)</td></tr>
+<tr><td><code>TC-04</code></td><td>Độ dài bình luận theo nhãn</td><td>EDA ô 10</td><td>★★</td><td><span class="tag">CPU</span></td><td>Đọc thống kê mô tả, liên hệ hành vi người dùng</td></tr>
+<tr><td><code>TC-05</code></td><td>Hai đường tiền xử lý text_clean vs text_seg</td><td>preprocess · Bảng 3.3</td><td>★★★</td><td><span class="tag">CPU</span></td><td>Vì sao PhoBERT giữ hoa/thường, dấu câu, từ dừng</td></tr>
+<tr><td><code>TC-06</code></td><td>Tách từ 2 tầng Underthesea → RDRSegmenter</td><td>Notebook PhoBERT ô 7</td><td>★★★</td><td><span class="tag">CPU</span></td><td>Hiểu resegment(): gỡ “_” rồi tách lại</td></tr>
+<tr><td><code>TC-07</code></td><td>Chuẩn hóa dấu thanh, rút ký tự kéo dài, từ đa nghĩa “kh”</td><td>preprocess · §2.2.1–2.2.2</td><td>★★★</td><td><span class="tag">CPU</span></td><td>Ranh giới sửa/không sửa teencode</td></tr>
+<tr><td><code>TC-08</code></td><td>Định tuyến môi trường &amp; seed trong notebook</td><td>Notebook PhoBERT ô 2–4</td><td>★★★</td><td><span class="tag green">Đọc artifact</span></td><td>IN_COLAB, SUFFIX, MODEL_DIR, seed 42/43/44</td></tr>
+<tr><td><code>TC-09</code></td><td>Token hóa BPE, max_len 128, tỷ lệ bị cắt</td><td>Notebook PhoBERT ô 9 · Bảng 3.4</td><td>★★★★</td><td><span class="tag">CPU</span></td><td>Median 15, p95 75, truncated 1,5%</td></tr>
+<tr><td><code>TC-10</code></td><td>Trọng số lớp từ phân bố train</td><td>Notebook PhoBERT ô 9</td><td>★★★</td><td><span class="tag">CPU</span></td><td>Công thức w<sub>k</sub> = n/(3·n<sub>k</sub>) → 4,2667 cho Neutral</td></tr>
+<tr><td><code>TC-11</code></td><td>Vòng huấn luyện &amp; chọn checkpoint theo val</td><td>Notebook PhoBERT ô 11 · Bảng 3.6</td><td>★★★★</td><td><span class="tag amber">GPU / checkpoint</span></td><td>Đỉnh epoch 2, quá khớp sau đó</td></tr>
+<tr><td><code>TC-12</code></td><td>Fallback OOM: batch 16 → 8 + tích lũy gradient 2</td><td>Notebook PhoBERT ô 11</td><td>★★★★</td><td><span class="tag amber">GPU / checkpoint</span></td><td>Batch hiệu dụng không đổi, lịch học ra sao</td></tr>
+<tr><td><code>TC-13</code></td><td>Dự đoán lại &amp; assert nhất quán val</td><td>Notebook PhoBERT ô 13</td><td>★★★★</td><td><span class="tag green">Đọc artifact</span></td><td>Sai lệch macro-F1 tính lại &lt; 1e-3</td></tr>
+<tr><td><code>TC-14</code></td><td>Độ biến thiên theo seed &amp; bản đối chứng nhãn sao</td><td>Notebook ô 13 · archive_star</td><td>★★★★</td><td><span class="tag green">Đọc artifact</span></td><td>0,881 ± 0,015; nhãn sao tụt xuống 0,632</td></tr>
+<tr><td><code>TC-15</code></td><td>Tính lại toàn bộ metrics test từ file predictions</td><td>evaluate · Bảng 3.7–3.8</td><td>★★★</td><td><span class="tag">CPU</span></td><td>PhoBERT 0,9023; ma trận nhầm lẫn Neutral</td></tr>
+<tr><td><code>TC-16</code></td><td>Bootstrap CI95 paired &amp; chấm bằng nhãn người thứ hai</td><td>evaluate · Bảng 3.10</td><td>★★★★</td><td><span class="tag">CPU</span></td><td>CI [0,864; 0,935]; human2 0,8497</td></tr>
+<tr><td><code>TC-17</code></td><td>Nhóm lỗi phủ định: cổ điển sai, PhoBERT đúng</td><td>errors.csv · Bảng 3.12–3.13</td><td>★★★★</td><td><span class="tag green">Đọc artifact</span></td><td>Vì sao BoW/TF-IDF mù phủ định</td></tr>
+<tr><td><code>TC-18</code></td><td>Câu khen–chê lẫn lộn &amp; thí nghiệm cắt bỏ một từ</td><td>predict.py · §3.7.3</td><td>★★★★</td><td><span class="tag amber">GPU / checkpoint</span></td><td>p=0,62 Tiêu cực → bỏ “giặt” thành Trung tính 0,68</td></tr>
+<tr><td><code>TC-19</code></td><td>Câu cụt, “kh” đa nghĩa &amp; câu hỏi vì sự cố</td><td>errors.csv · guideline</td><td>★★★★★</td><td><span class="tag green">Đọc artifact</span></td><td>Phân biệt nhãn gold đúng vs mô hình sai</td></tr>
+<tr><td><code>TC-20</code></td><td>Bình luận dài 314 từ: cắt 128 token vẫn đoán đúng</td><td>Notebook ô 9 · Bảng 3.4</td><td>★★★★★</td><td><span class="tag">CPU</span> + <span class="tag green">Đọc artifact</span></td><td>Ảnh hưởng thật của truncation tới suy luận</td></tr>
+</table></div>
+
+<h2><span class="no">02</span>Chi tiết từng testcase</h2>
+<div class="controls">
+  <input type="search" id="q" placeholder="🔍 Tìm testcase: truncation, seed, phủ định, RDRSegmenter, bootstrap…">
+  <select id="fg"><option value="">Mọi nhóm</option><option value="eda">Nhóm I · EDA &amp; dữ liệu</option><option value="pre">Nhóm II · Tiền xử lý &amp; tách từ</option><option value="pho">Nhóm III · Notebook PhoBERT</option><option value="eval">Nhóm IV · Đánh giá &amp; hành vi</option></select>
+  <select id="fl"><option value="">Mọi độ khó</option><option value="2">★★</option><option value="3">★★★</option><option value="4">★★★★</option><option value="5">★★★★★</option></select>
+  <span class="qcount" id="cnt"></span>
+</div>
+<div class="tgrid" id="tgrid"></div>
+<p class="qcount" id="nores" style="display:none">Không có testcase nào khớp bộ lọc.</p>
+
+<h2><span class="no">03</span>Cách dùng bộ testcase để tự kiểm tra trước buổi bảo vệ</h2>
+<div class="info"><b>Quy trình 3 vòng:</b> Vòng 1 (đọc): chạy hết các testcase <span class="tag green">Đọc artifact</span> để thuộc “bản đồ số liệu”. Vòng 2 (chạy): tự thực hiện các testcase <span class="tag">CPU</span> mà không mở đáp án — chỉ đối chiếu khối “Kỳ vọng” sau khi xong. Vòng 3 (bảo vệ thử): nhờ một người đọc ngẫu nhiên phần “Giảng viên xoáy tiếp” của từng testcase; trả lời được trong 60 giây mà không nhìn code là đạt mức sẵn sàng. Các testcase <span class="tag amber">GPU / checkpoint</span> chỉ cần trình bày được luồng và mốc số — trừ khi bạn đã huấn luyện lại checkpoint trên máy của mình.</div>
+<div class="good" style="margin-top:12px"><b>Nguyên tắc chấm mô phỏng (khớp cách hội đồng chấm):</b> chạy/đối chiếu đúng số 40% · giải thích được cơ chế “vì sao” 30% · dự đoán đúng khi giảng viên đổi một tham số 20% · chủ động nêu giới hạn (thiếu artifact, thiếu checkpoint) 10%.</div>
+</div>
+<footer>20 testcase sinh từ đối chiếu báo cáo v1.6 với <code>notebooks/01_eda.ipynb</code>, <code>notebooks/02_phobert_colab.ipynb</code>, <code>results/archive_star/02_phobert_colab_star.ipynb</code> và artifacts trong repo <code>sannguyen125/sentiment-classification</code> @0184366. Dùng kèm trang giảng giải tại <code>report-work/output/giang-giai-bao-cao-v1.6.html</code>.</footer>
+
+<script>
+const TC=[
+{id:"TC-01",g:"eda",lv:2,cond:"Đọc artifact",t:"Tái lập phễu làm sạch 9.481 → 6.540",src:"notebooks/01_eda.ipynb ô 3 · Bảng 3.1 · src/clean_label.py main() dòng 100",
+goal:"Chứng minh thuộc thứ tự và lý do của từng bước lọc, không chỉ thuộc con số cuối.",
+given:"results/metrics/clean_stats.json (hoặc chạy lại python -m src.clean_label trên data/raw/reviews.jsonl).",
+steps:"1) Liệt kê 6 bước lọc theo đúng thứ tự trong clean_label.py.\n2) Đối chiếu số bị loại và số còn lại sau từng bước.\n3) Nêu phân bố sao sau làm sạch và thông tin tập gold.",
+expect:"Thô 9.481 → rỗng −17 (9.464) → dưới 3 từ −1.976 (7.488) → không phải tiếng Việt −3 (7.485) → phản hồi nhân viên −0 (7.485) → trùng y hệt −690 (6.795) → gần trùng cos>0,9 −255 → 6.540.\nSao sau sạch: 1.057 / 612 / 1.068 / 1.306 / 2.497 · 19 ngành · 72 sản phẩm · trung vị 13 từ · 75 cặp gần trùng khác sao.\nGold: 500 câu, 71 sản phẩm, tối đa 15 câu/sản phẩm; pool còn lại 6.040.",
+pass:"Đạt: đọc đúng cả 7 dòng phễu và giải thích được vì sao bước “dưới 3 từ” loại nhiều nhất (câu ngắn kiểu “tốt”, “ok shop”).",
+fail:"Không đạt: chỉ nhớ 9.481→6.540; nhầm thứ tự khử trùng/lọc ngắn; không biết gold được bốc sau khi khử trùng.",
+trap:"Vì sao khử gần trùng phải chạy trước khi bốc gold và chia tập? → chặn cặp gần trùng nằm vắt ngang test/train (rò rỉ)."},
+{id:"TC-02",g:"eda",lv:2,cond:"CPU",t:"Top n-gram đặc trưng từng lớp — chỉ học trên train",src:"notebooks/01_eda.ipynb ô 13 · Hình 3.3 · src/features.py tfidf() dòng 27",
+goal:"Tái lập Hình 3.3 và chứng minh kỷ luật “fit trên train” bằng hành động, không phải lời nói.",
+given:"data/processed/train.csv (cột text_clean, label_text); hàm tfidf(ngram=(1,2), min_df=5) của src/features.py.",
+steps:"1) Chỉ fit TfidfVectorizer trên train, đếm số n-gram trong từ điển.\n2) Tính TF-IDF trung bình từng lớp; điểm đặc trưng = trung bình lớp đó − lớn nhất ở hai lớp còn lại; lấy top bigram.\n3) Kiểm tra: nếu fit trên train+val+test thì từ điển thay đổi thế nào — nêu tên loại rò rỉ.",
+expect:"Từ điển: 3.162 n-gram (1,2), min_df=5, fit trên train.\nTop bigram Negative: quá tệ · bị lỗi · rất tệ · kêu to · không lạnh.\nNeutral: tạm ổn · cũng được · tốt nhưng · cũng tạm · ok nhưng.\nPositive: rất tốt · chạy êm · rất ok · sản_phẩm tốt · dùng tốt.",
+pass:"Đạt: ra đúng 3.162 và nêu được bigram phủ định “không lạnh” lọt top Negative — bằng chứng bigram giữ được một phần thứ tự.",
+fail:"Không đạt: fit trên toàn bộ dữ liệu rồi biện minh “chỉ để vẽ hình”; không giải thích được công thức điểm đặc trưng.",
+trap:"min_df=5 cắt cái gì, vì sao Hình 3.3 (min_df=5) khác số đặc trưng khi huấn luyện TF-IDF+SVM? → cùng min_df được chọn, nhưng Hình 3.3 tính trên nhãn chữ của train để diễn giải."},
+{id:"TC-03",g:"eda",lv:2,cond:"Đọc artifact",t:"Nhiễu nhãn sao trên pool train+val 6.024 câu",src:"notebooks/01_eda.ipynb ô 16 · Hình 3.2 · results/label_noise_pool.csv",
+goal:"Đọc đúng bảng nhiễu nhãn và phân biệt hai con số rất dễ bị hội đồng gài: 20,9% của pool và 31,2% của gold test.",
+given:"results/label_noise_pool.csv (pool_llm.py sinh từ 6.024 câu train+val) và results/metrics/gold_agreement.json (test 500).",
+steps:"1) Tính tỷ lệ nhãn chữ khác nhãn sao cho từng mức sao trên pool.\n2) So với tỷ lệ trên gold test và giải thích vì sao khác nhau (cách bốc mẫu khác nhau).\n3) Chỉ ra mức sao lệch nhất và hệ quả cho việc huấn luyện bằng nhãn sao.",
+expect:"Pool: 1★ 0,8% · 2★ 0,7% · 3★ 81,7% · 4★ 29,4% · 5★ 5,8% · chung 20,9%.\nGold test: lệch 31,2%; riêng 3★ lệch 83,3% (112 Tiêu cực / 25 Trung tính / 13 Tích cực trên 150 câu).\n3★ là vùng nhiễu nặng nhất: phần lớn câu 3 sao có nội dung chê.",
+pass:"Đạt: phân biệt rạch ròi hai mẫu số (6.024 vs 500) và hai cách tính không mâu thuẫn.",
+fail:"Không đạt: khẳng định “31,2% của toàn bộ dữ liệu”; không giải thích nổi vì sao 1–2★ gần như không lệch.",
+trap:"Nếu huấn luyện PhoBERT bằng nhãn sao (thí nghiệm A) thì test macro-F1 còn bao nhiêu? → 0,632 (Bảng 3.9, archive_star)."},
+{id:"TC-04",g:"eda",lv:2,cond:"CPU",t:"Độ dài bình luận theo nhãn: người chê viết dài hơn",src:"notebooks/01_eda.ipynb ô 10 · liên hệ Bảng 3.4",
+goal:"Tái lập thống kê độ dài và biến một con số mô tả thành diễn giải hành vi có căn cứ.",
+given:"pool train+val trong notebook 01 (cột text, label_text).",
+steps:"1) Đếm số từ theo khoảng trắng, groupby theo label_text, lấy count/mean/trung vị/max.\n2) Đối chiếu với claim ở chương 3 và nêu ngoại lệ (câu dài nhất thuộc lớp nào, bao nhiêu từ).",
+expect:"Negative: n=2.367 · mean 37,4 · trung vị 24 · max 889 từ.\nNeutral: n=465 · mean 17,3 · trung vị 12 · max 168.\nPositive: n=3.192 · mean 13,1 · trung vị 9 · max 492.\nDiễn giải: người chê kể lại sự cố/quá trình bảo hành nên dài; khen thường ngắn (“tốt lắm”).",
+pass:"Đạt: khớp 3 dòng thống kê và nói được độ dài là đặc trưng phụ trợ, không phải nhãn.",
+fail:"Không đạt: dùng trung bình mà quên trung vị trong khi phân bố lệch phải nặng (max 889).",
+trap:"Phân bố lệch phải thế này thì tiền xử lý cắt 128 token của PhoBERT ảnh hưởng lớp nào nhất? → Negative (câu dài nhất) — nối sang TC-20."},
+{id:"TC-05",g:"pre",lv:3,cond:"CPU",t:"Hai đường tiền xử lý: text_clean (cổ điển) vs text_seg (PhoBERT)",src:"src/preprocess.py to_text_clean() dòng 120, to_text_seg() dòng 126 · results/preprocess_examples.csv · Bảng 3.3",
+goal:"Chứng minh hiểu vì sao cùng một câu gốc sinh hai dạng đầu vào khác nhau cho hai họ mô hình.",
+given:"10 ví dụ đã lưu trong results/preprocess_examples.csv, ví dụ: “Dùng ổn lắm nha mn. Lọc bụi vải tốt…” và “Ko đc như kỳ vọng, ko nhớ để hút bụi…”.",
+steps:"1) Chạy to_text_clean và to_text_seg (hoặc đọc file mẫu) cho hai câu trên.\n2) Chỉ ra 4 khác biệt: hạ chữ thường, dấu câu, từ dừng, sửa teencode.\n3) Nêu thống kê toàn cục của bước này trong preprocess_stats.json.",
+expect:"text_seg: “Dùng ổn lắm nha mọi người . Lọc bụi vải tốt , quần_áo lúc_nào cũng thơm_tho …” (giữ hoa/thường, dấu câu, từ dừng; mn→mọi người).\ntext_clean: “dùng ổn lắm mọi người lọc bụi vải tốt quần_áo…” (hạ chữ thường, bỏ dấu câu và từ dừng).\n“K o đc” → “không được” ở cả hai đường.\nToàn cục: sửa từ 3.745 lượt / 2.057 câu · bỏ từ dừng loại 22,45% token · độ dài TB 19,14 → 14,84.",
+pass:"Đạt: giải thích được PhoBERT cần giữ nguyên dạng ngôn ngữ tự nhiên gần với lúc tiền huấn luyện, còn mô hình cổ điển cần rút gọn chiều.",
+fail:"Không đạt: nói “mọi mô hình đều qua cùng một tiền xử lý”; không biết text_nostop tồn tại để làm thí nghiệm §3.6.3.",
+trap:"Vì sao tiền xử lý chạy trên cả 6.540 câu cùng lúc không bị coi là rò rỉ? → mọi hàm xử lý từng câu độc lập, không có bước fit."},
+{id:"TC-06",g:"pho",lv:3,cond:"CPU",t:"Tách từ 2 tầng trong notebook: Underthesea → RDRSegmenter",src:"notebooks/02_phobert_colab.ipynb ô 7 (resegment) · src/preprocess.py segment() dòng 99",
+goal:"Tái hiện đúng cơ chế “gỡ gạch dưới rồi tách lại” và đọc được 3 cặp ví dụ đã lưu trong output của notebook.",
+given:"Ba câu text_seg đầu tiên của train (output ô 7 đã lưu trong notebook) và hàm resegment().",
+steps:"1) Trình bày resegment: raw = text_seg.replace('_',' ') → rdr.word_segment(raw) → nối lại bằng khoảng trắng.\n2) Đối chiếu 3 cặp underthesea/input bên dưới.\n3) Nêu điều gì xảy ra khi thiếu Java/jar VnCoreNLP và bằng chứng nào trong artifact cho biết lần chạy thật dùng bộ tách nào.",
+expect:"1) “Nấu cơm bình_thường , được” → giữ nguyên “bình_thường”.\n2) “…Mỗi tội hút tóc kém” → “Mỗi_tội hút tóc kém” (RDR gộp mỗi+tội).\n3) “Thợ điện_máy xanh… chán hết chỗ nói” → “Thợ_điện máy xanh… chán hết_chỗ_nói” (RDR tách/gộp khác Underthesea).\nLần chạy thật: phobert.json ghi \"segmenter\": \"RDRSegmenter (VnCoreNLP)\"; thiếu jar → fallback lặng lẽ về Underthesea.",
+pass:"Đạt: nêu được đây là tách HAI tầng và fallback không gây lỗi — chỉ lộ qua trường segmenter trong metadata.",
+fail:"Không đạt: tưởng PhoBERT ăn thẳng text_seg của Underthesea; không biết VnCoreNLP đổi thư mục làm việc nên code phải lưu/khôi phục cwd.",
+trap:"predict.py áp dụng lại logic này ở đâu? → phobert_predictor() dòng 23: to_text_seg → gỡ '_' → RDR nếu có jar."},
+{id:"TC-07",g:"pre",lv:3,cond:"CPU",t:"Chuẩn hóa dấu thanh, rút ký tự kéo dài và ranh giới từ đa nghĩa",src:"src/preprocess.py clean() 63, normalize() 84, correct_words() 93 · resources/teencode.txt",
+goal:"Kiểm tra hiểu sâu ba bước chuẩn hóa tiếng Việt và quyết định “không sửa” đối với từ đa nghĩa.",
+given:"Câu tự chế: “hoà tốtttt!!! máy ko tốt” và câu thật trong errors.csv: “kh ok 5sao ổn”.",
+steps:"1) Cho câu 1 qua clean → normalize (chưa sửa teencode), viết kết quả trung gian.\n2) Áp correct_words và cho qua to_text_clean để được dạng cuối.\n3) Kiểm tra “kh” trong câu 2 có bị sửa thành “không” không; tra header của teencode.txt để giải thích.",
+expect:"Sau clean+normalize: “hòa tốt! máy ko tốt” (hoà→hòa theo _TONE/OA_RE; tốtttt→tốt theo REPEAT_RE; !!!→!).\ntext_clean cuối: “hòa tốt máy không tốt”.\n“kh” KHÔNG bị sửa: đã gỡ khỏi teencode.txt (2026-10-02) vì còn nghĩa “khách hàng”, cùng nhóm bị loại: bt, bh, kg, kt, nc, a.",
+pass:"Đạt: thứ tự NFC → đổi dấu thanh → rút ký tự lặp đúng; giải thích được sửa sai từ đa nghĩa gây hại hơn giữ nguyên.",
+fail:"Không đạt: tưởng REPEAT_RE rút cả số/chữ số; tưởng mọi viết tắt đều nên sửa.",
+trap:"Câu “kh ok 5sao ổn” là lỗi của ai — tiền xử lý hay mô hình? → gold Positive nhưng cả hai mô hình đều sai (PhoBERT đoán Neutral): câu cụt + viết tắt nằm ngoài từ điển."},
+{id:"TC-08",g:"pho",lv:3,cond:"Đọc artifact",t:"Định tuyến môi trường và seed trong notebook PhoBERT",src:"notebooks/02_phobert_colab.ipynb ô 2, 3, 4 · results/metrics/phobert.json",
+goal:"Thuộc cơ chế seed/thư mục đầu ra — phần hội đồng dùng để phân biệt người từng chạy notebook với người chỉ đọc báo cáo.",
+given:"Mã ô 2–4 của notebook và biến môi trường PHOBERT_SEED.",
+steps:"1) Đọc SUFFIX và MODEL_DIR khi PHOBERT_SEED lần lượt là 42, 43, 44.\n2) Nêu seed nào được dự đoán trên test, seed nào chỉ trên val, và tên file metrics tương ứng.\n3) Đối chiếu output đã lưu: IN_COLAB và GPU của lần chạy sinh ra báo cáo.",
+expect:"SEED=42 → SUFFIX=\"\" → models/phobert_best, ghi phobert.json, dự đoán val + test.\nSEED=43/44 → SUFFIX=\"_seed43\"/\"_seed44\" → chỉ dự đoán val (đo biến thiên).\nLần chạy thật (output ô 2/4): IN_COLAB: False · cuda NVIDIA GeForce RTX 3060 Laptop GPU · torch 2.7.1+cu118 — chạy local, không phải Colab.",
+pass:"Đạt: trả lời ngay “tên file ghi colab nhưng kết quả chạy local” kèm bằng chứng phobert.json \"in_colab\": false.",
+fail:"Không đạt: khẳng định đã fine-tune trên Colab; không biết đặt PHOBERT_SEED ở đâu.",
+trap:"Vì sao không chọn seed 44 (val cao nhất 0,8978) làm mô hình chính thức? → quy ước seed 42 chốt trước, tránh chọn theo kết quả đã thấy."},
+{id:"TC-09",g:"pho",lv:4,cond:"CPU",t:"Token hóa BPE, trần 128 token và tỷ lệ bị cắt",src:"notebooks/02_phobert_colab.ipynb ô 9 encode() · Bảng 3.4 · phobert.json truncated_train_pct",
+goal:"Đo lại phân bố độ dài token và nối con số 1,5% trong báo cáo về đúng dòng code sinh ra nó.",
+given:"data/processed/train.csv (cột x sau resegment, hoặc text_seg nếu không có VnCoreNLP) và AutoTokenizer của vinai/phobert-base-v2.",
+steps:"1) Token hóa toàn bộ train, tính median / p95 / tỷ lệ câu dài hơn 128 token (đúng cách ô 9 tính TRUNC).\n2) Đối chiếu output đã lưu của ô 9 và trường truncated_train_pct trong phobert.json.\n3) Nêu hệ quả: câu bị cắt mất phần đuôi — phần thường chứa kết luận của bài chê dài.",
+expect:"Output ô 9: train tokens: median 15, p95 75, truncated 1.5%.\nphobert.json: truncated_train_pct = 0,0152 (làm tròn 1,52%).\nencode(): truncation=True, max_length=128; đệm động theo lô bằng DataCollatorWithPadding (không pad sẵn 128).",
+pass:"Đạt: phân biệt được median tính trên token BPE (15) với trung vị 13 TỪ trước tiền xử lý ở Bảng 3.4 — hai đơn vị khác nhau.",
+fail:"Không đạt: nhầm “1,5%” là tỷ lệ trên cả 3 tập; tưởng mọi câu đều bị pad cứng thành 128.",
+trap:"Bảng 3.4 còn ghi val/test vượt ngưỡng 14/10 câu — artifact nào chứng minh? → chưa có; phải tự tính (điểm chênh duy nhất của v1.6)."},
+{id:"TC-10",g:"pho",lv:3,cond:"CPU",t:"Trọng số lớp suy từ phân bố train",src:"notebooks/02_phobert_colab.ipynb ô 9 · results/metrics/phobert.json class_weights",
+goal:"Tự tính lại ba trọng số lớp bằng công thức và liên hệ tới mất cân bằng lớp Neutral.",
+given:"train label counts từ ô 6: Positive 2.696 · Negative 2.024 · Neutral 400 (tổng 5.120).",
+steps:"1) Áp công thức w_k = n / (K · n_k) với K=3 cho từng lớp.\n2) Đối chiếu với class_weights trong phobert.json và output ô 9.\n3) Dự đoán điều gì xảy ra với recall của Neutral nếu bỏ trọng số (không chạy, chỉ lập luận rồi đối chiếu F1 Neutral ở Bảng 3.6).",
+expect:"Negative: 5120/(3×2024) = 0,8432 · Neutral: 5120/(3×400) = 4,2667 · Positive: 5120/(3×2696) = 0,6330.\nĐưa vào CrossEntropyLoss(weight=...) ở ô 11.\nNeutral chỉ chiếm 7,8% train nên trọng số gấp ~6,7 lần Positive.",
+pass:"Đạt: tính đúng 3 số tới 4 chữ số thập phân và nói được trọng số tác động vào loss, không phải nhân dữ liệu (khác oversampling).",
+fail:"Không đạt: nhầm công thức thành n_k/n; tưởng trọng số lớp và class_weight='balanced' của SVM là hai cơ chế khác bản chất.",
+trap:"Trọng số 4,2667 có làm mô hình “thiên vị” Neutral quá mức không? Bằng chứng? → precision Neutral trên test chỉ 0,677 trong khi recall 0,894: có xu hướng đoán rộng Neutral — đánh đổi đã biết."},
+{id:"TC-11",g:"pho",lv:4,cond:"GPU / checkpoint",t:"Vòng huấn luyện và chọn checkpoint theo macro-F1 trên val",src:"notebooks/02_phobert_colab.ipynb ô 11 train_run() · Bảng 3.6 · phobert.json history",
+goal:"Tái hiện chu trình: train 1 epoch → chấm val → chỉ lưu khi tốt hơn; đọc đúng dấu hiệu quá khớp.",
+given:"results/metrics/phobert.json (history) — hoặc huấn luyện lại trên GPU nếu có.",
+steps:"1) Liệt kê train_loss và val macro-F1 sau từng epoch.\n2) Xác định epoch được lưu vào models/phobert_best và tiêu chí lưu (save_pretrained khi macro-F1 cao hơn mọi epoch trước).\n3) Giải thích vì sao vẫn chạy đủ 4 epoch dù epoch 2 đã tốt nhất.",
+expect:"epoch 1: loss 0,6488 · val F1 0,8427 (lưu) \nepoch 2: loss 0,3558 · val F1 0,8749 (lưu — tốt nhất) \nepoch 3: loss 0,2433 · val F1 0,8609 \nepoch 4: loss 0,1672 · val F1 0,8621\nbest_epoch = 2 · val accuracy 0,9491 · F1 Neutral tại đỉnh 0,6861.",
+pass:"Đạt: chỉ ra train loss giảm đơn điệu nhưng val F1 giảm sau epoch 2 = quá khớp bắt đầu; checkpoint epoch 2 là cơ chế dừng sớm theo val (không có patience).",
+fail:"Không đạt: chọn epoch 4 “vì train lâu nhất/loss thấp nhất”; tưởng test được dùng để chọn epoch.",
+trap:"Seed 43/44 đạt đỉnh ở epoch 4 — vậy “epoch 2 tốt nhất” có phải chân lý? → không, đó là của seed 42; xem TC-14."},
+{id:"TC-12",g:"pho",lv:4,cond:"GPU / checkpoint",t:"Fallback khi hết bộ nhớ: batch 16 → 8 + tích lũy gradient 2",src:"notebooks/02_phobert_colab.ipynb ô 11 (try/except OutOfMemoryError)",
+goal:"Hiểu cơ chế dự phòng bộ nhớ và chứng minh batch hiệu dụng không đổi để kết quả so sánh được.",
+given:"Đoạn try/except cuối ô 11 và các trường batch_used / grad_accum_used trong phobert.json.",
+steps:"1) Đọc luồng: train_run(16,1) → bắt torch.cuda.OutOfMemoryError → empty_cache → train_run(8,2).\n2) Tính batch hiệu dụng ở hai cấu hình và số bước optimizer mỗi epoch thay đổi ra sao (loader 5.120 câu).\n3) Đối chiếu lần chạy thật đã dùng cấu hình nào.",
+expect:"Batch hiệu dụng: 16×1 = 8×2 = 16 → quy mô cập nhật tương đương.\nLần chạy sinh báo cáo: batch_used=16, grad_accum_used=1 (không dính OOM), thời gian ghi trong history: 115 / 116 / 115 / 49 giây cho 4 epoch.\nLoss trong train_run được chia cho accum trước backward: loss_fn(...)/accum.",
+pass:"Đạt: giải thích scaler.unscale_ + clip_grad_norm_(1.0) chỉ thực thi tại mốc tích lũy đủ (i+1) % accum == 0.",
+fail:"Không đạt: tưởng giảm batch xuống 8 là giảm một nửa “độ mạnh học” mà không nhắc tích lũy; không biết OOM được bắt và chạy lại từ đầu (không resume).",
+trap:"Tích lũy gradient có tương đương hoàn toàn batch lớn không? → gần tương đương về gradient trung bình, nhưng BatchNorm/thống kê lô (nếu có) và nhiễu gradient khác; PhoBERT dùng LayerNorm nên ảnh hưởng nhỏ."},
+{id:"TC-13",g:"pho",lv:4,cond:"Đọc artifact",t:"Dự đoán lại từ checkpoint và assert nhất quán trên val",src:"notebooks/02_phobert_colab.ipynb ô 13 · results/predictions/phobert_val.csv, phobert_test.csv",
+goal:"Kiểm chứng vòng khép kín huấn luyện → lưu file dự đoán → Phase 6 chấm, bằng một assert cụ thể trong code.",
+given:"results/predictions/phobert_test.csv (500 dòng: review_id, label, pred, prob_Negative/Neutral/Positive làm tròn 4 chữ số).",
+steps:"1) Tính lại macro-F1 từ file phobert_test.csv bằng sklearn và đối chiếu Bảng 3.7.\n2) Đọc assert ở ô 13: macro-F1 tính lại từ predictions trên val phải khớp best[\"macro_f1\"] với sai lệch < 1e-3.\n3) Kiểm tra tổng ba xác suất mỗi dòng ≈ 1 và nhãn pred = argmax của ba xác suất.",
+expect:"Tính lại từ phobert_test.csv: macro-F1 ≈ 0,9023 · Accuracy 0,948.\nMẫu dòng đầu: Negative → Negative với prob 0,9895 / 0,0072 / 0,0033 (tổng = 1,0000).\nAssert ở ô 13 là chốt chặn: lệch ≥ 1e-3 thì notebook dừng — ngăn checkpoint nạp lại khác checkpoint lúc chọn.",
+pass:"Đạt: chạy được đoạn kiểm chứng 5 dòng và giải thích notebook KHÔNG chấm test (test metrics thuộc evaluate.py).",
+fail:"Không đạt: tưởng 0,9023 do notebook in ra; không tìm thấy assert khi được hỏi “sao em chắc file predictions đúng checkpoint?”",
+trap:"Seed 43/44 có file phobert_seed43_test.csv không? → không, ô 13 chỉ dự đoán test khi SEED == 42."},
+{id:"TC-14",g:"pho",lv:4,cond:"Đọc artifact",t:"Độ biến thiên theo seed và bản đối chứng huấn luyện bằng nhãn sao",src:"results/metrics/phobert_seeds.json · results/archive_star/ (notebook + metrics/phobert.json) · Bảng 3.9",
+goal:"Đọc hai thí nghiệm “ngoài luồng chính” mà hội đồng hay dùng để kiểm tra mức độ làm chủ thiết kế thực nghiệm.",
+given:"phobert_seeds.json (3 seed) và thư mục archive_star (cùng notebook, chỉ khác nhãn train/val).",
+steps:"1) Liệt kê best_epoch và val macro-F1 tốt nhất của seed 42/43/44; tính mean ± std (ddof=1).\n2) Mở archive_star/metrics/phobert.json: best_epoch, val_best của bản nhãn sao.\n3) Đối chiếu test macro-F1 hai bản trong archive_star/comparison.csv vs comparison.csv.",
+expect:"Seed: 42 → epoch 2, 0,8749 · 43 → epoch 4, 0,8694 · 44 → epoch 4, 0,8978 ⇒ 0,8807 ± 0,0151 (báo cáo làm tròn 0,881 ± 0,015).\nBản nhãn sao: best epoch 3, val macro-F1 0,7813; chấm test theo nhãn nội dung: 0,632 (so với 0,9023 của bản nhãn nội dung).",
+pass:"Đạt: kết luận đúng hai ý: (1) kết quả phụ thuộc seed ở mức ±0,015 nên phải báo cáo kèm độ lệch; (2) đổi nhãn sao→nội dung là yếu tố quyết định (+~0,27) chứ không phải kiến trúc.",
+fail:"Không đạt: gộp hai notebook thành một; tưởng archive_star là bản nháp bỏ đi thay vì nhóm đối chứng A.",
+trap:"Mức tăng 0,27 có gán trọn cho việc đổi nhãn được không? → không tuyệt đối: đồng thời có sửa từ điển teencode và loại 16 câu trùng (báo cáo đã tự nêu)."},
+{id:"TC-15",g:"eval",lv:3,cond:"CPU",t:"Tính lại toàn bộ Bảng 3.7 từ file predictions",src:"src/evaluate.py metrics() dòng 49, main() dòng 169 · results/comparison.csv, test_metrics.json",
+goal:"Chứng minh mọi con số kết quả đều suy được từ file dự đoán đã lưu — không cần train lại.",
+given:"results/predictions/phobert_test.csv, classic_test.csv và data/processed/test.csv.",
+steps:"1) Với mỗi mô hình: tính accuracy, macro-F1 và F1 từng lớp; lập ma trận nhầm lẫn.\n2) Đối chiếu hai hàng Trung tính của TF-IDF+SVM và PhoBERT.\n3) Kiểm tra mốc baseline lớp đông nhất.",
+expect:"PhoBERT: Acc 0,948 · macro-F1 0,9023 · F1 lớp: Neg 0,9736 / Neu 0,7706 / Pos 0,9627.\nTF-IDF+SVM: 0,890 / 0,8038 · TF-IDF+NB: 0,878 / 0,7993 · W2V+NB thấp nhất 0,6230.\nHàng Neutral (47 câu): TF-IDF+SVM [15 Neg, 23 đúng, 9 Pos] · PhoBERT [3, 42, 2].\nBaseline lớp đông nhất: Acc 0,328 · macro-F1 0,1647.",
+pass:"Đạt: tự tính khớp tới 4 chữ số và đọc được precision Neutral của PhoBERT (0,6774) từ cột Neutral chứ không chỉ hàng.",
+fail:"Không đạt: chỉ đọc comparison.csv mà không tái tính; nhầm hàng/cột khi đọc ma trận nhầm lẫn.",
+trap:"Vì sao macro-F1 test của PhoBERT (0,902) cao hơn val (0,875)? → phân bố nhãn test khác val do bốc gold theo hạn ngạch sao."},
+{id:"TC-16",g:"eval",lv:4,cond:"CPU",t:"Bootstrap CI95 kiểu paired và chấm lại bằng nhãn người thứ hai",src:"src/evaluate.py robustness() dòng 119 · results/robustness.csv · Bảng 3.10",
+goal:"Tái lập phần “robustness” mà báo cáo chưa khai thác hết (CI95) và hiểu vì sao phải dùng chung mẫu resample.",
+given:"Các file predictions đã lưu + cột label_human_2 trong data/gold/gold_test.csv (100 câu G001–G100). Không train lại.",
+steps:"1) Sinh ma trận chỉ số resample (2000 × 500) bằng rng seed 42 — dùng chung cho mọi mô hình; tính macro-F1 từng mẫu rồi lấy percentile 2,5/97,5.\n2) Chấm mọi mô hình bằng nhãn người thứ hai (n=100) và so với mốc nhãn gold vs người.\n3) Kết luận khoảng tin cậy của PhoBERT và TF-IDF+SVM có chồng lấn thế nào.",
+expect:"PhoBERT: macro-F1 0,9023 · CI95 [0,8639 ; 0,9353] · human2 macro-F1 0,8497.\nTF-IDF+SVM: 0,8038 · CI95 [0,7511 ; 0,8527] · human2 0,7054.\nMốc nhãn gold vs thành viên 2: đồng thuận 0,88 · macro-F1 0,8184.\nHai CI gần như không chồng lấn → chênh lệch có căn cứ thống kê.",
+pass:"Đạt: giải thích chữ “paired” (cùng idx cho mọi mô hình) và vì sao robustness() đọc predictions chứ không huấn luyện lại.",
+fail:"Không đạt: bootstrap riêng từng mô hình bằng mẫu khác nhau rồi so sánh; kết luận “PhoBERT giỏi hơn người” từ 0,8497 > 0,8184.",
+trap:"CI95 này chưa xuất hiện trong báo cáo v1.6 — nếu hội đồng hỏi “0,902 hơn 0,804 có ý nghĩa không”, bạn mở file nào? → robustness.csv."},
+{id:"TC-17",g:"eval",lv:4,cond:"Đọc artifact",t:"Nhóm lỗi phủ định: mô hình cổ điển sai, PhoBERT đúng",src:"results/errors.csv (nhom_loi = Phủ định) · Bảng 3.12–3.13 · src/features.py",
+goal:"Dùng 4 câu lỗi thật để chứng minh cơ chế mù phủ định của BoW/TF-IDF và ưu thế ngữ cảnh của PhoBERT.",
+given:"4 câu trong errors.csv: “Nồi cơm nấu ít hơi lắm, cho nên cơm ăn ko ngon” · “cơm chín nhưng chưa ngon” · “Quạt chạy êm, không ồn…” · “Mình thấy ok mà… cũng k biết… tk điện ko nữa”.",
+steps:"1) Đọc nhãn gold và dự đoán của TF-IDF+SVM cho 4 câu; xác định từ tích cực nào “kéo” dự đoán sai.\n2) Đối chiếu dự đoán PhoBERT (cột pred_other_model) cho cùng 4 câu.\n3) Giải thích bằng cơ chế biểu diễn: đếm từ rời rạc (kể cả bigram) vs attention ngữ cảnh; nêu vì sao bigram “không ngon” vẫn không cứu hẳn.",
+expect:"Cả 4 câu: TF-IDF+SVM sai (2 câu chê bị đoán Tích cực vì “ngon”, 2 câu khen bị đoán Tiêu cực vì “không/k”).\nPhoBERT đúng cả 4 (other=N cột: Negative/Negative/Positive/Positive khớp gold).\nThống kê nhóm lỗi: phủ định xuất hiện 4 lần ở TF-IDF+SVM, 0 lần ở PhoBERT (Bảng 3.12).",
+pass:"Đạt: chỉ được từ “ngon” là đặc trưng tích cực mạnh trong train khiến mô hình túi từ bỏ qua “ko/chưa” đứng trước.",
+fail:"Không đạt: nói chung chung “PhoBERT thông minh hơn”; không giải thích nổi vì sao đã có bigram mà cổ điển vẫn sai (bigram thưa, min_df cắt, trọng số tuyến tính cộng dồn).",
+trap:"Cho câu mới “máy chạy không êm lắm” — dự đoán hành vi hai họ mô hình và mức tin cậy của bạn?"},
+{id:"TC-18",g:"eval",lv:4,cond:"GPU / checkpoint",t:"Câu khen–chê lẫn lộn và thí nghiệm cắt bỏ một từ (ablation)",src:"src/predict.py DEFAULT dòng 15, phobert_predictor() dòng 23 · §3.7.3",
+goal:"Tái hiện thí nghiệm định tính duy nhất của báo cáo và hiểu tính mong manh của quyết định ở vùng ranh giới.",
+given:"Câu mặc định đầu tiên của predict.py: “máy giặt chạy êm nhưng vắt không khô”. Cần models/phobert_best (tự huấn luyện lại nếu chưa có).",
+steps:"1) Chạy python -m src.predict với nguyên câu; ghi nhãn + xác suất của PhoBERT và mô hình cổ điển tốt nhất.\n2) Bỏ từ “giặt” → chạy lại.\n3) Giải thích vì sao một từ lại lật nhãn: vai trò của “nhưng” (ý sau nặng hơn) và độ nhạy với danh từ sản phẩm trong dữ liệu huấn luyện.",
+expect:"Nguyên câu: PhoBERT → Tiêu cực, p ≈ 0,62 (khớp §3.7.3).\nBỏ “giặt”: → Trung tính, p ≈ 0,68.\nMô hình cổ điển (LinearSVC) không có xác suất — predict.py chỉ in nhãn (hasattr predict_proba).",
+pass:"Đạt: nêu được cả hai xác suất đều thấp (< 0,7) → quyết định mong manh; đề xuất được ngưỡng từ chối dự đoán là hướng cải tiến.",
+fail:"Không đạt: khẳng định mô hình “hiểu” cấu trúc khen–chê như người; không chạy được vì không biết checkpoint không có sẵn trong repo.",
+trap:"Nếu giảng viên đổi câu thành “vắt khô nhưng chạy ồn”, bạn dự đoán gì trước khi chạy? Lập luận theo quy tắc “ý sau nhưng nặng hơn” trong guideline."},
+{id:"TC-19",g:"eval",lv:5,cond:"Đọc artifact",t:"Câu cụt, viết tắt đa nghĩa và câu hỏi vì sự cố — phân biệt lỗi nhãn vs lỗi mô hình",src:"results/errors.csv · docs/HUONG_DAN_GAN_NHAN.md (quy tắc gán nhãn) · Bảng 3.13",
+goal:"Kiểm tra tầng sâu nhất: hiểu chuẩn gán nhãn của con người và biết khi nào mô hình sai, khi nào nhãn gold gây tranh cãi.",
+given:"Ba câu thật: “kh ok 5sao ổn” (5★) · “Có cách nào để chỉnh nhiệt độ ngăn đông mềm k ạ. Vì tôi ktra thấy nhiệt độ ngăn đông mềm cũng như ngăn mát…” · “Như máy điều hòa” (5★).",
+steps:"1) Tự gán nhãn ba câu theo guideline (9 quy tắc) trước khi xem đáp án.\n2) Đối chiếu nhãn gold và dự đoán đã lưu của PhoBERT/TF-IDF+SVM.\n3) Phân loại: câu nào là lỗi mô hình thật, câu nào là giới hạn dữ liệu (câu cụt 3–4 từ), và nêu hướng xử lý (từ chối dự đoán, bổ sung dữ liệu).",
+expect:"“kh ok 5sao ổn”: gold Positive — PhoBERT đoán Neutral, TF-IDF+SVM đoán Positive (cả hai mô hình… PhoBERT sai, cổ điển đúng nhờ “ổn/5sao”).\nCâu hỏi ngăn đông: gold Negative (hỏi VÌ GẶP SỰ CỐ theo quy tắc) — PhoBERT đoán Neutral (sai: bắt hình thức câu hỏi, hụt ý sự cố).\n“Như máy điều hòa”: gold Positive (khen ngầm) — cả hai mô hình đều sai (PhoBERT Neutral, TF-IDF+SVM Negative).",
+pass:"Đạt: tự gán đúng 3/3 theo guideline trước khi xem đáp án và phân biệt được “câu hỏi thông tin” (Trung tính) với “câu hỏi vì sự cố” (Tiêu cực).",
+fail:"Không đạt: gán câu hỏi ngăn đông là Trung tính “vì nó là câu hỏi”; đòi sửa nhãn gold cho khớp mô hình.",
+trap:"Nhóm “nhãn gold tranh cãi” như “Mới đầu làm lạnh chưa nhanh” (gold Negative, cả hai mô hình đoán khác) xử lý thế nào khi bảo vệ? → thừa nhận vùng xám của gán nhãn đơn nhãn, dẫn κ=0,798 làm bằng chứng mức đồng thuận người–người."},
+{id:"TC-20",g:"eval",lv:5,cond:"CPU + Đọc artifact",t:"Bình luận dài nhất của test (314 từ) dưới trần 128 token",src:"data/processed/test.csv · notebooks/02_phobert_colab.ipynb ô 9 · Bảng 3.4 · predictions/phobert_test.csv",
+goal:"Đo tận nơi ảnh hưởng của truncation: một câu bị cắt hơn nửa nội dung vẫn được đoán đúng — và biết khi nào điều đó không còn đúng.",
+given:"Câu test dài nhất: review_id bắt đầu 2c87d5468027, 314 từ, nhãn Negative, 1 sao (câu chuyện máy lạnh Panasonic không chạy từ ngày đầu).",
+steps:"1) Đếm số từ và số token (text_seg tách sẵn: 271 token theo khoảng trắng) của câu; khẳng định vượt trần 128.\n2) Tra dự đoán đã lưu của PhoBERT và của TF-IDF+SVM cho review_id này.\n3) Lập luận: vì sao cắt đuôi vẫn đúng ở câu này (tín hiệu chê xuất hiện ngay đầu câu) và dựng tình huống ngược — câu khen dài mà ý chê nằm ở cuối — để nêu giới hạn của max_len=128.",
+expect:"314 từ gốc · text_seg 271 token → PhoBERT chỉ thấy ~128 token đầu.\nĐã lưu: PhoBERT → Negative (prob 0,9891) · TF-IDF+SVM → Negative — cả hai đúng.\nLiên hệ Bảng 3.4: test có 10 câu (2,0%) vượt 128 token; train 78 câu (1,5%).",
+pass:"Đạt: tự tìm được câu dài nhất bằng code, đối chiếu đúng dự đoán đã lưu, và nêu được truncation rủi ro nhất với câu “khen trước chê sau” — đúng nhóm lỗi lớn nhất của PhoBERT (khen chê lẫn lộn, 7/15).",
+fail:"Không đạt: tưởng 128 là số TỪ; tưởng cắt token làm mất nhãn của mọi câu dài; không tra được review_id trong file predictions.",
+trap:"Nâng max_len lên 256 thì đánh đổi gì? → chi phí attention tăng ~4 lần theo độ dài (O(n²)), thời gian epoch tăng, trong khi chỉ 1,5–2% câu hưởng lợi — phải chứng minh bằng thực nghiệm chứ không khẳng định."}
+];
+const grid=document.getElementById('tgrid'),q=document.getElementById('q'),fg=document.getElementById('fg'),fl=document.getElementById('fl'),cnt=document.getElementById('cnt'),nores=document.getElementById('nores');
+const GNAME={eda:'Nhóm I · EDA & dữ liệu',pre:'Nhóm II · Tiền xử lý',pho:'Nhóm III · Notebook PhoBERT',eval:'Nhóm IV · Đánh giá & hành vi'};
+function stars(n){return '★'.repeat(n)+'<span style="color:#d6d0c4">'+'★'.repeat(5-n)+'</span>'}
+function render(){
+  const s=(q.value||'').toLowerCase();
+  const items=TC.filter(t=>(!fg.value||t.g===fg.value)&&(!fl.value||t.lv==fl.value)&&(!s||JSON.stringify(t).toLowerCase().includes(s)));
+  grid.innerHTML=items.map(t=>`<article class="tc">
+    <div class="thead"><span class="tid">${t.id}</span><span class="ttitle">${t.t}</span></div>
+    <div><span class="tag clay">${GNAME[t.g]}</span> <span class="tag">${t.cond}</span> <span class="stars">${stars(t.lv)}</span></div>
+    <div class="trow"><b class="lbl">Nguồn gốc</b><code>${t.src}</code></div>
+    <div class="trow"><b class="lbl">Mục tiêu</b>${t.goal}</div>
+    <div class="trow"><b class="lbl">Input / tiền điều kiện</b>${t.given}</div>
+    <div class="trow"><b class="lbl">Thao tác</b><div style="white-space:pre-wrap">${t.steps}</div></div>
+    <div class="trow"><b class="lbl">Kết quả kỳ vọng</b><div class="expect">${t.expect}</div></div>
+    <div class="pass"><b>✓ Đạt:</b> ${t.pass}</div>
+    <div class="fail"><b>✗ Không đạt:</b> ${t.fail}</div>
+    <div class="trap"><b>⚠ Giảng viên xoáy tiếp:</b> ${t.trap}</div>
+  </article>`).join('');
+  cnt.textContent=items.length+' / '+TC.length+' testcase';
+  nores.style.display=items.length?'none':'block';
+}
+[q,fg,fl].forEach(el=>el.addEventListener('input',render));render();
+</script>
+</body>
+</html>
