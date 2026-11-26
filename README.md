@@ -4,6 +4,8 @@ Dự án xây dựng pipeline phân loại bình luận tiếng Việt thành **
 
 > **Tình trạng nhãn:** các nhãn hiện tại trong `data/processed/{train,val,test}.csv` là `label_target` được sinh tự động từ rating + lexicon/quy tắc. Tập `test.csv` là held-out pseudo-labeled set, **không phải gold test do người gán**. Các chỉ số hiện tại phản ánh độ khớp với nhãn quy tắc; muốn đưa ra khẳng định chất lượng thực tế cần gán nhãn độc lập mẫu kiểm tra. Dự án cung cấp `scripts/export_annotation_sample.py` để tạo mẫu mù.
 
+> **Thuật ngữ và rà soát báo cáo:** định nghĩa thuật ngữ dùng trong dự án tại [GLOSSARY.md](GLOSSARY.md); phân tích thiếu sót của báo cáo bản cuối tại [docs/report-gap-analysis.md](docs/report-gap-analysis.md).
+
 ## Cấu trúc chính
 
 ```text
